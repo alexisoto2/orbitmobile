@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eSIM Orbit Prepago | Orbit Mobile</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --orbit-blue: #00d2ff;
+            --orbit-purple: #9b51e0;
+            --orbit-dark: #0b1128;
+            --card-header-bg: #e2f1fe;
+            --gray-bg: #f8fafc;
+            --gray-border: #cbd5e1;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: #ffffff; color: var(--text-dark); line-height: 1.5; }
+
+        /* 1. BARRA SUPERIOR */
+        .top-bar {
+            background-color: var(--orbit-dark);
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8%;
+            font-size: 0.85rem;
+            height: 40px;
+        }
+
+        .top-bar-left { display: flex; height: 100%; }
+        .tab-btn {
+            padding: 0 1.2rem;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #a0a5c0;
+            font-weight: 600;
+            height: 100%;
+        }
+        .tab-btn.active {
+            background-color: #172042;
+            color: var(--orbit-blue);
+            border-bottom: 3px solid var(--orbit-blue);
+        }
+
+        .top-bar-right { display: flex; gap: 1.5rem; align-items: center; }
+        .top-bar-right a { color: #fff; text-decoration: none; font-size: 0.85rem; display: flex; align-items: center; gap: 5px; }
+
+        /* 2. HEADER */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 8%;
+            border-bottom: 1px solid var(--gray-border);
+            background: #fff;
+        }
+
+        .logo { font-size: 1.6rem; font-weight: 800; color: var(--orbit-dark); display: flex; align-items: center; gap: 8px; text-decoration: none; }
+        .gradient-text { background: linear-gradient(135deg, var(--orbit-blue), var(--orbit-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .main-nav { display: flex; align-items: center; gap: 1.5rem; }
+        .main-nav a { color: var(--text-dark); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
+        
+        .btn-mi-orbit {
+            background: linear-gradient(135deg, var(--orbit-blue), var(--orbit-purple));
+            color: #fff;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb { padding: 1rem 8%; font-size: 0.85rem; color: var(--text-muted); }
+        .breadcrumb a { color: var(--text-muted); text-decoration: none; }
+
+        /* 3. ENCABEZADO PRINCIPAL (Estilo Telcel) */
+        .hero-title { text-align: center; padding: 2rem 8% 1rem 8%; max-width: 900px; margin: 0 auto; }
+        .hero-title h1 { font-size: 2.3rem; font-weight: 800; color: var(--orbit-dark); margin-bottom: 0.5rem; }
+        .hero-title p { font-size: 1.2rem; color: var(--text-dark); font-weight: 500; }
+
+        .subtitle-box { text-align: center; margin-top: 2rem; }
+        .subtitle-box h2 { font-size: 1.4rem; font-weight: 700; color: var(--orbit-dark); }
+        .subtitle-box p { font-size: 0.95rem; color: var(--text-muted); margin-top: 4px; }
+
+        /* 4. TARJETAS DE PAQUETES DE DATOS */
+        .plans-container { padding: 3rem 8% 5rem 8%; max-width: 1100px; margin: 0 auto; }
+        .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+
+        .card-plan {
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid var(--gray-border);
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            position: relative;
+        }
+
+        .badge-recommended {
+            background: #d946ef;
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 12px;
+            border-radius: 4px 4px 0 0;
+            display: inline-block;
+            margin-bottom: -5px;
+        }
+
+        .card-header-top {
+            background: #e0f2fe;
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid var(--gray-border);
+        }
+        .card-plan.featured .card-header-top { background: #f0f9ff; }
+
+        .plan-name { font-size: 1.2rem; font-weight: 700; color: #0284c7; }
+
+        .card-body { padding: 1.5rem; }
+
+        .metrics-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 1.5rem;
+        }
+
+        .metric-item .value { font-size: 2rem; font-weight: 800; color: var(--orbit-dark); line-height: 1; }
+        .metric-item .label { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; margin-top: 4px; }
+
+        .price-tag { font-size: 2.2rem; font-weight: 800; color: var(--orbit-dark); }
+
+        /* SECCIÓN DE REDES SOCIALES */
+        .social-section {
+            background: var(--gray-bg);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        .social-title { font-size: 0.85rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.5rem; }
+        .social-icons { display: flex; gap: 12px; color: #0284c7; font-size: 1.2rem; }
+
+        .btn-comprar {
+            width: 100%;
+            background: linear-gradient(135deg, var(--orbit-blue), var(--orbit-purple));
+            color: #fff;
+            border: none;
+            padding: 0.9rem;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1.5rem;
+        }
+
+        footer { background: var(--orbit-dark); color: #a0a5c0; padding: 2rem 8%; text-align: center; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+    <!-- Barra Superior -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <a href="#" class="tab-btn active">PERSONAS</a>
+            <a href="#" class="tab-btn">EMPRESAS</a>
+        </div>
+        <div class="top-bar-right">
+            <a href="#"><i class="fa-solid fa-location-dot"></i> Chihuahua</a>
+            <a href="portabilidad.html">Portabilidad</a>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo">
+            <i class="fa-solid fa-planet gradient-text"></i> ORBIT <span class="gradient-text">MOBILE</span>
+        </a>
+        <nav class="main-nav">
+            <a href="esim.html">eSIM</a>
+            <a href="planes.html">Paquetes y Recargas</a>
+            <a href="portabilidad.html">Cámbiate a Orbit</a>
+            <a href="#" class="btn-mi-orbit">Mi Orbit</a>
+        </nav>
+    </header>
+
+    <!-- Ruta de navegación -->
+    <div class="breadcrumb">
+        <a href="index.html">eSIM</a> / <b>Orbit Prepago</b>
+    </div>
+
+    <!-- Título Principal -->
+    <section class="hero-title">
+        <h1>Estrena línea con eSIM Prepago de Orbit</h1>
+        <p>Activa tu eSIM desde donde estés y comienza a hablar, navegar y mejesajear al instante</p>
+
+        <div class="subtitle-box">
+            <h2>Elige un paquete para tu eSIM Orbit y conéctate sin fronteras</h2>
+            <p>Incluye llamadas, mensajes y datos en México, Estados Unidos y Canadá</p>
+        </div>
+    </section>
+
+    <!-- Grilla de Paquetes (Estilo Telcel) -->
+    <section class="plans-container">
+        <div class="plans-grid">
+            
+            <!-- Tarjeta 1 (Recomendado) -->
+            <div>
+                <span class="badge-recommended">Recomendado</span>
+                <div class="card-plan featured">
+                    <div class="card-header-top">
+                        <div class="plan-name">Orbit Sin Límite 270</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="metrics-row">
+                            <div class="metric-item">
+                                <div class="value">2.5 GB</div>
+                                <div class="label">Sin Frontera</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="value" style="font-size: 1.5rem;">30 días</div>
+                                <div class="label">Vigencia</div>
+                            </div>
+                            <div class="price-tag">$270</div>
+                        </div>
+
+                        <div class="social-section">
+                            <div class="social-title">Redes Sociales Nacionales:</div>
+                            <div class="social-title" style="color: #0284c7; font-weight: 700; margin-bottom: 8px;">Ilimitadas</div>
+                            <div class="social-icons">
+                                <i class="fa-brands fa-facebook"></i>
+                                <i class="fa-brands fa-instagram"></i>
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </div>
+                        </div>
+
+                        <button class="btn-comprar" onclick="comprareSIM('Orbit Sin Límite 270')">Comprar eSIM</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 2 -->
+            <div style="margin-top: 20px;">
+                <div class="card-plan">
+                    <div class="card-header-top">
+                        <div class="plan-name">Orbit Sin Límite 100</div>
+                    </div>
+                    <div class="card-body">
+                        <div class="metrics-row">
+                            <div class="metric-item">
+                                <div class="value">1.5 GB</div>
+                                <div class="label">Sin Frontera</div>
+                            </div>
+                            <div class="metric-item">
+                                <div class="value" style="font-size: 1.5rem;">15 días</div>
+                                <div class="label">Vigencia</div>
+                            </div>
+                            <div class="price-tag">$100</div>
+                        </div>
+
+                        <div class="social-section">
+                            <div class="social-title">Redes Sociales Nacionales:</div>
+                            <div class="social-title" style="color: #0284c7; font-weight: 700; margin-bottom: 8px;">Ilimitadas</div>
+                            <div class="social-icons">
+                                <i class="fa-brands fa-facebook"></i>
+                                <i class="fa-brands fa-instagram"></i>
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </div>
+                        </div>
+
+                        <button class="btn-comprar" onclick="comprareSIM('Orbit Sin Límite 100')">Comprar eSIM</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 ORBIT MOBILE S.A. DE C.V. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function comprareSIM(nombre) {
+            alert(`Iniciando compra de ${nombre}. En el siguiente paso se solicita el correo para el envío del código QR.`);
+        }
+    </script>
+</body>
+</html>
