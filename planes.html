@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planes | Orbit Mobile</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root { --bg-dark: #070913; --bg-card: #0e1225; --cyan-glow: #00d2ff; --purple-glow: #9b51e0; --text-main: #ffffff; --text-muted: #a0a5c0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; }
+        .gradient-text { background: linear-gradient(135deg, var(--cyan-glow), var(--purple-glow)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 8%; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .logo { font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+        nav a { color: var(--text-muted); text-decoration: none; margin-left: 2rem; }
+        nav a.active { color: var(--cyan-glow); }
+
+        .container { padding: 4rem 8%; max-width: 1200px; margin: 0 auto; }
+        .title { text-align: center; font-size: 2.2rem; margin-bottom: 3rem; }
+
+        .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .card { background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 2.5rem 1.8rem; text-align: center; position: relative; }
+        .card.featured { border-color: var(--purple-glow); box-shadow: 0 0 20px rgba(155, 81, 224, 0.2); }
+        .badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--purple-glow); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; }
+        .price { font-size: 2.5rem; font-weight: 700; margin: 1rem 0; }
+        .price span { font-size: 1rem; color: var(--text-muted); }
+        
+        ul { list-style: none; margin-bottom: 2rem; text-align: left; }
+        ul li { margin-bottom: 0.8rem; color: var(--text-muted); }
+        ul li i { color: var(--cyan-glow); margin-right: 8px; }
+
+        .btn-gradient { background: linear-gradient(135deg, var(--cyan-glow), var(--purple-glow)); color: #fff; border: none; padding: 0.8rem; width: 100%; border-radius: 8px; font-weight: 600; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><i class="fa-solid fa-planet gradient-text"></i> ORBIT <span class="gradient-text">MOBILE</span></div>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="planes.html" class="active">Planes</a>
+            <a href="portabilidad.html">Portabilidad</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 class="title">Selecciona tu paquete <span class="gradient-text">eSIM</span></h1>
+        
+        <div class="plans-grid">
+            <div class="card">
+                <h3>Orbit 7 Días</h3>
+                <div class="price">$60 <span>MXN</span></div>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> <b>2 GB</b> de navegación</li>
+                    <li><i class="fa-solid fa-check"></i> Redes Sociales incluidas</li>
+                    <li><i class="fa-solid fa-check"></i> Llamadas y SMS ilimitados</li>
+                </ul>
+                <button class="btn-gradient" onclick="seleccionarPlan('Orbit 7 Días')">Comprar eSIM</button>
+            </div>
+
+            <div class="card featured">
+                <div class="badge">Recomendado</div>
+                <h3>Orbit Lite</h3>
+                <div class="price">$149 <span>MXN / mes</span></div>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> <b>5 GB</b> de navegación</li>
+                    <li><i class="fa-solid fa-check"></i> Redes Sociales ilimitadas</li>
+                    <li><i class="fa-solid fa-check"></i> Llamadas y SMS ilimitados</li>
+                </ul>
+                <button class="btn-gradient" onclick="seleccionarPlan('Orbit Lite')">Comprar eSIM</button>
+            </div>
+
+            <div class="card">
+                <h3>Orbit Pro</h3>
+                <div class="price">$249 <span>MXN / mes</span></div>
+                <ul>
+                    <li><i class="fa-solid fa-check"></i> <b>20 GB</b> de navegación</li>
+                    <li><i class="fa-solid fa-check"></i> Compartir datos (Hotspot)</li>
+                    <li><i class="fa-solid fa-check"></i> Llamadas y SMS ilimitados</li>
+                </ul>
+                <button class="btn-gradient" onclick="seleccionarPlan('Orbit Pro')">Comprar eSIM</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function seleccionarPlan(plan) {
+            alert(`Plan seleccionado: ${plan}. Redirigiendo a pasarela de pagos...`);
+        }
+    </script>
+</body>
+</html>
