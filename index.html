@@ -9,10 +9,10 @@
         :root {
             --orbit-blue: #00d2ff;
             --orbit-purple: #9b51e0;
+            --orbit-gradient: linear-gradient(135deg, #00d2ff, #9b51e0);
+            --orbit-gradient-soft: linear-gradient(135deg, rgba(0, 210, 255, 0.12), rgba(155, 81, 224, 0.12));
             --orbit-dark: #070913;
             --top-navy: #0b1128;
-            --footer-bg: #f4f6f9;
-            --footer-bottom: #002b66;
             --gray-border: #e0e6ed;
             --text-dark: #1e293b;
             --text-muted: #64748b;
@@ -21,7 +21,19 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
         body { background-color: #ffffff; color: var(--text-dark); line-height: 1.5; }
 
-        /* --- 1. BARRA SUPERIOR AZUL --- */
+        /* Estilo unificado para figuras orbitales */
+        .orbit-shape {
+            background: var(--orbit-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* --- 1. BARRA SUPERIOR --- */
         .top-bar {
             background-color: var(--top-navy);
             color: #fff;
@@ -65,26 +77,28 @@
             z-index: 100;
         }
 
-        .logo { font-size: 1.6rem; font-weight: 800; color: #0b1128; display: flex; align-items: center; gap: 8px; text-decoration: none; }
-        .gradient-text { background: linear-gradient(135deg, var(--orbit-blue), var(--orbit-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .logo { font-size: 1.6rem; font-weight: 800; color: #0b1128; display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .logo-icon { width: 35px; height: 35px; font-size: 1.1rem; }
+        .gradient-text { background: var(--orbit-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
         .main-nav { display: flex; align-items: center; gap: 1.5rem; }
         .main-nav a { color: var(--text-dark); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
         
         .btn-mi-orbit {
-            background: linear-gradient(135deg, var(--orbit-blue), var(--orbit-purple));
+            background: var(--orbit-gradient);
             color: #fff;
-            padding: 0.5rem 1.2rem;
-            border-radius: 20px;
+            padding: 0.5rem 1.4rem;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.85rem;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
+            box-shadow: 0 4px 12px rgba(155, 81, 224, 0.3);
         }
 
-        /* --- 3. CARROUSEL BANNER IMAGEN --- */
+        /* --- 3. BANNER Y SLIDER --- */
         .hero-banner {
             position: relative;
             width: 100%;
@@ -96,49 +110,26 @@
         .banner-wrapper {
             position: relative;
             width: 100%;
-            border-radius: 16px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
         }
 
-        .banner-img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover;
-        }
-
-        .banner-link {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 10;
-        }
+        .banner-img { width: 100%; height: auto; display: block; object-fit: cover; }
+        .banner-link { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 10; }
 
         .arrow-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: #ffffff;
-            color: #0b1128;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 44px;
+            height: 44px;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
             z-index: 20;
-            transition: transform 0.2s, background-color 0.2s;
+            border: 2px solid #fff;
         }
 
-        .arrow-btn:hover {
-            transform: translateY(-50%) scale(1.08);
-            background: #f1f5f9;
-        }
-
+        .arrow-btn:hover { transform: translateY(-50%) scale(1.1); }
         .arrow-btn.left { left: 35px; }
         .arrow-btn.right { right: 35px; }
 
@@ -151,119 +142,136 @@
         }
 
         .dot-btn {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
+            width: 32px;
+            height: 32px;
             border: 1px solid var(--gray-border);
             background: #fff;
             color: var(--text-dark);
             font-size: 0.8rem;
             font-weight: 700;
             cursor: pointer;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            transition: all 0.2s ease;
         }
 
         .dot-btn.active {
-            background: var(--orbit-blue);
+            background: var(--orbit-gradient);
             color: #fff;
-            border-color: var(--orbit-blue);
-        }
-
-        .btn-banner {
-            background: var(--orbit-blue);
-            color: #0b1128;
             border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 25px;
-            font-weight: 700;
-            font-size: 1rem;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
+            box-shadow: 0 2px 8px rgba(0, 210, 255, 0.4);
         }
 
-        /* --- 4. ACCIONES RÁPIDAS --- */
+        /* --- 4. ACCIONES RÁPIDAS (FIGURAS IDENTICAS) --- */
         .quick-actions { padding: 4rem 8%; text-align: center; background-color: #f8fafc; }
         .quick-actions h2 { font-size: 1.8rem; margin-bottom: 2.5rem; color: #0b1128; }
 
         .actions-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
+            gap: 2rem;
             max-width: 1000px;
             margin: 0 auto;
         }
 
         .action-card {
             background: #fff;
-            padding: 2rem 1rem;
-            border-radius: 16px;
+            padding: 2.5rem 1.5rem;
+            border-radius: 20px;
             text-decoration: none;
             color: var(--text-dark);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
             border: 1px solid var(--gray-border);
-            transition: transform 0.2s, border-color 0.2s;
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .action-card .icon-circle {
+            width: 70px;
+            height: 70px;
+            font-size: 1.6rem;
+            margin-bottom: 1.2rem;
         }
 
         .action-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
             border-color: var(--orbit-blue);
+            box-shadow: 0 12px 25px rgba(0, 210, 255, 0.15);
         }
 
-        .icon-circle {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: rgba(0, 210, 255, 0.1);
-            color: var(--orbit-blue);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin: 0 auto 1rem auto;
+        .action-card:hover .icon-circle {
+            transform: rotate(15deg) scale(1.05);
         }
 
-        .action-card h3 { font-size: 1rem; font-weight: 600; }
+        .action-card h3 { font-size: 1.05rem; font-weight: 700; color: #0b1128; }
 
         /* --- 5. VERIFICADOR DE COMPATIBILIDAD --- */
         .imei-section { padding: 4rem 8%; text-align: center; }
-        .imei-container { max-width: 600px; margin: 0 auto; background: #fff; border: 1px solid var(--gray-border); padding: 2rem; border-radius: 16px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
-        .imei-input-box { display: flex; gap: 10px; margin-top: 1rem; }
-        .imei-input-box input { flex: 1; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--gray-border); font-size: 1rem; }
-
-        /* --- 6. BASE LEGAL DROPDOWN --- */
-        .legal-dropdown-section {
-            max-width: 1200px;
-            margin: 2rem auto 3rem auto;
-            padding: 0 8%;
+        .imei-container {
+            max-width: 650px;
+            margin: 0 auto;
+            background: #fff;
+            border: 1px solid var(--gray-border);
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            position: relative;
         }
 
+        .imei-badge {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 1rem auto;
+            font-size: 1.3rem;
+        }
+
+        .imei-input-box { display: flex; gap: 10px; margin-top: 1.5rem; }
+        .imei-input-box input {
+            flex: 1;
+            padding: 0.9rem 1.2rem;
+            border-radius: 50px;
+            border: 1px solid var(--gray-border);
+            font-size: 1rem;
+            outline: none;
+        }
+        .imei-input-box input:focus { border-color: var(--orbit-blue); }
+
+        .btn-orbit-action {
+            background: var(--orbit-gradient);
+            color: #fff;
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 210, 255, 0.3);
+            transition: transform 0.2s;
+        }
+        .btn-orbit-action:hover { transform: scale(1.03); }
+
+        /* --- 6. BASE LEGAL --- */
+        .legal-dropdown-section { max-width: 1200px; margin: 2rem auto 3rem auto; padding: 0 8%; }
         .legal-dropdown {
             width: 100%;
             background: #ffffff;
-            border: 1px solid #dbe2ea;
-            border-radius: 8px;
-            padding: 1rem 1.5rem;
+            border: 1px solid var(--gray-border);
+            border-radius: 12px;
+            padding: 1.2rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
             font-weight: 700;
             color: #0b1128;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
         }
 
-        .legal-dropdown i { color: #0072ce; }
-
-        /* --- 7. FOOTER PRINCIPAL --- */
-        .site-footer {
-            background-color: #f4f6f9;
-            border-top: 1px solid #e0e6ed;
-            padding-top: 3rem;
-        }
-
+        /* --- 7. FOOTER --- */
+        .site-footer { background-color: #f4f6f9; border-top: 1px solid var(--gray-border); padding-top: 3rem; }
         .footer-container {
             max-width: 1280px;
             margin: 0 auto;
@@ -271,169 +279,26 @@
             display: grid;
             grid-template-columns: 180px repeat(4, 1fr) 260px;
             gap: 1.5rem;
-            align-items: start;
         }
 
-        .footer-brand {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
+        .footer-logo { font-size: 1.5rem; font-weight: 800; color: #0b1128; text-decoration: none; display: flex; align-items: center; gap: 8px; margin-bottom: 1rem; }
+        .pill-btn { display: block; text-align: center; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.82rem; font-weight: 700; text-decoration: none; margin-bottom: 0.5rem; }
+        .pill-btn.primary { background-color: #dbeafe; color: #0284c7; }
+        .pill-btn.secondary { background-color: #ffffff; color: #475569; border: 1px solid #cbd5e1; }
 
-        .footer-logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #0b1128;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            margin-bottom: 0.5rem;
-        }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
+        .footer-col ul a { color: #0072ce; text-decoration: none; font-weight: 700; font-size: 0.88rem; }
 
-        .pill-btn {
-            display: block;
-            text-align: center;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.82rem;
-            font-weight: 700;
-            text-decoration: none;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
+        .footer-apps h4 { font-size: 0.95rem; font-weight: 700; color: #1e293b; margin-bottom: 1rem; text-align: center; }
+        .app-badges { display: flex; flex-direction: column; gap: 0.5rem; align-items: center; margin-bottom: 1.5rem; }
+        .badge-btn { background-color: #000; color: #fff; width: 140px; padding: 0.4rem 0.6rem; border-radius: 8px; text-decoration: none; display: flex; align-items: center; gap: 8px; font-size: 0.65rem; }
 
-        .pill-btn.primary {
-            background-color: #dbeafe;
-            color: #0284c7;
-            border: 1px solid #bae6fd;
-        }
+        .social-icons { display: flex; gap: 0.8rem; justify-content: center; }
+        .social-icon-btn { width: 36px; height: 36px; font-size: 0.9rem; text-decoration: none; }
 
-        .pill-btn.secondary {
-            background-color: #ffffff;
-            color: #475569;
-            border: 1px solid #cbd5e1;
-        }
+        .scroll-top-btn { position: fixed; bottom: 30px; right: 25px; width: 48px; height: 48px; font-size: 1.1rem; text-decoration: none; z-index: 90; }
 
-        .footer-col ul {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.9rem;
-        }
-
-        .footer-col ul a {
-            color: #0072ce;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.88rem;
-            transition: color 0.2s;
-        }
-
-        .footer-col ul a:hover {
-            color: #003366;
-            text-decoration: underline;
-        }
-
-        .footer-apps { text-align: center; }
-
-        .footer-apps h4 {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: #1e293b;
-            margin-bottom: 1rem;
-        }
-
-        .app-badges {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .badge-btn {
-            background-color: #000;
-            color: #fff;
-            width: 140px;
-            padding: 0.4rem 0.6rem;
-            border-radius: 6px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.65rem;
-            text-align: left;
-        }
-
-        .badge-btn i { font-size: 1.3rem; }
-        .badge-btn strong { display: block; font-size: 0.8rem; }
-
-        .social-block {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.8rem;
-        }
-
-        .social-block span {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #334155;
-        }
-
-        .social-icons { display: flex; gap: 0.6rem; }
-
-        .social-icons a {
-            color: #0072ce;
-            font-size: 1.1rem;
-            text-decoration: none;
-        }
-
-        .certifications-row {
-            max-width: 1280px;
-            margin: 2.5rem auto 1.5rem auto;
-            padding: 0 8%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1.2rem;
-            flex-wrap: wrap;
-        }
-
-        .cert-badge {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 20px;
-            padding: 0.3rem 0.8rem;
-            font-size: 0.72rem;
-            font-weight: 700;
-            color: #475569;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .scroll-top-btn {
-            position: fixed;
-            bottom: 70px;
-            right: 25px;
-            background-color: #0072ce;
-            color: #fff;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            cursor: pointer;
-            z-index: 90;
-            transition: transform 0.2s;
-        }
-
-        .scroll-top-btn:hover { transform: scale(1.1); }
-
-        /* --- 8. BARRA INFERIOR COPYRIGHT --- */
+        /* --- 8. COPYRIGHT --- */
         .footer-bottom-bar {
             background-color: #002b66;
             color: #ffffff;
@@ -443,23 +308,12 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 1rem;
         }
-
-        .footer-bottom-bar p { color: #e2e8f0; }
-        .bottom-links { display: flex; gap: 1.5rem; }
-
-        .bottom-links a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .bottom-links a:hover { text-decoration: underline; }
+        .bottom-links a { color: #ffffff; text-decoration: none; margin-left: 1.5rem; font-weight: 600; }
 
         @media (max-width: 992px) {
             .footer-container { grid-template-columns: repeat(2, 1fr); }
-            .footer-apps { grid-column: span 2; margin-top: 1.5rem; }
+            .footer-apps { grid-column: span 2; }
         }
     </style>
 </head>
@@ -479,7 +333,7 @@
 
     <header>
         <a href="index.html" class="logo">
-            <i class="fa-solid fa-planet gradient-text"></i>
+            <div class="orbit-shape logo-icon"><i class="fa-solid fa-planet"></i></div>
             ORBIT <span class="gradient-text">MOBILE</span>
         </a>
         <nav class="main-nav">
@@ -492,279 +346,7 @@
     </header>
 
     <section class="hero-banner">
-        <div class="arrow-btn left"><i class="fa-solid fa-chevron-left"></i></div>
+        <div class="orbit-shape arrow-btn left"><i class="fa-solid fa-chevron-left"></i></div>
         
         <div class="banner-wrapper">
-            <img src="home-registro-julio-2026-v1-bne.avif" alt="¿Ya registraste tu línea?" class="banner-img">
-            <a href="#compatibilidad" class="banner-link" title="Conoce más sobre el registro de línea"></a>
-        </div>
-
-        <div class="arrow-btn right"><i class="fa-solid fa-chevron-right"></i></div>
-
-        <div class="slider-dots">
-            <button class="dot-btn"><i class="fa-solid fa-pause" style="font-size: 0.7rem;"></i></button>
-            <button class="dot-btn active">1</button>
-            <button class="dot-btn">2</button>
-            <button class="dot-btn">3</button>
-            <button class="dot-btn">4</button>
-            <button class="dot-btn">5</button>
-        </div>
-    </section>
-
-    <section class="quick-actions">
-        <h2>¿Qué quieres hacer?</h2>
-        <div class="actions-grid">
-            <a href="planes.html" class="action-card">
-                <div class="icon-circle"><i class="fa-solid fa-dollar-sign"></i></div>
-                <h3>Paquetes y Recargas</h3>
-            </a>
-            <a href="#compatibilidad" class="action-card">
-                <div class="icon-circle"><i class="fa-solid fa-qrcode"></i></div>
-                <h3>Comprar eSIM</h3>
-            </a>
-            <a href="planes.html" class="action-card">
-                <div class="icon-circle"><i class="fa-solid fa-mobile-screen-button"></i></div>
-                <h3>Planes de Renta</h3>
-            </a>
-            <a href="portabilidad.html" class="action-card">
-                <div class="icon-circle"><i class="fa-solid fa-right-left"></i></div>
-                <h3>Portabilidad</h3>
-            </a>
-        </div>
-    </section>
-
-    <section class="imei-section" id="compatibilidad">
-        <div class="imei-container">
-            <h2>Consulta tu compatibilidad eSIM</h2>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 5px;">Ingresa los 15 dígitos de tu IMEI (Obtenlo marcando *#06#)</p>
-            <div class="imei-input-box">
-                <input type="text" id="imei-input" maxlength="15" placeholder="Ej. 356789012345678">
-                <button class="btn-banner" onclick="validarIMEI()">Validar</button>
-            </div>
-            <div id="imei-resultado" style="margin-top: 1rem; font-weight: 600;"></div>
-        </div>
-    </section>
-
-    <div class="legal-dropdown-section">
-        <div class="legal-dropdown">
-            <span>Explora nuestra base legal</span>
-            <i class="fa-solid fa-caret-down"></i>
-        </div>
-    </div>
-
-    <footer class="site-footer">
-        <div class="footer-container">
-            <div class="footer-brand">
-                <a href="index.html" class="footer-logo">
-                    <i class="fa-solid fa-planet gradient-text"></i>
-                    ORBIT
-                </a>
-                <a href="#" class="pill-btn primary">PERSONAS</a>
-                <a href="#" class="pill-btn secondary">EMPRESAS</a>
-            </div>
-
-            <div class="footer-col">
-                <ul>
-                    <li><a href="planes.html">Planes Orbit Libre</a></li>
-                    <li><a href="planes.html">Paquetes Amigo Sin Límite</a></li>
-                    <li><a href="planes.html">Paquetes y Recargas</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <ul>
-                    <li><a href="#">Viajero Internacional</a></li>
-                    <li><a href="#">Experiencias</a></li>
-                    <li><a href="#">Personas desaparecidas</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <ul>
-                    <li><a href="#">Internet de las cosas</a></li>
-                    <li><a href="portabilidad.html">Cámbiate a Orbit</a></li>
-                    <li><a href="#">Promociones Plan de Renta</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-col">
-                <ul>
-                    <li><a href="#">¿Quién es Orbit?</a></li>
-                    <li><a href="#">Políticas y códigos</a></li>
-                    <li><a href="#">Trabaja con Orbit</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-apps">
-                <h4>Descarga la app de Mi Orbit</h4>
-                <div class="app-badges">
-                    <a href="#" class="badge-btn">
-                        <i class="fa-brands fa-google-play"></i>
-                        <div><span style="display:block; font-size: 0.55rem;">DISPONIBLE EN</span><strong>Google Play</strong></div>
-                    </a>
-                    <a href="#" class="badge-btn">
-                        <i class="fa-brands fa-apple"></i>
-                        <div><span style="display:block; font-size: 0.55rem;">DISPONIBLE EN</span><strong>App Store</strong></div>
-                    </a>
-                    <a href="#" class="badge-btn">
-                        <i class="fa-solid fa-bag-shopping"></i>
-                        <div><span style="display:block; font-size: 0.55rem;">EXPLÓRALO EN</span><strong>AppGallery</strong></div>
-                    </a>
-                </div>
-
-                <div class="social-block">
-                    <span>Síguenos</span>
-                    <div class="social-icons">
-                        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="#"><i class="fa-brands fa-threads"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="certifications-row">
-            <div class="cert-badge"><i class="fa-solid fa-shield-halved" style="color:#e11d48;"></i> IFT REGULADO</div>
-            <div class="cert-badge"><i class="fa-solid fa-leaf" style="color:#16a34a;"></i> ESR ESR_2026</div>
-            <div class="cert-badge"><i class="fa-solid fa-check" style="color:#0284c7;"></i> PROFECO</div>
-            <div class="cert-badge"><i class="fa-solid fa-certificate" style="color:#d97706;"></i> DISTINTIVO DIGITAL</div>
-            <div class="cert-badge"><i class="fa-solid fa-award" style="color:#9333ea;"></i> MERCO 2026</div>
-            <div class="cert-badge"><i class="fa-solid fa-lock" style="color:#0284c7;"></i> digicert SECURED</div>
-        </div>
-
-        <a href="#" class="scroll-top-btn" title="Volver arriba">
-            <i class="fa-solid fa-chevron-up"></i>
-        </a>
-
-        <div class="footer-bottom-bar">
-            <p>&copy; 2026 ORBIT MOBILE S.A. DE C.V. Todos los derechos reservados.</p>
-            <div class="bottom-links">
-                <a href="#">Ofertas de Servicios Mayoristas</a>
-                <a href="#">Términos y condiciones</a>
-                <a href="#">Aviso de privacidad</a>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        const bannerData = [
-            {
-                imagen: "home-registro-julio-2026-v1-bne.avif",
-                alt: "¿Ya registraste tu línea?",
-                enlace: "#compatibilidad",
-                titulo: "Conoce más sobre el registro de línea"
-            },
-            {
-                imagen: "home-banner-2.avif",
-                alt: "Paquetes y Recargas",
-                enlace: "planes.html",
-                titulo: "Ver Paquetes"
-            },
-            {
-                imagen: "home-banner-3.avif",
-                alt: "Planes de Renta",
-                enlace: "planes.html",
-                titulo: "Ver Planes"
-            },
-            {
-                imagen: "home-banner-4.avif",
-                alt: "Cámbiate a Orbit",
-                enlace: "portabilidad.html",
-                titulo: "Inicia Portabilidad"
-            },
-            {
-                imagen: "home-banner-5.avif",
-                alt: "Consigue tu eSIM",
-                enlace: "#compatibilidad",
-                titulo: "Obtener eSIM"
-            }
-        ];
-
-        let currentIndex = 0;
-        let autoPlayInterval = null;
-        let isPlaying = true;
-
-        const bannerImg = document.querySelector('.banner-img');
-        const bannerLink = document.querySelector('.banner-link');
-        const dotBtns = document.querySelectorAll('.slider-dots .dot-btn');
-        const btnLeft = document.querySelector('.arrow-btn.left');
-        const btnRight = document.querySelector('.arrow-btn.right');
-
-        function showSlide(index) {
-            if (index < 0) {
-                currentIndex = bannerData.length - 1;
-            } else if (index >= bannerData.length) {
-                currentIndex = 0;
-            } else {
-                currentIndex = index;
-            }
-
-            const data = bannerData[currentIndex];
-            bannerImg.src = data.imagen;
-            bannerImg.alt = data.alt;
-            bannerLink.href = data.enlace;
-            bannerLink.title = data.titulo;
-
-            dotBtns.forEach((btn, i) => {
-                if (i === 0) return;
-                btn.classList.toggle('active', i === currentIndex + 1);
-            });
-        }
-
-        function startAutoplay() {
-            isPlaying = true;
-            dotBtns[0].innerHTML = '<i class="fa-solid fa-pause" style="font-size: 0.7rem;"></i>';
-            autoPlayInterval = setInterval(() => {
-                showSlide(currentIndex + 1);
-            }, 4000);
-        }
-
-        function stopAutoplay() {
-            isPlaying = false;
-            dotBtns[0].innerHTML = '<i class="fa-solid fa-play" style="font-size: 0.7rem;"></i>';
-            clearInterval(autoPlayInterval);
-        }
-
-        btnLeft.addEventListener('click', () => {
-            showSlide(currentIndex - 1);
-            if (isPlaying) { stopAutoplay(); startAutoplay(); }
-        });
-
-        btnRight.addEventListener('click', () => {
-            showSlide(currentIndex + 1);
-            if (isPlaying) { stopAutoplay(); startAutoplay(); }
-        });
-
-        dotBtns.forEach((btn, index) => {
-            btn.addEventListener('click', () => {
-                if (index === 0) {
-                    if (isPlaying) {
-                        stopAutoplay();
-                    } else {
-                        startAutoplay();
-                    }
-                } else {
-                    showSlide(index - 1);
-                    if (isPlaying) { stopAutoplay(); startAutoplay(); }
-                }
-            });
-        });
-
-        startAutoplay();
-
-        function validarIMEI() {
-            const imei = document.getElementById('imei-input').value;
-            const res = document.getElementById('imei-resultado');
-            if (imei.length !== 15 || isNaN(imei)) {
-                res.innerHTML = '<span style="color: #dc2626;">Ingresa un IMEI válido de 15 dígitos.</span>';
-                return;
-            }
-            res.innerHTML = '<span style="color: var(--orbit-blue);">Verificando equipo...</span>';
-            setTimeout(() => {
-                res.innerHTML = '<span style="color: #16a34a;"><i class="fa-solid fa-check-circle"></i> Tu smartphone es compatible con eSIM Orbit Mobile.</span>';
-            }, 1000);
-        }
-    </script>
-</body>
-</html>
+            <img src="home-registro-julio-2026-v1-bne.avif" alt="¿Ya registraste tu línea?" class="
