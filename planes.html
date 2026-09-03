@@ -3,90 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planes | Orbit Mobile</title>
+    <title>Planes Orbit Mobile | Tarifas y Opciones</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        :root { --bg-dark: #070913; --bg-card: #0e1225; --cyan-glow: #00d2ff; --purple-glow: #9b51e0; --text-main: #ffffff; --text-muted: #a0a5c0; }
+        :root {
+            --orbit-blue: #00d2ff;
+            --orbit-purple: #9b51e0;
+            --orbit-dark: #0b1128;
+            --gray-bg: #f8fafc;
+            --gray-border: #e2e8f0;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; }
-        .gradient-text { background: linear-gradient(135deg, var(--cyan-glow), var(--purple-glow)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        body { background-color: #ffffff; color: var(--text-dark); line-height: 1.5; }
 
-        header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 8%; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-        .logo { font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
-        nav a { color: var(--text-muted); text-decoration: none; margin-left: 2rem; }
-        nav a.active { color: var(--cyan-glow); }
+        /* BARRA SUPERIOR */
+        .top-bar {
+            background-color: var(--orbit-dark);
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8%;
+            font-size: 0.85rem;
+            height: 40px;
+        }
 
-        .container { padding: 4rem 8%; max-width: 1200px; margin: 0 auto; }
-        .title { text-align: center; font-size: 2.2rem; margin-bottom: 3rem; }
+        .top-bar-left { display: flex; height: 100%; }
+        .tab-btn {
+            padding: 0 1.2rem;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #a0a5c0;
+            font-weight: 600;
+            height: 100%;
+        }
+        .tab-btn.active {
+            background-color: #172042;
+            color: var(--orbit-blue);
+            border-bottom: 3px solid var(--orbit-blue);
+        }
 
-        .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .card { background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 16px; padding: 2.5rem 1.8rem; text-align: center; position: relative; }
-        .card.featured { border-color: var(--purple-glow); box-shadow: 0 0 20px rgba(155, 81, 224, 0.2); }
-        .badge { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--purple-glow); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; }
-        .price { font-size: 2.5rem; font-weight: 700; margin: 1rem 0; }
-        .price span { font-size: 1rem; color: var(--text-muted); }
+        .top-bar-right { display: flex; gap: 1.5rem; align-items: center; }
+        .top-bar-right a { color: #fff; text-decoration: none; font-size: 0.85rem; display: flex; align-items: center; gap: 5px; }
+
+        /* HEADER */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 8%;
+            border-bottom: 1px solid var(--gray-border);
+            background: #fff;
+        }
+
+        .logo { font-size: 1.6rem; font-weight: 800; color: var(--orbit-dark); display: flex; align-items: center; gap: 8px; text-decoration: none; }
+        .gradient-text { background: linear-gradient(135deg, var(--orbit-blue), var(--orbit-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .main-nav { display: flex; align-items: center; gap: 1.5rem; }
+        .main-nav a { color: var(--text-dark); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
         
-        ul { list-style: none; margin-bottom: 2rem; text-align: left; }
-        ul li { margin-bottom: 0.8rem; color: var(--text-muted); }
-        ul li i { color: var(--cyan-glow); margin-right: 8px; }
+        .btn-mi-orbit {
+            background: linear-gradient(135deg, var(--orbit-blue), var(--orbit-purple));
+            color: #fff;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
 
-        .btn-gradient { background: linear-gradient(135deg, var(--cyan-glow), var(--purple-glow)); color: #fff; border: none; padding: 0.8rem; width: 100%; border-radius: 8px; font-weight: 600; cursor: pointer; }
+        /* CONTENIDO DE PLANES */
+        .plans-wrapper { max-width: 1100px; margin: 2rem auto 5rem auto; padding: 0 5%; }
+
+        .category-section { margin-bottom: 4rem; }
+        .category-title { font-size: 1.8rem; font-weight: 800; color: #0084c7; margin-bottom: 0.5rem; }
+        .category-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem; max-width: 900px; }
+
+        .plan-item { margin-bottom: 2rem; }
+        .plan-name-title { font-size: 1.2rem; font-weight: 700; color: #0084c7; margin-bottom: 0.8rem; }
+
+        /* CONTENEDOR HORIZONTAL DEL PLAN (Estilo captura) */
+        .plan-table {
+            border: 1px solid var(--gray-border);
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: var(--gray-bg);
+            position: relative;
+        }
+
+        .badge-recomendado {
+            background-color: #00c49f;
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 15px;
+            display: inline-block;
+            border-bottom-right-radius: 8px;
+        }
+
+        .plan-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr) 1.2fr;
+            background: #f8fafc;
+        }
+
+        .col-box {
+            padding: 1.2rem;
+            border-right: 1px solid var(--gray-border);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .col-box:last-child { border-right: none; background: #f1f5f9; text-align: center; }
+
+        .col-label { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.4rem; font-weight: 500; }
+        .col-value-large { font-size: 1.6rem; font-weight: 800; color: var(--text-dark); }
+        .col-value-sub { font-size: 0.85rem; color: var(--text-muted); }
+        
+        .price-text { font-size: 2rem; font-weight: 800; color: var(--text-dark); line-height: 1; }
+        .price-sub { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.8rem; }
+
+        .btn-purple {
+            background-color: var(--orbit-purple);
+            color: #fff;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn-link {
+            color: #0084c7;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        footer { background: var(--orbit-dark); color: #a0a5c0; padding: 2rem 8%; text-align: center; font-size: 0.85rem; }
+
+        @media (max-width: 850px) {
+            .plan-row { grid-template-columns: 1fr; }
+            .col-box { border-right: none; border-bottom: 1px solid var(--gray-border); }
+        }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo"><i class="fa-solid fa-planet gradient-text"></i> ORBIT <span class="gradient-text">MOBILE</span></div>
-        <nav>
-            <a href="index.html">Inicio</a>
-            <a href="planes.html" class="active">Planes</a>
+
+    <!-- Barra Superior -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <a href="#" class="tab-btn active">PERSONAS</a>
+            <a href="#" class="tab-btn">EMPRESAS</a>
+        </div>
+        <div class="top-bar-right">
+            <a href="#"><i class="fa-solid fa-location-dot"></i> Chihuahua</a>
             <a href="portabilidad.html">Portabilidad</a>
-        </nav>
-    </header>
-
-    <div class="container">
-        <h1 class="title">Selecciona tu paquete <span class="gradient-text">eSIM</span></h1>
-        
-        <div class="plans-grid">
-            <div class="card">
-                <h3>Orbit 7 Días</h3>
-                <div class="price">$60 <span>MXN</span></div>
-                <ul>
-                    <li><i class="fa-solid fa-check"></i> <b>2 GB</b> de navegación</li>
-                    <li><i class="fa-solid fa-check"></i> Redes Sociales incluidas</li>
-                    <li><i class="fa-solid fa-check"></i> Llamadas y SMS ilimitados</li>
-                </ul>
-                <button class="btn-gradient" onclick="seleccionarPlan('Orbit 7 Días')">Comprar eSIM</button>
-            </div>
-
-            <div class="card featured">
-                <div class="badge">Recomendado</div>
-                <h3>Orbit Lite</h3>
-                <div class="price">$149 <span>MXN / mes</span></div>
-                <ul>
-                    <li><i class="fa-solid fa-check"></i> <b>5 GB</b> de navegación</li>
-                    <li><i class="fa-solid fa-check"></i> Redes Sociales ilimitadas</li>
-                    <li><i class="fa-solid fa-check"></i> Llamadas y SMS ilimitados</li>
-                </ul>
-                <button class="btn-gradient" onclick="seleccionarPlan('Orbit Lite')">Comprar eSIM</button>
-            </div>
-
-            <div class="card">
-                <h3>Orbit Pro</h3>
-                <div class="price">$249 <span>MXN / mes</span></div>
-                <ul>
-                    <li><i class="fa-solid fa-check"></i> <b>20 GB</b> de navegación</li>
-                    <li><i class="fa-solid fa-check"></i> Compartir datos (Hotspot)</li>
-                    <li><i class="fa-solid fa-check"></i> Llamadas y SMS ilimitados</li>
-                </ul>
-                <button class="btn-gradient" onclick="seleccionarPlan('Orbit Pro')">Comprar eSIM</button>
-            </div>
         </div>
     </div>
 
-    <script>
-        function seleccionarPlan(plan) {
-            alert(`Plan seleccionado: ${plan}. Redirigiendo a pasarela de pagos...`);
-        }
-    </script>
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo">
+            <i class="fa-solid fa-planet gradient-text"></i> ORBIT <span class="gradient-text">MOBILE</span>
+        </a>
+        <nav class="main-nav">
+            <a href="esim.html">eSIM</a>
+            <a href="planes.html" style="color: var(--orbit-blue);">Planes de Renta</a>
+            <a href="portabilidad.html">Cámbiate a Orbit</a>
+            <a href="#" class="btn-mi-orbit">Mi Orbit</a>
+        </nav>
+    </header>
+
+    <main class="plans-wrapper">
+
+        <!-- CATEGORÍA 1: ORBIT LIBRE -->
+        <section class="category-section">
+            <h1 class="category-title">Orbit Libre</h1>
+            <p class="category-desc">
+                Con los planes Orbit Libre navega con la mayor velocidad 5G y disfruta de GB incluidos, Minutos y SMS ilimitados en México, E.U.A. y Canadá, así como Redes Sociales ilimitadas y Cashback Orbit. ¡Todos estos beneficios ahora sin plazos forzosos!
+            </p>
+
+            <!-- Plan 1 -->
+            <div class="plan-item">
+                <h3 class="plan-name-title">Orbit Libre 5</h3>
+                <div class="plan-table">
+                    <span class="badge-recomendado">Recomendado</span>
+                    <div class="plan-row">
+                        <div class="col-box">
+                            <span class="col-label">Datos incluidos</span>
+                            <span class="col-value-large">20 GB</span>
+                        </div>
+                        <div class="col-box">
+                            <span class="col-label">WhatsApp, Facebook, X, Snapchat, Instagram y UBER</span>
+                            <span class="col-value-large">Ilimitado</span>
+                        </div>
+                        <div class="col-box">
+                            <span class="col-label">Minutos y SMS incluidos</span>
+                            <span class="col-value-large">Ilimitados</span>
+                        </div>
+                        <div class="col-box">
+                            <span class="col-label">Cashback Orbit</span>
+                            <span class="col-value-large">15%</span>
+                        </div>
+                        <div class="col-box">
+                            <div class="price-text">$599</div>
+                            <div class="price-sub">al mes</div>
+                            <button class="btn-purple">Más planes</button>
+                            <a href="#" class="btn-link">Comparar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plan 2 -->
+            <div class="plan-item">
+                <h3 class="plan-name-title">Orbit Libre 3</h3>
+                <div class="plan-table">
+                    <div class="plan-row">
+                        <div class="col-box">
+                            <span class="col-label">Datos incluidos</span>
+                            <span class="col-value-large">10 GB</span>
+                        </div>
+                        <div class="col-box">
+                            <span class="col-label">WhatsApp, Facebook, X, Snapchat, Instagram y UBER</span>
+                            <span class="col-value-large">Ilimitado</span>
+                        </div>
+                        <div class="col-box">
+                            <span class="col-label">Minutos y SMS incluidos</span>
+                            <span class="col-value-large">Ilimitados</span>
+                        </div>
+                        <div class="col-box">
+                            <span class="col-label">Cashback Orbit</span>
+                            <span class="col-value-large">10%</span>
+                        </div>
+                        <div class="col-box">
+                            <div class="price-text">$399</div>
+                            <div class="price-sub">al mes</div>
+                            <button class="btn-purple">Más planes</button>
+                            <a href="#" class="btn-link">Comparar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORÍA 2: ORBIT ULTRA -->
+        <section class="category-section">
+            <h2 class="category-title">Orbit Ultra</h2>
+            <p class="category-desc">
+                Disfruta la Ultra velocidad 5G con los nuevos planes Orbit Ultra. Obtén GB incluidos, minutos y SMS ilimitados para usar en México, Estados Unidos y Canadá. ¡Ultra libertad, todo sin plazos forzosos!
+            </p>
+
+            <!-- Plan Ultra 10 -->
+            <div class="plan-item">
+                <h3 class="plan-name-title">Orbit Ultra 10</h3>
+                <div class="plan-table">
+                    <div class="plan-row">
+                        <div class="col-box">
+                            <span class="col-label">Datos incluidos</span>
+                            <span class="col-value-large">50 GB</span>
+                        </div>
+                        <div class="col-box">
+                            <span class="col-label">Todas las Redes Sociales + Roaming</span>
+                            <span class="col-value-large">Ilimitado</span>
+                        </div>
+                        <div class="col-box">
+                            <span class="col-label">Minutos y SMS incluidos</span>
+                            <span class="col-value-large">Ilimitados</span>
+                        </div>
+                        <div class="col-box">
+                            <span class="col-label">Cashback Orbit</span>
+                            <span class="col-value-large">20%</span>
+                        </div>
+                        <div class="col-box">
+                            <div class="price-text">$899</div>
+                            <div class="price-sub">al mes</div>
+                            <button class="btn-purple">Contratar</button>
+                            <a href="#" class="btn-link">Comparar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ORBIT MOBILE S.A. DE C.V. Todos los derechos reservados.</p>
+    </footer>
+
 </body>
 </html>
