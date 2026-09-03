@@ -184,8 +184,8 @@
             display: inline-block;
         }
 
-        /* --- 4. ACCIONES RÁPIDAS (¿QUÉ QUIERES HACER?) --- */
-        .quick-actions { padding: 4rem 8%; text-align: center; background-color: var(--gray-light); }
+        /* --- 4. ACCIONES RÁPIDAS --- */
+        .quick-actions { padding: 4rem 8%; text-align: center; background-color: #f8fafc; }
         .quick-actions h2 { font-size: 1.8rem; margin-bottom: 2.5rem; color: #0b1128; }
 
         .actions-grid {
@@ -255,9 +255,7 @@
             box-shadow: 0 2px 8px rgba(0,0,0,0.03);
         }
 
-        .legal-dropdown i {
-            color: #0072ce;
-        }
+        .legal-dropdown i { color: #0072ce; }
 
         /* --- 7. FOOTER PRINCIPAL --- */
         .site-footer {
@@ -276,7 +274,6 @@
             align-items: start;
         }
 
-        /* Columna 1: Brand / Pills */
         .footer-brand {
             display: flex;
             flex-direction: column;
@@ -317,11 +314,6 @@
             border: 1px solid #cbd5e1;
         }
 
-        /* Columnas de Navegación */
-        .footer-col h4 {
-            display: none;
-        }
-
         .footer-col ul {
             list-style: none;
             display: flex;
@@ -342,10 +334,7 @@
             text-decoration: underline;
         }
 
-        /* Columna Apps y Redes Sociales */
-        .footer-apps {
-            text-align: center;
-        }
+        .footer-apps { text-align: center; }
 
         .footer-apps h4 {
             font-size: 0.95rem;
@@ -392,10 +381,7 @@
             color: #334155;
         }
 
-        .social-icons {
-            display: flex;
-            gap: 0.6rem;
-        }
+        .social-icons { display: flex; gap: 0.6rem; }
 
         .social-icons a {
             color: #0072ce;
@@ -403,7 +389,6 @@
             text-decoration: none;
         }
 
-        /* Fila de Logotipos Certificados */
         .certifications-row {
             max-width: 1280px;
             margin: 2.5rem auto 1.5rem auto;
@@ -428,7 +413,6 @@
             gap: 5px;
         }
 
-        /* Scroll Top Floating Button */
         .scroll-top-btn {
             position: fixed;
             bottom: 70px;
@@ -447,9 +431,7 @@
             transition: transform 0.2s;
         }
 
-        .scroll-top-btn:hover {
-            transform: scale(1.1);
-        }
+        .scroll-top-btn:hover { transform: scale(1.1); }
 
         /* --- 8. BARRA INFERIOR COPYRIGHT --- */
         .footer-bottom-bar {
@@ -464,14 +446,8 @@
             gap: 1rem;
         }
 
-        .footer-bottom-bar p {
-            color: #e2e8f0;
-        }
-
-        .bottom-links {
-            display: flex;
-            gap: 1.5rem;
-        }
+        .footer-bottom-bar p { color: #e2e8f0; }
+        .bottom-links { display: flex; gap: 1.5rem; }
 
         .bottom-links a {
             color: #ffffff;
@@ -479,24 +455,16 @@
             font-weight: 600;
         }
 
-        .bottom-links a:hover {
-            text-decoration: underline;
-        }
+        .bottom-links a:hover { text-decoration: underline; }
 
         @media (max-width: 992px) {
-            .footer-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .footer-apps {
-                grid-column: span 2;
-                margin-top: 1.5rem;
-            }
+            .footer-container { grid-template-columns: repeat(2, 1fr); }
+            .footer-apps { grid-column: span 2; margin-top: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. Barra Superior -->
     <div class="top-bar">
         <div class="top-bar-left">
             <a href="#" class="tab-btn active">PERSONAS</a>
@@ -509,7 +477,6 @@
         </div>
     </div>
 
-    <!-- 2. Header Comercial -->
     <header>
         <a href="index.html" class="logo">
             <i class="fa-solid fa-planet gradient-text"></i>
@@ -524,7 +491,6 @@
         </nav>
     </header>
 
-    <!-- 3. Banner Principal con Imagen -->
     <section class="hero-banner">
         <div class="arrow-btn left"><i class="fa-solid fa-chevron-left"></i></div>
         
@@ -535,7 +501,6 @@
 
         <div class="arrow-btn right"><i class="fa-solid fa-chevron-right"></i></div>
 
-        <!-- Indicadores numerados del Slider -->
         <div class="slider-dots">
             <button class="dot-btn"><i class="fa-solid fa-pause" style="font-size: 0.7rem;"></i></button>
             <button class="dot-btn active">1</button>
@@ -546,7 +511,6 @@
         </div>
     </section>
 
-    <!-- 4. Sección "¿Qué quieres hacer?" -->
     <section class="quick-actions">
         <h2>¿Qué quieres hacer?</h2>
         <div class="actions-grid">
@@ -569,7 +533,6 @@
         </div>
     </section>
 
-    <!-- 5. Validador eSIM -->
     <section class="imei-section" id="compatibilidad">
         <div class="imei-container">
             <h2>Consulta tu compatibilidad eSIM</h2>
@@ -582,7 +545,6 @@
         </div>
     </section>
 
-    <!-- 6. Desplegable Base Legal -->
     <div class="legal-dropdown-section">
         <div class="legal-dropdown">
             <span>Explora nuestra base legal</span>
@@ -590,10 +552,8 @@
         </div>
     </div>
 
-    <!-- 7. Footer Estilo Telcel con Colores Orbit -->
     <footer class="site-footer">
         <div class="footer-container">
-            <!-- Brand Column -->
             <div class="footer-brand">
                 <a href="index.html" class="footer-logo">
                     <i class="fa-solid fa-planet gradient-text"></i>
@@ -603,7 +563,6 @@
                 <a href="#" class="pill-btn secondary">EMPRESAS</a>
             </div>
 
-            <!-- Columna 1 -->
             <div class="footer-col">
                 <ul>
                     <li><a href="planes.html">Planes Orbit Libre</a></li>
@@ -612,7 +571,6 @@
                 </ul>
             </div>
 
-            <!-- Columna 2 -->
             <div class="footer-col">
                 <ul>
                     <li><a href="#">Viajero Internacional</a></li>
@@ -621,7 +579,6 @@
                 </ul>
             </div>
 
-            <!-- Columna 3 -->
             <div class="footer-col">
                 <ul>
                     <li><a href="#">Internet de las cosas</a></li>
@@ -630,7 +587,6 @@
                 </ul>
             </div>
 
-            <!-- Columna 4 -->
             <div class="footer-col">
                 <ul>
                     <li><a href="#">¿Quién es Orbit?</a></li>
@@ -639,7 +595,6 @@
                 </ul>
             </div>
 
-            <!-- Columna App & Redes -->
             <div class="footer-apps">
                 <h4>Descarga la app de Mi Orbit</h4>
                 <div class="app-badges">
@@ -669,7 +624,6 @@
             </div>
         </div>
 
-        <!-- Logotipos de Certificaciones y Alianzas -->
         <div class="certifications-row">
             <div class="cert-badge"><i class="fa-solid fa-shield-halved" style="color:#e11d48;"></i> IFT REGULADO</div>
             <div class="cert-badge"><i class="fa-solid fa-leaf" style="color:#16a34a;"></i> ESR ESR_2026</div>
@@ -679,12 +633,10 @@
             <div class="cert-badge"><i class="fa-solid fa-lock" style="color:#0284c7;"></i> digicert SECURED</div>
         </div>
 
-        <!-- Botón Volver Arriba -->
         <a href="#" class="scroll-top-btn" title="Volver arriba">
             <i class="fa-solid fa-chevron-up"></i>
         </a>
 
-        <!-- 8. Pie de página Azul Marino con Copyright -->
         <div class="footer-bottom-bar">
             <p>&copy; 2026 ORBIT MOBILE S.A. DE C.V. Todos los derechos reservados.</p>
             <div class="bottom-links">
@@ -696,6 +648,111 @@
     </footer>
 
     <script>
+        const bannerData = [
+            {
+                imagen: "home-registro-julio-2026-v1-bne.avif",
+                alt: "¿Ya registraste tu línea?",
+                enlace: "#compatibilidad",
+                titulo: "Conoce más sobre el registro de línea"
+            },
+            {
+                imagen: "home-banner-2.avif",
+                alt: "Paquetes y Recargas",
+                enlace: "planes.html",
+                titulo: "Ver Paquetes"
+            },
+            {
+                imagen: "home-banner-3.avif",
+                alt: "Planes de Renta",
+                enlace: "planes.html",
+                titulo: "Ver Planes"
+            },
+            {
+                imagen: "home-banner-4.avif",
+                alt: "Cámbiate a Orbit",
+                enlace: "portabilidad.html",
+                titulo: "Inicia Portabilidad"
+            },
+            {
+                imagen: "home-banner-5.avif",
+                alt: "Consigue tu eSIM",
+                enlace: "#compatibilidad",
+                titulo: "Obtener eSIM"
+            }
+        ];
+
+        let currentIndex = 0;
+        let autoPlayInterval = null;
+        let isPlaying = true;
+
+        const bannerImg = document.querySelector('.banner-img');
+        const bannerLink = document.querySelector('.banner-link');
+        const dotBtns = document.querySelectorAll('.slider-dots .dot-btn');
+        const btnLeft = document.querySelector('.arrow-btn.left');
+        const btnRight = document.querySelector('.arrow-btn.right');
+
+        function showSlide(index) {
+            if (index < 0) {
+                currentIndex = bannerData.length - 1;
+            } else if (index >= bannerData.length) {
+                currentIndex = 0;
+            } else {
+                currentIndex = index;
+            }
+
+            const data = bannerData[currentIndex];
+            bannerImg.src = data.imagen;
+            bannerImg.alt = data.alt;
+            bannerLink.href = data.enlace;
+            bannerLink.title = data.titulo;
+
+            dotBtns.forEach((btn, i) => {
+                if (i === 0) return;
+                btn.classList.toggle('active', i === currentIndex + 1);
+            });
+        }
+
+        function startAutoplay() {
+            isPlaying = true;
+            dotBtns[0].innerHTML = '<i class="fa-solid fa-pause" style="font-size: 0.7rem;"></i>';
+            autoPlayInterval = setInterval(() => {
+                showSlide(currentIndex + 1);
+            }, 4000);
+        }
+
+        function stopAutoplay() {
+            isPlaying = false;
+            dotBtns[0].innerHTML = '<i class="fa-solid fa-play" style="font-size: 0.7rem;"></i>';
+            clearInterval(autoPlayInterval);
+        }
+
+        btnLeft.addEventListener('click', () => {
+            showSlide(currentIndex - 1);
+            if (isPlaying) { stopAutoplay(); startAutoplay(); }
+        });
+
+        btnRight.addEventListener('click', () => {
+            showSlide(currentIndex + 1);
+            if (isPlaying) { stopAutoplay(); startAutoplay(); }
+        });
+
+        dotBtns.forEach((btn, index) => {
+            btn.addEventListener('click', () => {
+                if (index === 0) {
+                    if (isPlaying) {
+                        stopAutoplay();
+                    } else {
+                        startAutoplay();
+                    }
+                } else {
+                    showSlide(index - 1);
+                    if (isPlaying) { stopAutoplay(); startAutoplay(); }
+                }
+            });
+        });
+
+        startAutoplay();
+
         function validarIMEI() {
             const imei = document.getElementById('imei-input').value;
             const res = document.getElementById('imei-resultado');
