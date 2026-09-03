@@ -3,183 +3,271 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orbit Mobile | Telefonía e Internet eSIM</title>
+    <title>Orbit Mobile | La red del futuro</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #070913;
-            --bg-card: #0e1225;
-            --cyan-glow: #00d2ff;
-            --purple-glow: #9b51e0;
-            --text-main: #ffffff;
-            --text-muted: #a0a5c0;
+            --orbit-blue: #00d2ff;
+            --orbit-purple: #9b51e0;
+            --orbit-dark: #070913;
+            --gray-light: #f4f6f9;
+            --gray-border: #e0e6ed;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
-        .gradient-text { background: linear-gradient(135deg, var(--cyan-glow), var(--purple-glow)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        body { background-color: #ffffff; color: var(--text-dark); line-height: 1.5; }
 
-        /* Header */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 8%; border-bottom: 1px solid rgba(255, 255, 255, 0.05); position: sticky; top: 0; background: rgba(7, 9, 19, 0.9); backdrop-filter: blur(10px); z-index: 100; }
-        .logo { font-size: 1.5rem; font-weight: 700; letter-spacing: 1px; display: flex; align-items: center; gap: 10px; }
-        nav a { color: var(--text-muted); text-decoration: none; margin-left: 2rem; transition: 0.3s; font-size: 0.95rem; }
-        nav a:hover, nav a.active { color: var(--cyan-glow); }
+        /* --- 1. BARRA SUPERIOR AZUL --- */
+        .top-bar {
+            background-color: #0b1128;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8%;
+            font-size: 0.85rem;
+            height: 40px;
+        }
 
-        /* Hero */
-        .hero { padding: 5rem 8% 3rem; text-align: center; max-width: 900px; margin: 0 auto; }
-        .hero h1 { font-size: 3.2rem; margin-bottom: 1.2rem; line-height: 1.2; }
-        .hero p { font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2.5rem; }
+        .top-bar-left { display: flex; gap: 2px; height: 100%; }
+        .tab-btn {
+            padding: 0 1.2rem;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #a0a5c0;
+            font-weight: 600;
+            height: 100%;
+        }
+        .tab-btn.active {
+            background-color: #172042;
+            color: var(--orbit-blue);
+            border-bottom: 3px solid var(--orbit-blue);
+        }
 
-        /* IMEI Box */
-        .imei-box { background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.1); padding: 2rem; border-radius: 16px; max-width: 650px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .imei-input-group { display: flex; gap: 10px; margin-top: 1rem; }
-        .imei-input-group input { flex: 1; padding: 0.8rem 1.2rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.2); background: rgba(255, 255, 255, 0.05); color: #fff; font-size: 1rem; }
-        .imei-input-group input:focus { border-color: var(--cyan-glow); outline: none; }
+        .top-bar-right { display: flex; gap: 1.5rem; align-items: center; }
+        .top-bar-right a { color: #fff; text-decoration: none; font-size: 0.85rem; display: flex; align-items: center; gap: 5px; }
+
+        /* --- 2. HEADER PRINCIPAL --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 8%;
+            border-bottom: 1px solid var(--gray-border);
+            background: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo { font-size: 1.6rem; font-weight: 800; color: #0b1128; display: flex; align-items: center; gap: 8px; text-decoration: none; }
+        .gradient-text { background: linear-gradient(135deg, var(--orbit-blue), var(--orbit-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        .main-nav { display: flex; align-items: center; gap: 1.5rem; }
+        .main-nav a { color: var(--text-dark); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
         
-        .btn-gradient { background: linear-gradient(135deg, var(--cyan-glow), var(--purple-glow)); color: #fff; border: none; padding: 0.8rem 1.8rem; border-radius: 8px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: transform 0.2s; }
-        .btn-gradient:hover { transform: translateY(-2px); }
+        .btn-mi-orbit {
+            background: linear-gradient(135deg, var(--orbit-blue), var(--orbit-purple));
+            color: #fff;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
 
-        /* General Section Layout */
-        .section-padding { padding: 5rem 8%; }
-        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 3rem; }
+        /* --- 3. CARROUSEL BANNER PRINCIPAL --- */
+        .hero-banner {
+            background: linear-gradient(135deg, #0d1b3e 0%, #1a0b2e 100%);
+            color: #fff;
+            padding: 4rem 8%;
+            position: relative;
+            min-height: 380px;
+            display: flex;
+            align-items: center;
+        }
 
-        /* Steps Section */
-        .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; max-width: 1100px; margin: 0 auto; }
-        .step-card { background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 16px; text-align: center; position: relative; }
-        .step-number { width: 40px; height: 40px; background: linear-gradient(135deg, var(--cyan-glow), var(--purple-glow)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; margin: 0 auto 1.5rem auto; }
+        .banner-content {
+            max-width: 700px;
+            border: 2px solid var(--orbit-blue);
+            border-radius: 24px;
+            padding: 2.5rem;
+            background: rgba(11, 17, 40, 0.7);
+            backdrop-filter: blur(8px);
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.2);
+        }
 
-        /* Features / Advantages Grid */
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
-        .feature-box { background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 16px; transition: border 0.3s; }
-        .feature-box:hover { border-color: var(--cyan-glow); }
-        .feature-box i { font-size: 2rem; margin-bottom: 1rem; }
+        .banner-content h1 { font-size: 2.2rem; margin-bottom: 1rem; }
+        .banner-content p { font-size: 1.1rem; color: #cbd5e1; margin-bottom: 1.5rem; }
 
-        /* FAQ Accordion */
-        .faq-container { max-width: 800px; margin: 0 auto; }
-        .faq-item { background: var(--bg-card); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 10px; margin-bottom: 1rem; overflow: hidden; }
-        .faq-question { padding: 1.2rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; }
-        .faq-answer { padding: 0 1.2rem 1.2rem; color: var(--text-muted); display: none; font-size: 0.95rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 0.5rem; }
+        .btn-banner {
+            background: var(--orbit-blue);
+            color: #0b1128;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
 
-        /* Banner CTA */
-        .cta-banner { background: linear-gradient(135deg, rgba(0, 210, 255, 0.1), rgba(155, 81, 224, 0.1)); border: 1px solid var(--purple-glow); border-radius: 20px; padding: 4rem 2rem; text-align: center; max-width: 1000px; margin: 0 auto; }
+        .arrow-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #fff;
+            color: #0b1128;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .arrow-btn.left { left: 4%; }
+        .arrow-btn.right { right: 4%; }
 
-        /* Footer */
-        footer { border-top: 1px solid rgba(255, 255, 255, 0.05); padding: 3rem 8%; text-align: center; color: var(--text-muted); font-size: 0.9rem; margin-top: 4rem; }
+        /* --- 4. ACCIONES RÁPIDAS (¿QUÉ QUIERES HACER?) --- */
+        .quick-actions { padding: 4rem 8%; text-align: center; background-color: var(--gray-light); }
+        .quick-actions h2 { font-size: 1.8rem; margin-bottom: 2.5rem; color: #0b1128; }
+
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .action-card {
+            background: #fff;
+            padding: 2rem 1rem;
+            border-radius: 16px;
+            text-decoration: none;
+            color: var(--text-dark);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            border: 1px solid var(--gray-border);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .action-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--orbit-blue);
+        }
+
+        .icon-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(0, 210, 255, 0.1);
+            color: var(--orbit-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem auto;
+        }
+
+        .action-card h3 { font-size: 1rem; font-weight: 600; }
+
+        /* --- 5. VERIFICADOR DE COMPATIBILIDAD --- */
+        .imei-section { padding: 4rem 8%; text-align: center; }
+        .imei-container { max-width: 600px; margin: 0 auto; background: #fff; border: 1px solid var(--gray-border); padding: 2rem; border-radius: 16px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .imei-input-box { display: flex; gap: 10px; margin-top: 1rem; }
+        .imei-input-box input { flex: 1; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--gray-border); font-size: 1rem; }
+
+        /* --- FOOTER --- */
+        footer { background: #0b1128; color: #a0a5c0; padding: 3rem 8%; text-align: center; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
-    <!-- Navegación -->
+    <!-- 1. Barra Superior -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <a href="#" class="tab-btn active">PERSONAS</a>
+            <a href="#" class="tab-btn">EMPRESAS</a>
+        </div>
+        <div class="top-bar-right">
+            <a href="#"><i class="fa-solid fa-location-dot"></i> Chihuahua</a>
+            <a href="portabilidad.html"><i class="fa-solid fa-arrow-right-arrows"></i> Portabilidad</a>
+            <a href="#"><i class="fa-solid fa-headset"></i> Ayuda</a>
+        </div>
+    </div>
+
+    <!-- 2. Header Comercial -->
     <header>
-        <div class="logo"><i class="fa-solid fa-planet gradient-text"></i> ORBIT <span class="gradient-text">MOBILE</span></div>
-        <nav>
-            <a href="index.html" class="active">Inicio</a>
+        <a href="index.html" class="logo">
+            <i class="fa-solid fa-planet gradient-text"></i>
+            ORBIT <span class="gradient-text">MOBILE</span>
+        </a>
+        <nav class="main-nav">
+            <a href="#compatibilidad">eSIM</a>
+            <a href="planes.html">Paquetes y Recargas</a>
             <a href="planes.html">Planes</a>
-            <a href="portabilidad.html">Portabilidad</a>
+            <a href="portabilidad.html">Cámbiate a Orbit</a>
+            <a href="#" class="btn-mi-orbit"><i class="fa-solid fa-user"></i> Mi Orbit</a>
         </nav>
     </header>
 
-    <!-- Hero / Principal -->
-    <section class="hero">
-        <h1>Conéctate al instante con <br><span class="gradient-text">Tecnología eSIM</span></h1>
-        <p>Tu nueva línea móvil 100% digital. Sin filas, sin plásticos y con cobertura nacional en México, EE.UU. y Canadá.</p>
+    <!-- 3. Banner Principal Estilo Telcel -->
+    <section class="hero-banner">
+        <div class="arrow-btn left"><i class="fa-solid fa-chevron-left"></i></div>
+        
+        <div class="banner-content">
+            <h1>¿Ya vinculaste tu línea?</h1>
+            <p>Recuerda que por disposición oficial y regulatoria debes realizar la identificación de tu número celular.</p>
+            <a href="#compatibilidad" class="btn-banner">Conoce más</a>
+        </div>
 
-        <!-- Tool: IMEI -->
-        <div class="imei-box">
-            <h3><i class="fa-solid fa-mobile-screen"></i> Verifica si tu equipo es compatible</h3>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Marca <b>*#06#</b> en tu celular para conocer tu IMEI</p>
-            <div class="imei-input-group">
-                <input type="text" id="imei-input" maxlength="15" placeholder="Ingresa los 15 dígitos de tu IMEI">
-                <button class="btn-gradient" onclick="verificarIMEI()">Validar Equipo</button>
-            </div>
-            <div id="imei-result" style="margin-top: 1rem; font-size: 0.95rem;"></div>
+        <div class="arrow-btn right"><i class="fa-solid fa-chevron-right"></i></div>
+    </section>
+
+    <!-- 4. Sección "¿Qué quieres hacer?" -->
+    <section class="quick-actions">
+        <h2>¿Qué quieres hacer?</h2>
+        <div class="actions-grid">
+            <a href="planes.html" class="action-card">
+                <div class="icon-circle"><i class="fa-solid fa-dollar-sign"></i></div>
+                <h3>Paquetes y Recargas</h3>
+            </a>
+            <a href="#compatibilidad" class="action-card">
+                <div class="icon-circle"><i class="fa-solid fa-qrcode"></i></div>
+                <h3>Comprar eSIM</h3>
+            </a>
+            <a href="planes.html" class="action-card">
+                <div class="icon-circle"><i class="fa-solid fa-mobile-screen-button"></i></div>
+                <h3>Planes de Renta</h3>
+            </a>
+            <a href="portabilidad.html" class="action-card">
+                <div class="icon-circle"><i class="fa-solid fa-right-left"></i></div>
+                <h3>Portabilidad</h3>
+            </a>
         </div>
     </section>
 
-    <!-- Sección: Cómo Funciona -->
-    <section class="section-padding">
-        <h2 class="section-title">Activa tu eSIM en <span class="gradient-text">3 sencillos pasos</span></h2>
-        <div class="steps-grid">
-            <div class="step-card">
-                <div class="step-number">1</div>
-                <h3>Elige tu Plan</h3>
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Selecciona el paquete que mejor se adapte a tus necesidades desde nuestro catálogo.</p>
+    <!-- 5. Validador eSIM -->
+    <section class="imei-section" id="compatibilidad">
+        <div class="imei-container">
+            <h2>Consulta tu compatibilidad eSIM</h2>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 5px;">Ingresa los 15 dígitos de tu IMEI (Obtenlo marcando *#06#)</p>
+            <div class="imei-input-box">
+                <input type="text" id="imei-input" maxlength="15" placeholder="Ej. 356789012345678">
+                <button class="btn-banner" onclick="validarIMEI()">Validar</button>
             </div>
-            <div class="step-card">
-                <div class="step-number">2</div>
-                <h3>Escanea el QR</h3>
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Recibe tu código QR al instante en tu correo electrónico tras realizar el pago.</p>
-            </div>
-            <div class="step-card">
-                <div class="step-number">3</div>
-                <h3>Navega</h3>
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Activa la línea digital en los ajustes de tu smartphone y listo.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección: Beneficios de Orbit Mobile -->
-    <section class="section-padding" style="background: rgba(255,255,255,0.01);">
-        <h2 class="section-title">¿Por qué elegir <span class="gradient-text">Orbit Mobile</span>?</h2>
-        <div class="features-grid">
-            <div class="feature-box">
-                <i class="fa-solid fa-bolt gradient-text"></i>
-                <h3>Activación Inmediata</h3>
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Sin esperar paqueterías ni acudir a sucursales físicas. Todo desde tu navegador.</p>
-            </div>
-            <div class="feature-box">
-                <i class="fa-solid fa-earth-americas gradient-text"></i>
-                <h3>Cobertura Internacional</h3>
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Usa tus gigas, minutos y mensajes en México, Estados Unidos y Canadá sin costo extra.</p>
-            </div>
-            <div class="feature-box">
-                <i class="fa-solid fa-sim-card gradient-text"></i>
-                <h3>Conserva tu Número</h3>
-                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">Proceso de portabilidad 100% digital en menos de 24 horas hábiles.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección: Preguntas Frecuentes -->
-    <section class="section-padding">
-        <h2 class="section-title">Preguntas <span class="gradient-text">Frecuentes</span></h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>¿Qué es una eSIM y cómo funciona?</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    Una eSIM es una tarjeta SIM virtual integrada directamente en el hardware de tu smartphone. Te permite activar un plan de datos sin necesidad de insertar un plástico físico.
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>¿Puedo conservar mi número actual?</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    Sí. Puedes realizar tu trámite de portabilidad de forma totalmente gratuita desde nuestra sección de Portabilidad ingresando tu NIP de 4 dígitos.
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="toggleFAQ(this)">
-                    <span>¿Qué pasa si mi celular no soporta eSIM?</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="faq-answer">
-                    Puedes verificar la compatibilidad ingresando tu IMEI en nuestro buscador principal. Próximamente también contaremos con envíos de SIMs físicas tradicionales.
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Banner Final CTA -->
-    <section class="section-padding">
-        <div class="cta-banner">
-            <h2>¿Listo para cambiar a la red del futuro?</h2>
-            <p style="color: var(--text-muted); margin: 1rem 0 2rem 0;">Elige tu paquete hoy mismo y disfruta de la máxima velocidad.</p>
-            <a href="planes.html" class="btn-gradient" style="padding: 1rem 2.5rem; font-size: 1.1rem;">Ver Planes Disponibles</a>
+            <div id="imei-resultado" style="margin-top: 1rem; font-weight: 600;"></div>
         </div>
     </section>
 
@@ -189,31 +277,18 @@
         <p style="margin-top: 5px; font-size: 0.8rem;">Conectamos tu mundo | Ciudad Juárez, Chihuahua, México.</p>
     </footer>
 
-    <!-- Scripts de Interacción -->
     <script>
-        function verificarIMEI() {
+        function validarIMEI() {
             const imei = document.getElementById('imei-input').value;
-            const res = document.getElementById('imei-result');
+            const res = document.getElementById('imei-resultado');
             if (imei.length !== 15 || isNaN(imei)) {
-                res.innerHTML = '<span style="color: #ff5555;"><i class="fa-solid fa-circle-xmark"></i> Ingresa un IMEI válido de 15 dígitos.</span>';
+                res.innerHTML = '<span style="color: #dc2626;">Ingresa un IMEI válido de 15 dígitos.</span>';
                 return;
             }
-            res.innerHTML = '<span style="color: var(--cyan-glow);"><i class="fa-solid fa-spinner fa-spin"></i> Consultando compatibilidad...</span>';
+            res.innerHTML = '<span style="color: var(--orbit-blue);">Verificando equipo...</span>';
             setTimeout(() => {
-                res.innerHTML = '<span style="color: #55ff55;"><i class="fa-solid fa-circle-check"></i> ¡Excelente! Tu equipo es compatible con eSIM Orbit Mobile.</span>';
+                res.innerHTML = '<span style="color: #16a34a;"><i class="fa-solid fa-check-circle"></i> Tu smartphone es compatible con eSIM Orbit Mobile.</span>';
             }, 1000);
-        }
-
-        function toggleFAQ(element) {
-            const answer = element.nextElementSibling;
-            const icon = element.querySelector('i');
-            if (answer.style.display === "block") {
-                answer.style.display = "none";
-                icon.className = "fa-solid fa-chevron-down";
-            } else {
-                answer.style.display = "block";
-                icon.className = "fa-solid fa-chevron-up";
-            }
         }
     </script>
 </body>
