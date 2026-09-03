@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portabilidad | Orbit Mobile</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root { --bg-dark: #070913; --bg-card: #0e1225; --cyan-glow: #00d2ff; --purple-glow: #9b51e0; --text-main: #ffffff; --text-muted: #a0a5c0; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; }
+        .gradient-text { background: linear-gradient(135deg, var(--cyan-glow), var(--purple-glow)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+        header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 8%; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .logo { font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+        nav a { color: var(--text-muted); text-decoration: none; margin-left: 2rem; }
+        nav a.active { color: var(--cyan-glow); }
+
+        .form-container { max-width: 500px; margin: 4rem auto; background: var(--bg-card); border: 1px solid rgba(255,255,255,0.1); padding: 2.5rem; border-radius: 16px; }
+        .form-group { margin-bottom: 1.2rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem; }
+        .form-group input, .form-group select { width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); color: #fff; }
+        .form-group input:focus { border-color: var(--cyan-glow); outline: none; }
+
+        .btn-gradient { background: linear-gradient(135deg, var(--cyan-glow), var(--purple-glow)); color: #fff; border: none; padding: 0.9rem; width: 100%; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 1rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><i class="fa-solid fa-planet gradient-text"></i> ORBIT <span class="gradient-text">MOBILE</span></div>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="planes.html">Planes</a>
+            <a href="portabilidad.html" class="active">Portabilidad</a>
+        </nav>
+    </header>
+
+    <div class="form-container">
+        <h2 style="margin-bottom: 1rem;">Conserva tu número</h2>
+        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Trae tu número actual a Orbit Mobile. Necesitas tu NIP enviando un SMS con la palabra <b>NIP al 051</b>.</p>
+
+        <form id="portForm" onsubmit="procesarPortabilidad(event)">
+            <div class="form-group">
+                <label>Número a Traer (10 dígitos)</label>
+                <input type="tel" maxlength="10" required placeholder="Ej. 6561234567">
+            </div>
+
+            <div class="form-group">
+                <label>NIP de Portabilidad (4 dígitos)</label>
+                <input type="text" maxlength="4" required placeholder="Ej. 1234">
+            </div>
+
+            <div class="form-group">
+                <label>Compañía Actual</label>
+                <select required>
+                    <option value="">Selecciona operador</option>
+                    <option value="telcel">Telcel</option>
+                    <option value="movistar">Movistar</option>
+                    <option value="att">AT&T</option>
+                    <option value="otro">Otro OMV</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn-gradient">Iniciar Trámite</button>
+        </form>
+    </div>
+
+    <script>
+        function procesarPortabilidad(e) {
+            e.preventDefault();
+            alert("Solicitud recibida. Se enviará a la API de Interlinked para procesar la portabilidad ante el IFT.");
+        }
+    </script>
+</body>
+</html>
