@@ -10,7 +10,9 @@
             --orbit-blue: #00d2ff;
             --orbit-purple: #9b51e0;
             --orbit-dark: #070913;
-            --gray-light: #f4f6f9;
+            --top-navy: #0b1128;
+            --footer-bg: #f4f6f9;
+            --footer-bottom: #002b66;
             --gray-border: #e0e6ed;
             --text-dark: #1e293b;
             --text-muted: #64748b;
@@ -21,7 +23,7 @@
 
         /* --- 1. BARRA SUPERIOR AZUL --- */
         .top-bar {
-            background-color: #0b1128;
+            background-color: var(--top-navy);
             color: #fff;
             display: flex;
             justify-content: space-between;
@@ -231,8 +233,265 @@
         .imei-input-box { display: flex; gap: 10px; margin-top: 1rem; }
         .imei-input-box input { flex: 1; padding: 0.8rem; border-radius: 8px; border: 1px solid var(--gray-border); font-size: 1rem; }
 
-        /* --- FOOTER --- */
-        footer { background: #0b1128; color: #a0a5c0; padding: 3rem 8%; text-align: center; font-size: 0.9rem; }
+        /* --- 6. BASE LEGAL DROPDOWN --- */
+        .legal-dropdown-section {
+            max-width: 1200px;
+            margin: 2rem auto 3rem auto;
+            padding: 0 8%;
+        }
+
+        .legal-dropdown {
+            width: 100%;
+            background: #ffffff;
+            border: 1px solid #dbe2ea;
+            border-radius: 8px;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 700;
+            color: #0b1128;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .legal-dropdown i {
+            color: #0072ce;
+        }
+
+        /* --- 7. FOOTER PRINCIPAL --- */
+        .site-footer {
+            background-color: #f4f6f9;
+            border-top: 1px solid #e0e6ed;
+            padding-top: 3rem;
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 8%;
+            display: grid;
+            grid-template-columns: 180px repeat(4, 1fr) 260px;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        /* Columna 1: Brand / Pills */
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #0b1128;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 0.5rem;
+        }
+
+        .pill-btn {
+            display: block;
+            text-align: center;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .pill-btn.primary {
+            background-color: #dbeafe;
+            color: #0284c7;
+            border: 1px solid #bae6fd;
+        }
+
+        .pill-btn.secondary {
+            background-color: #ffffff;
+            color: #475569;
+            border: 1px solid #cbd5e1;
+        }
+
+        /* Columnas de Navegación */
+        .footer-col h4 {
+            display: none;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .footer-col ul a {
+            color: #0072ce;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.88rem;
+            transition: color 0.2s;
+        }
+
+        .footer-col ul a:hover {
+            color: #003366;
+            text-decoration: underline;
+        }
+
+        /* Columna Apps y Redes Sociales */
+        .footer-apps {
+            text-align: center;
+        }
+
+        .footer-apps h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 1rem;
+        }
+
+        .app-badges {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .badge-btn {
+            background-color: #000;
+            color: #fff;
+            width: 140px;
+            padding: 0.4rem 0.6rem;
+            border-radius: 6px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.65rem;
+            text-align: left;
+        }
+
+        .badge-btn i { font-size: 1.3rem; }
+        .badge-btn strong { display: block; font-size: 0.8rem; }
+
+        .social-block {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .social-block span {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #334155;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 0.6rem;
+        }
+
+        .social-icons a {
+            color: #0072ce;
+            font-size: 1.1rem;
+            text-decoration: none;
+        }
+
+        /* Fila de Logotipos Certificados */
+        .certifications-row {
+            max-width: 1280px;
+            margin: 2.5rem auto 1.5rem auto;
+            padding: 0 8%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        .cert-badge {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 0.3rem 0.8rem;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Scroll Top Floating Button */
+        .scroll-top-btn {
+            position: fixed;
+            bottom: 70px;
+            right: 25px;
+            background-color: #0072ce;
+            color: #fff;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 90;
+            transition: transform 0.2s;
+        }
+
+        .scroll-top-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- 8. BARRA INFERIOR COPYRIGHT --- */
+        .footer-bottom-bar {
+            background-color: #002b66;
+            color: #ffffff;
+            padding: 1.2rem 8%;
+            font-size: 0.82rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom-bar p {
+            color: #e2e8f0;
+        }
+
+        .bottom-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .bottom-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .bottom-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 992px) {
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-apps {
+                grid-column: span 2;
+                margin-top: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -323,10 +582,117 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 ORBIT MOBILE S.A. DE C.V. Todos los derechos reservados.</p>
-        <p style="margin-top: 5px; font-size: 0.8rem;">Conectamos tu mundo | Ciudad Juárez, Chihuahua, México.</p>
+    <!-- 6. Desplegable Base Legal -->
+    <div class="legal-dropdown-section">
+        <div class="legal-dropdown">
+            <span>Explora nuestra base legal</span>
+            <i class="fa-solid fa-caret-down"></i>
+        </div>
+    </div>
+
+    <!-- 7. Footer Estilo Telcel con Colores Orbit -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <!-- Brand Column -->
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">
+                    <i class="fa-solid fa-planet gradient-text"></i>
+                    ORBIT
+                </a>
+                <a href="#" class="pill-btn primary">PERSONAS</a>
+                <a href="#" class="pill-btn secondary">EMPRESAS</a>
+            </div>
+
+            <!-- Columna 1 -->
+            <div class="footer-col">
+                <ul>
+                    <li><a href="planes.html">Planes Orbit Libre</a></li>
+                    <li><a href="planes.html">Paquetes Amigo Sin Límite</a></li>
+                    <li><a href="planes.html">Paquetes y Recargas</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 2 -->
+            <div class="footer-col">
+                <ul>
+                    <li><a href="#">Viajero Internacional</a></li>
+                    <li><a href="#">Experiencias</a></li>
+                    <li><a href="#">Personas desaparecidas</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 3 -->
+            <div class="footer-col">
+                <ul>
+                    <li><a href="#">Internet de las cosas</a></li>
+                    <li><a href="portabilidad.html">Cámbiate a Orbit</a></li>
+                    <li><a href="#">Promociones Plan de Renta</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 4 -->
+            <div class="footer-col">
+                <ul>
+                    <li><a href="#">¿Quién es Orbit?</a></li>
+                    <li><a href="#">Políticas y códigos</a></li>
+                    <li><a href="#">Trabaja con Orbit</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna App & Redes -->
+            <div class="footer-apps">
+                <h4>Descarga la app de Mi Orbit</h4>
+                <div class="app-badges">
+                    <a href="#" class="badge-btn">
+                        <i class="fa-brands fa-google-play"></i>
+                        <div><span style="display:block; font-size: 0.55rem;">DISPONIBLE EN</span><strong>Google Play</strong></div>
+                    </a>
+                    <a href="#" class="badge-btn">
+                        <i class="fa-brands fa-apple"></i>
+                        <div><span style="display:block; font-size: 0.55rem;">DISPONIBLE EN</span><strong>App Store</strong></div>
+                    </a>
+                    <a href="#" class="badge-btn">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <div><span style="display:block; font-size: 0.55rem;">EXPLÓRALO EN</span><strong>AppGallery</strong></div>
+                    </a>
+                </div>
+
+                <div class="social-block">
+                    <span>Síguenos</span>
+                    <div class="social-icons">
+                        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="#"><i class="fa-brands fa-threads"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logotipos de Certificaciones y Alianzas -->
+        <div class="certifications-row">
+            <div class="cert-badge"><i class="fa-solid fa-shield-halved" style="color:#e11d48;"></i> IFT REGULADO</div>
+            <div class="cert-badge"><i class="fa-solid fa-leaf" style="color:#16a34a;"></i> ESR ESR_2026</div>
+            <div class="cert-badge"><i class="fa-solid fa-check" style="color:#0284c7;"></i> PROFECO</div>
+            <div class="cert-badge"><i class="fa-solid fa-certificate" style="color:#d97706;"></i> DISTINTIVO DIGITAL</div>
+            <div class="cert-badge"><i class="fa-solid fa-award" style="color:#9333ea;"></i> MERCO 2026</div>
+            <div class="cert-badge"><i class="fa-solid fa-lock" style="color:#0284c7;"></i> digicert SECURED</div>
+        </div>
+
+        <!-- Botón Volver Arriba -->
+        <a href="#" class="scroll-top-btn" title="Volver arriba">
+            <i class="fa-solid fa-chevron-up"></i>
+        </a>
+
+        <!-- 8. Pie de página Azul Marino con Copyright -->
+        <div class="footer-bottom-bar">
+            <p>&copy; 2026 ORBIT MOBILE S.A. DE C.V. Todos los derechos reservados.</p>
+            <div class="bottom-links">
+                <a href="#">Ofertas de Servicios Mayoristas</a>
+                <a href="#">Términos y condiciones</a>
+                <a href="#">Aviso de privacidad</a>
+            </div>
+        </div>
     </footer>
 
     <script>
