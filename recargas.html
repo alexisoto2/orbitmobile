@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Recargas | Orbit Mobile</title>
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        :root{
+            --blue:#0b4f8a;
+            --blue-dark:#073865;
+            --blue-light:#eaf4fc;
+            --cyan:#16b8e8;
+            --text:#264b6d;
+            --muted:#6b7b8c;
+            --bg:#f5f6f7;
+            --border:#e1e6eb;
+            --green:#16a34a;
+        }
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            background:var(--bg);
+            color:#1f2937;
+        }
+
+        a{
+            text-decoration:none;
+        }
+
+        /* =========================
+           BARRA SUPERIOR
+        ========================= */
+
+        .topbar{
+            height:44px;
+            background:var(--blue);
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:0 5%;
+            color:white;
+        }
+
+        .tabs{
+            height:100%;
+            display:flex;
+        }
+
+        .tab{
+            height:100%;
+            padding:0 22px;
+            display:flex;
+            align-items:center;
+            color:white;
+            font-size:14px;
+            font-weight:bold;
+        }
+
+        .tab.active{
+            background:white;
+            color:var(--blue);
+        }
+
+        .top-links{
+            display:flex;
+            gap:25px;
+        }
+
+        .top-links a{
+            color:white;
+            font-size:14px;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header{
+            height:70px;
+            background:white;
+            display:flex;
+            align-items:center;
+            padding:0 5%;
+            box-shadow:0 2px 8px rgba(0,0,0,.07);
+        }
+
+        .logo{
+            color:var(--blue);
+            font-size:29px;
+            font-weight:800;
+            font-style:italic;
+        }
+
+        .menu{
+            margin-left:35px;
+            color:#555;
+        }
+
+        .spacer{
+            flex:1;
+        }
+
+        .nav{
+            display:flex;
+            gap:25px;
+            align-items:center;
+        }
+
+        .nav a{
+            color:var(--text);
+            font-size:14px;
+            font-weight:600;
+        }
+
+        .nav i{
+            color:var(--blue);
+        }
+
+        .mi-orbit{
+            margin-left:30px;
+            display:flex;
+            align-items:center;
+            gap:10px;
+            color:var(--blue);
+            font-weight:bold;
+        }
+
+        .user{
+            width:38px;
+            height:38px;
+            background:#187ca7;
+            color:white;
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero{
+            background:
+            linear-gradient(
+                120deg,
+                #073865,
+                #0b5c9d,
+                #14a4d5
+            );
+
+            padding:55px 20px;
+            text-align:center;
+            color:white;
+        }
+
+        .hero h1{
+            font-size:40px;
+            margin-bottom:12px;
+        }
+
+        .hero p{
+            font-size:18px;
+            opacity:.9;
+        }
+
+        /* =========================
+           CONTENEDOR
+        ========================= */
+
+        .container{
+            max-width:1150px;
+            margin:auto;
+            padding:50px 25px;
+        }
+
+        .title{
+            text-align:center;
+            color:var(--text);
+            font-size:30px;
+            margin-bottom:10px;
+        }
+
+        .subtitle{
+            text-align:center;
+            color:var(--muted);
+            margin-bottom:35px;
+        }
+
+        /* =========================
+           PASOS
+        ========================= */
+
+        .steps{
+            max-width:700px;
+            margin:0 auto 45px;
+            display:flex;
+            justify-content:space-between;
+            position:relative;
+        }
+
+        .steps::before{
+            content:"";
+            position:absolute;
+            height:2px;
+            background:#dce3e8;
+            top:20px;
+            left:15%;
+            right:15%;
+            z-index:0;
+        }
+
+        .step{
+            position:relative;
+            z-index:1;
+            text-align:center;
+            background:var(--bg);
+            padding:0 10px;
+        }
+
+        .step-number{
+            width:40px;
+            height:40px;
+            border-radius:50%;
+            background:#dbe4eb;
+            color:#607080;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            margin:auto;
+            font-weight:bold;
+        }
+
+        .step.active .step-number{
+            background:var(--blue);
+            color:white;
+        }
+
+        .step span{
+            display:block;
+            margin-top:8px;
+            font-size:13px;
+            color:#607080;
+            font-weight:bold;
+        }
+
+        /* =========================
+           RECARGAS
+        ========================= */
+
+        .recharges-grid{
+            display:grid;
+            grid-template-columns:
+            repeat(auto-fit,minmax(230px,1fr));
+
+            gap:20px;
+        }
+
+        .recharge-card{
+            background:white;
+            border:2px solid var(--border);
+            border-radius:16px;
+            overflow:hidden;
+            cursor:pointer;
+            transition:.25s;
+            position:relative;
+        }
+
+        .recharge-card:hover{
+            transform:translateY(-5px);
+            border-color:var(--cyan);
+            box-shadow:0 10px 25px rgba(0,0,0,.09);
+        }
+
+        .recharge-card.selected{
+            border-color:var(--blue);
+            box-shadow:0 0 0 3px rgba(11,79,138,.12);
+        }
+
+        .recharge-card.recommended{
+            border-color:var(--cyan);
+        }
+
+        .recommended-label{
+            background:var(--cyan);
+            color:white;
+            text-align:center;
+            font-size:12px;
+            font-weight:bold;
+            padding:8px;
+        }
+
+        .recharge-header{
+            background:var(--blue-dark);
+            color:white;
+            text-align:center;
+            padding:22px 15px;
+        }
+
+        .recharge-title{
+            font-size:17px;
+            font-weight:bold;
+        }
+
+        .recharge-price{
+            font-size:42px;
+            font-weight:800;
+            margin:7px 0;
+        }
+
+        .recharge-validity{
+            font-size:13px;
+            opacity:.85;
+        }
+
+        .recharge-body{
+            padding:22px;
+        }
+
+        .gb{
+            text-align:center;
+            margin-bottom:20px;
+        }
+
+        .gb strong{
+            display:block;
+            font-size:30px;
+            color:var(--blue);
+        }
+
+        .gb span{
+            font-size:13px;
+            color:var(--muted);
+        }
+
+        .benefits{
+            list-style:none;
+        }
+
+        .benefits li{
+            padding:10px 0;
+            border-bottom:1px solid #edf0f2;
+            color:#52606d;
+            font-size:14px;
+        }
+
+        .benefits i{
+            color:var(--green);
+            margin-right:7px;
+        }
+
+        .social-unlimited{
+            margin-top:17px;
+            padding:12px;
+            background:#e9f7fd;
+            border-radius:8px;
+            text-align:center;
+            color:#0878aa;
+            font-size:13px;
+            font-weight:bold;
+        }
+
+        /* =========================
+           FORMULARIO
+        ========================= */
+
+        .recharge-form{
+            display:none;
+            max-width:650px;
+            margin:50px auto 0;
+            background:white;
+            padding:35px;
+            border-radius:16px;
+            box-shadow:0 8px 25px rgba(0,0,0,.07);
+        }
+
+        .recharge-form.show{
+            display:block;
+        }
+
+        .recharge-form h2{
+            text-align:center;
+            color:var(--text);
+            margin-bottom:10px;
+        }
+
+        .selected-info{
+            text-align:center;
+            color:var(--muted);
+            margin-bottom:25px;
+        }
+
+        .form-group{
+            margin-bottom:18px;
+        }
+
+        .form-group label{
+            display:block;
+            font-size:14px;
+            font-weight:bold;
+            color:var(--text);
+            margin-bottom:8px;
+        }
+
+        .form-group input{
+            width:100%;
+            height:50px;
+            border:1px solid var(--border);
+            border-radius:8px;
+            padding:0 15px;
+            font-size:17px;
+            outline:none;
+        }
+
+        .form-group input:focus{
+            border-color:var(--blue);
+        }
+
+        .continue-btn{
+            width:100%;
+            height:52px;
+            border:none;
+            border-radius:8px;
+            background:var(--blue);
+            color:white;
+            font-size:16px;
+            font-weight:bold;
+            cursor:pointer;
+            margin-top:8px;
+        }
+
+        .continue-btn:hover{
+            background:var(--blue-dark);
+        }
+
+        /* =========================
+           REDES ILIMITADAS
+        ========================= */
+
+        .social-section{
+            margin-top:60px;
+            background:white;
+            padding:40px;
+            border-radius:18px;
+        }
+
+        .social-section h2{
+            text-align:center;
+            color:var(--text);
+            margin-bottom:10px;
+        }
+
+        .social-section p{
+            text-align:center;
+            color:var(--muted);
+            margin-bottom:30px;
+        }
+
+        .social-grid{
+            display:grid;
+            grid-template-columns:
+            repeat(auto-fit,minmax(110px,1fr));
+            gap:15px;
+        }
+
+        .social{
+            background:#f7f9fa;
+            border:1px solid var(--border);
+            border-radius:12px;
+            padding:18px 10px;
+            text-align:center;
+        }
+
+        .social i{
+            display:block;
+            font-size:28px;
+            color:var(--blue);
+            margin-bottom:9px;
+        }
+
+        .social span{
+            font-size:13px;
+            font-weight:bold;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer{
+            background:var(--blue-dark);
+            color:white;
+            text-align:center;
+            padding:25px;
+            font-size:13px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media(max-width:850px){
+
+            .top-links,
+            .nav{
+                display:none;
+            }
+
+            .hero h1{
+                font-size:30px;
+            }
+
+        }
+
+        @media(max-width:600px){
+
+            .topbar{
+                padding:0;
+            }
+
+            .tab{
+                padding:0 14px;
+            }
+
+            header{
+                padding:0 20px;
+            }
+
+            .menu{
+                margin-left:20px;
+            }
+
+            .mi-orbit{
+                margin-left:10px;
+            }
+
+            .mi-orbit span{
+                display:none;
+            }
+
+            .steps{
+                gap:5px;
+            }
+
+            .step{
+                padding:0 2px;
+            }
+
+            .step span{
+                font-size:10px;
+            }
+
+            .recharge-form{
+                padding:25px 20px;
+            }
+
+            .social-section{
+                padding:30px 15px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+
+<!-- BARRA SUPERIOR -->
+
+<div class="topbar">
+
+    <div class="tabs">
+
+        <a href="index.html" class="tab active">
+            PERSONAS
+        </a>
+
+        <a href="#" class="tab">
+            EMPRESAS
+        </a>
+
+    </div>
+
+    <div class="top-links">
+
+        <a href="#">
+            <i class="fa-solid fa-bag-shopping"></i>
+            Orbit Shop
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-plane"></i>
+            Viaja con Orbit
+        </a>
+
+    </div>
+
+</div>
+
+
+<!-- HEADER -->
+
+<header>
+
+    <a href="index.html" class="logo">
+        orbit
+    </a>
+
+    <a href="#" class="menu">
+        Menú
+        <i class="fa-solid fa-caret-down"></i>
+    </a>
+
+    <div class="spacer"></div>
+
+    <nav class="nav">
+
+        <a href="recargas.html">
+            <i class="fa-solid fa-bolt"></i>
+            Paquetes y Recargas
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-location-dot"></i>
+            Chihuahua
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-bag-shopping"></i>
+            Tienda
+        </a>
+
+    </nav>
+
+    <a href="#" class="mi-orbit">
+
+        <div class="user">
+            <i class="fa-solid fa-user"></i>
+        </div>
+
+        <span>Mi Orbit</span>
+
+    </a>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <h1>Recarga tu línea Orbit</h1>
+
+    <p>
+        Elige el monto de tu recarga y continúa con el pago.
+    </p>
+
+</section>
+
+
+<main class="container">
+
+
+    <h2 class="title">
+        Elige tu recarga
+    </h2>
+
+    <p class="subtitle">
+        Más datos para navegar y beneficios incluidos.
+    </p>
+
+
+    <!-- PASOS -->
+
+    <div class="steps">
+
+        <div class="step active">
+
+            <div class="step-number">
+                1
+            </div>
+
+            <span>
+                Elige tu recarga
+            </span>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                2
+            </div>
+
+            <span>
+                Ingresa tu número
+            </span>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                3
+            </div>
+
+            <span>
+                Realiza tu pago
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- RECARGAS -->
+
+    <div class="recharges-grid">
+
+
+        <!-- $50 -->
+
+        <div
+        class="recharge-card"
+        onclick="seleccionarRecarga(50, '2 GB', '7 días', this)">
+
+            <div class="recharge-header">
+
+                <div class="recharge-title">
+                    Recarga Orbit
+                </div>
+
+                <div class="recharge-price">
+                    $50
+                </div>
+
+                <div class="recharge-validity">
+                    Vigencia de 7 días
+                </div>
+
+            </div>
+
+
+            <div class="recharge-body">
+
+                <div class="gb">
+
+                    <strong>2 GB</strong>
+
+                    <span>
+                        Para navegar
+                    </span>
+
+                </div>
+
+
+                <ul class="benefits">
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Llamadas ilimitadas
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        SMS ilimitados
+                    </li>
+
+                </ul>
+
+
+                <div class="social-unlimited">
+
+                    <i class="fa-solid fa-infinity"></i>
+
+                    Redes sociales ilimitadas
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- $100 -->
+
+        <div
+        class="recharge-card"
+        onclick="seleccionarRecarga(100, '5 GB', '15 días', this)">
+
+            <div class="recharge-header">
+
+                <div class="recharge-title">
+                    Recarga Orbit
+                </div>
+
+                <div class="recharge-price">
+                    $100
+                </div>
+
+                <div class="recharge-validity">
+                    Vigencia de 15 días
+                </div>
+
+            </div>
+
+
+            <div class="recharge-body">
+
+                <div class="gb">
+
+                    <strong>5 GB</strong>
+
+                    <span>
+                        Para navegar
+                    </span>
+
+                </div>
+
+
+                <ul class="benefits">
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Llamadas ilimitadas
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        SMS ilimitados
+                    </li>
+
+                </ul>
+
+
+                <div class="social-unlimited">
+
+                    <i class="fa-solid fa-infinity"></i>
+
+                    Redes sociales ilimitadas
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- $150 -->
+
+        <div
+        class="recharge-card recommended"
+        onclick="seleccionarRecarga(150, '10 GB', '26 días', this)">
+
+            <div class="recommended-label">
+                RECOMENDADA
+            </div>
+
+
+            <div class="recharge-header">
+
+                <div class="recharge-title">
+                    Recarga Orbit
+                </div>
+
+                <div class="recharge-price">
+                    $150
+                </div>
+
+                <div class="recharge-validity">
+                    Vigencia de 26 días
+                </div>
+
+            </div>
+
+
+            <div class="recharge-body">
+
+                <div class="gb">
+
+                    <strong>10 GB</strong>
+
+                    <span>
+                        Para navegar
+                    </span>
+
+                </div>
+
+
+                <ul class="benefits">
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Llamadas ilimitadas
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        SMS ilimitados
+                    </li>
+
+                </ul>
+
+
+                <div class="social-unlimited">
+
+                    <i class="fa-solid fa-infinity"></i>
+
+                    Redes sociales ilimitadas
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- $200 -->
+
+        <div
+        class="recharge-card"
+        onclick="seleccionarRecarga(200, '15 GB', '30 días', this)">
+
+            <div class="recharge-header">
+
+                <div class="recharge-title">
+                    Recarga Orbit
+                </div>
+
+                <div class="recharge-price">
+                    $200
+                </div>
+
+                <div class="recharge-validity">
+                    Vigencia de 30 días
+                </div>
+
+            </div>
+
+
+            <div class="recharge-body">
+
+                <div class="gb">
+
+                    <strong>15 GB</strong>
+
+                    <span>
+                        Para navegar
+                    </span>
+
+                </div>
+
+
+                <ul class="benefits">
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Llamadas ilimitadas
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        SMS ilimitados
+                    </li>
+
+                    <li>
+                        <i class="fa-solid fa-check"></i>
+                        Comparte internet
+                    </li>
+
+                </ul>
+
+
+                <div class="social-unlimited">
+
+                    <i class="fa-solid fa-infinity"></i>
+
+                    Redes sociales ilimitadas
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- FORMULARIO -->
+
+    <section
+    class="recharge-form"
+    id="rechargeForm">
+
+        <h2>
+            Ingresa tu número
+        </h2>
+
+
+        <p
+        class="selected-info"
+        id="selectedInfo">
+
+        </p>
+
+
+        <div class="form-group">
+
+            <label>
+                Número Orbit Mobile
+            </label>
+
+            <input
+            type="tel"
+            id="phoneNumber"
+            maxlength="10"
+            placeholder="10 dígitos">
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Confirma tu número
+            </label>
+
+            <input
+            type="tel"
+            id="confirmNumber"
+            maxlength="10"
+            placeholder="Confirma tu número">
+
+        </div>
+
+
+        <button
+        class="continue-btn"
+        onclick="continuarPago()">
+
+            Continuar al pago
+
+        </button>
+
+    </section>
+
+
+
+    <!-- REDES SOCIALES -->
+
+    <section class="social-section">
+
+        <h2>
+            Redes sociales ilimitadas
+        </h2>
+
+        <p>
+            Disfruta de tus aplicaciones favoritas
+            con los beneficios de tu recarga.*
+        </p>
+
+
+        <div class="social-grid">
+
+            <div class="social">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </div>
+
+            <div class="social">
+                <i class="fa-brands fa-facebook"></i>
+                <span>Facebook</span>
+            </div>
+
+            <div class="social">
+                <i class="fa-brands fa-instagram"></i>
+                <span>Instagram</span>
+            </div>
+
+            <div class="social">
+                <i class="fa-brands fa-tiktok"></i>
+                <span>TikTok</span>
+            </div>
+
+            <div class="social">
+                <i class="fa-brands fa-x-twitter"></i>
+                <span>X</span>
+            </div>
+
+            <div class="social">
+                <i class="fa-brands fa-telegram"></i>
+                <span>Telegram</span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<footer>
+
+    © 2026 ORBIT MOBILE S.A. DE C.V.
+    Todos los derechos reservados.
+
+</footer>
+
+
+
+<script>
+
+let recargaSeleccionada = null;
+
+
+/* SELECCIONAR RECARGA */
+
+function seleccionarRecarga(
+    precio,
+    datos,
+    vigencia,
+    card
+){
+
+    recargaSeleccionada = {
+
+        precio:precio,
+        datos:datos,
+        vigencia:vigencia
+
+    };
+
+
+    /* QUITAR SELECCIÓN */
+
+    document
+    .querySelectorAll(".recharge-card")
+    .forEach(function(elemento){
+
+        elemento.classList.remove("selected");
+
+    });
+
+
+    /* AGREGAR SELECCIÓN */
+
+    card.classList.add("selected");
+
+
+    /* MOSTRAR FORMULARIO */
+
+    const formulario =
+    document.getElementById("rechargeForm");
+
+
+    formulario.classList.add("show");
+
+
+    document.getElementById(
+        "selectedInfo"
+    ).innerHTML =
+
+    "Seleccionaste una recarga de <strong>$" +
+    precio +
+    "</strong> con <strong>" +
+    datos +
+    "</strong> y vigencia de <strong>" +
+    vigencia +
+    "</strong>.";
+
+
+    setTimeout(function(){
+
+        formulario.scrollIntoView({
+
+            behavior:"smooth",
+            block:"center"
+
+        });
+
+    },200);
+
+}
+
+
+
+/* CONTINUAR AL PAGO */
+
+function continuarPago(){
+
+    const numero =
+    document.getElementById("phoneNumber")
+    .value.trim();
+
+
+    const confirmar =
+    document.getElementById("confirmNumber")
+    .value.trim();
+
+
+    /* VALIDAR RECARGA */
+
+    if(!recargaSeleccionada){
+
+        alert(
+            "Primero selecciona una recarga."
+        );
+
+        return;
+
+    }
+
+
+    /* VALIDAR NÚMERO */
+
+    if(!/^\d{10}$/.test(numero)){
+
+        alert(
+            "Ingresa un número válido de 10 dígitos."
+        );
+
+        return;
+
+    }
+
+
+    /* CONFIRMAR */
+
+    if(numero !== confirmar){
+
+        alert(
+            "Los números no coinciden."
+        );
+
+        return;
+
+    }
+
+
+    /* AQUÍ IRÍA EL PAGO */
+
+    alert(
+
+        "Vas a realizar una recarga de $" +
+
+        recargaSeleccionada.precio +
+
+        " al número " +
+
+        numero
+
+    );
+
+
+    /*
+    
+    DESPUÉS PUEDES REDIRIGIR A:
+
+    window.location.href =
+    "pago.html";
+
+    */
+
+}
+
+</script>
+
+
+</body>
+</html>
