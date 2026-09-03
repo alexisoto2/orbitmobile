@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orbit Mobile | Telefonía e Internet Móvil eSIM</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #070913;
+            --bg-card: #0e1225;
+            --cyan-glow: #00d2ff;
+            --purple-glow: #9b51e0;
+            --text-main: #ffffff;
+            --text-muted: #a0a5c0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Gradient Text Helper */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--cyan-glow), var(--purple-glow));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Header & Nav */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 8%;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--cyan-glow), var(--purple-glow));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(0, 210, 255, 0.4);
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--cyan-glow);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 8% 3rem 8%;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+        }
+
+        /* IMEI Checker Tool */
+        .imei-box {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            max-width: 600px;
+            margin: 0 auto 4rem auto;
+        }
+
+        .imei-input-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+
+        .imei-input-group input {
+            flex: 1;
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .imei-input-group input:focus {
+            border-color: var(--cyan-glow);
+        }
+
+        .btn-gradient {
+            background: linear-gradient(135deg, var(--cyan-glow), var(--purple-glow));
+            color: #fff;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-gradient:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(155, 81, 224, 0.4);
+        }
+
+        #imei-result {
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        /* Pricing Cards */
+        .plans-section {
+            padding: 4rem 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 2.5rem 1.8rem;
+            text-align: center;
+            position: relative;
+            transition: border 0.3s, transform 0.3s;
+        }
+
+        .card:hover {
+            border-color: var(--cyan-glow);
+            transform: translateY(-5px);
+        }
+
+        .card.featured {
+            border: 1px solid var(--purple-glow);
+            box-shadow: 0 0 25px rgba(155, 81, 224, 0.25);
+        }
+
+        .badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--purple-glow);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .card-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 1.5rem 0;
+        }
+
+        .card-price span {
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .features-list li {
+            margin-bottom: 0.8rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .features-list li i {
+            color: var(--cyan-glow);
+            margin-right: 8px;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 3rem 8%;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .imei-input-group { flex-direction: column; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <div class="logo-icon"><i class="fa-solid fa-planet"></i></div>
+            <span>ORBIT <span class="gradient-text">MOBILE</span></span>
+        </div>
+        <nav>
+            <a href="#compatibilidad">Compatibilidad</a>
+            <a href="#planes">Planes</a>
+            <a href="#portabilidad">Portabilidad</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Conéctate al instante con <br><span class="gradient-text">Tecnología eSIM</span></h1>
+        <p>Sin filas, sin envíos físicos. Compra, escanea tu código QR y navega en la red más rápida de México en 5 minutos.</p>
+
+        <!-- Tool: Verificador de IMEI -->
+        <div class="imei-box" id="compatibilidad">
+            <h3><i class="fa-solid fa-mobile-screen"></i> Consulta la compatibilidad de tu smartphone</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Marca *#06# en tu teléfono para obtener tu IMEI</p>
+            <div class="imei-input-group">
+                <input type="text" id="imei-input" maxlength="15" placeholder="Ingresa los 15 dígitos de tu IMEI">
+                <button class="btn-gradient" onclick="verificarIMEI()">Validar Equipo</button>
+            </div>
+            <div id="imei-result"></div>
+        </div>
+    </section>
+
+    <!-- Sección de Planes -->
+    <section class="plans-section" id="planes">
+        <h2 class="section-title">Elige tu plan <span class="gradient-text">Orbit</span></h2>
+        
+        <div class="plans-grid">
+            
+            <!-- Plan 1 -->
+            <div class="card">
+                <h3>Orbit 7 Días</h3>
+                <div class="card-price">$60 <span>MXN</span></div>
+                <ul class="features-list">
+                    <li><i class="fa-solid fa-check"></i> <b>2 GB</b> de datos alta velocidad</li>
+                    <li><i class="fa-solid fa-check"></i> Redes Sociales incluidas</li>
+                    <li><i class="fa-solid fa-check"></i> Llamadas y SMS ilimitados</li>
+                    <li><i class="fa-solid fa-check"></i> Cobertura MX, EE.UU. y CAN</li>
+                </ul>
+                <button class="btn-gradient" style="width: 100%;" onclick="comprarPlan('Orbit 7 Días', 60)">Comprar eSIM</button>
+            </div>
+
+            <!-- Plan 2 (Destacado) -->
+            <div class="card featured">
+                <div class="badge">Más Popular</div>
+                <h3>Orbit Lite</h3>
+                <div class="card-price">$149 <span>MXN / mes</span></div>
+                <ul class="features-list">
+                    <li><i class="fa-solid fa-check"></i> <b>5 GB</b> de datos alta velocidad</li>
+                    <li><i class="fa-solid fa-check"></i> Redes Sociales ilimitadas</li>
+                    <li><i class="fa-solid fa-check"></i> Llamadas y SMS ilimitados</li>
+                    <li><i class="fa-solid fa-check"></i> Cobertura MX, EE.UU. y CAN</li>
+                </ul>
+                <button class="btn-gradient" style="width: 100%;" onclick="comprarPlan('Orbit Lite', 149)">Comprar eSIM</button>
+            </div>
+
+            <!-- Plan 3 -->
+            <div class="card">
+                <h3>Orbit Pro</h3>
+                <div class="card-price">$249 <span>MXN / mes</span></div>
+                <ul class="features-list">
+                    <li><i class="fa-solid fa-check"></i> <b>20 GB</b> de datos alta velocidad</li>
+                    <li><i class="fa-solid fa-check"></i> Compartir internet (Hotspot)</li>
+                    <li><i class="fa-solid fa-check"></i> Llamadas y SMS ilimitados</li>
+                    <li><i class="fa-solid fa-check"></i> Cobertura MX, EE.UU. y CAN</li>
+                </ul>
+                <button class="btn-gradient" style="width: 100%;" onclick="comprarPlan('Orbit Pro', 249)">Comprar eSIM</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 ORBIT MOBILE S.A. DE C.V. Todos los derechos reservados.</p>
+        <p style="margin-top: 5px; font-size: 0.8rem;">Conectamos tu mundo | Ciudad Juárez, Chihuahua, México.</p>
+    </footer>
+
+    <!-- Script para interacción inicial -->
+    <script>
+        function verificarIMEI() {
+            const imei = document.getElementById('imei-input').value;
+            const resultDiv = document.getElementById('imei-result');
+
+            if (imei.length !== 15 || isNaN(imei)) {
+                resultDiv.innerHTML = '<span style="color: #ff5555;"><i class="fa-solid fa-circle-xmark"></i> Por favor ingresa un IMEI válido de 15 dígitos.</span>';
+                return;
+            }
+
+            // Simulación de respuesta de API de Interlinked
+            resultDiv.innerHTML = '<span style="color: var(--cyan-glow);"><i class="fa-solid fa-spinner fa-spin"></i> Consultando compatibilidad en la red...</span>';
+            
+            setTimeout(() => {
+                resultDiv.innerHTML = '<span style="color: #55ff55;"><i class="fa-solid fa-circle-check"></i> ¡Excelente! Tu equipo es totalmente compatible con la eSIM de Orbit Mobile.</span>';
+            }, 1200);
+        }
+
+        function comprarPlan(nombrePlan, precio) {
+            alert(`Iniciando checkout para ${nombrePlan} ($${precio} MXN).\n\nAquí tu desarrollador conectará el endpoint de cobro con Stripe o Mercado Pago.`);
+        }
+    </script>
+</body>
+</html>
