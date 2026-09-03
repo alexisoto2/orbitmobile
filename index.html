@@ -3,350 +3,1456 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orbit Mobile | La red del futuro</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <title>Orbit Mobile 5G</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
     <style>
-        :root {
-            --orbit-blue: #00d2ff;
-            --orbit-purple: #9b51e0;
-            --orbit-gradient: linear-gradient(135deg, #00d2ff, #9b51e0);
-            --orbit-gradient-soft: linear-gradient(135deg, rgba(0, 210, 255, 0.12), rgba(155, 81, 224, 0.12));
-            --orbit-dark: #070913;
-            --top-navy: #0b1128;
-            --gray-border: #e0e6ed;
-            --text-dark: #1e293b;
-            --text-muted: #64748b;
+
+        :root{
+            --blue:#0b4f8a;
+            --blue-dark:#073865;
+            --blue-light:#eaf4fc;
+            --navy:#123f70;
+            --text:#294b6b;
+            --gray:#f5f5f5;
+            --border:#e4e4e4;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background-color: #ffffff; color: var(--text-dark); line-height: 1.5; }
-
-        /* Estilo unificado para figuras orbitales */
-        .orbit-shape {
-            background: var(--orbit-gradient);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
         }
 
-        /* --- 1. BARRA SUPERIOR --- */
-        .top-bar {
-            background-color: var(--top-navy);
-            color: #fff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 8%;
-            font-size: 0.85rem;
-            height: 40px;
+        body{
+            background:#fff;
+            color:var(--text);
         }
 
-        .top-bar-left { display: flex; gap: 2px; height: 100%; }
-        .tab-btn {
-            padding: 0 1.2rem;
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: #a0a5c0;
-            font-weight: 600;
-            height: 100%;
-        }
-        .tab-btn.active {
-            background-color: #172042;
-            color: var(--orbit-blue);
-            border-bottom: 3px solid var(--orbit-blue);
+        a{
+            text-decoration:none;
+            color:inherit;
         }
 
-        .top-bar-right { display: flex; gap: 1.5rem; align-items: center; }
-        .top-bar-right a { color: #fff; text-decoration: none; font-size: 0.85rem; display: flex; align-items: center; gap: 5px; }
+        /* =====================================
+           BARRA SUPERIOR
+        ===================================== */
 
-        /* --- 2. HEADER PRINCIPAL --- */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 8%;
-            border-bottom: 1px solid var(--gray-border);
-            background: #fff;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+        .topbar{
+            height:44px;
+            background:var(--blue);
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            padding:0 5%;
+            color:white;
         }
 
-        .logo { font-size: 1.6rem; font-weight: 800; color: #0b1128; display: flex; align-items: center; gap: 10px; text-decoration: none; }
-        .logo-icon { width: 35px; height: 35px; font-size: 1.1rem; }
-        .gradient-text { background: var(--orbit-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-        .main-nav { display: flex; align-items: center; gap: 1.5rem; }
-        .main-nav a { color: var(--text-dark); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
-        
-        .btn-mi-orbit {
-            background: var(--orbit-gradient);
-            color: #fff;
-            padding: 0.5rem 1.4rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: 0 4px 12px rgba(155, 81, 224, 0.3);
+        .top-tabs{
+            display:flex;
+            height:100%;
         }
 
-        /* --- 3. BANNER Y SLIDER --- */
-        .hero-banner {
-            position: relative;
-            width: 100%;
-            max-width: 1200px;
-            margin: 1.5rem auto;
-            padding: 0 20px;
+        .top-tab{
+            padding:0 22px;
+            display:flex;
+            align-items:center;
+            font-size:14px;
+            font-weight:bold;
+            letter-spacing:.3px;
         }
 
-        .banner-wrapper {
-            position: relative;
-            width: 100%;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        .top-tab.active{
+            background:white;
+            color:var(--blue);
         }
 
-        .banner-img { width: 100%; height: auto; display: block; object-fit: cover; }
-        .banner-link { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 10; }
-
-        .arrow-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 44px;
-            height: 44px;
-            cursor: pointer;
-            z-index: 20;
-            border: 2px solid #fff;
+        .top-right{
+            display:flex;
+            align-items:center;
+            gap:25px;
+            font-size:14px;
         }
 
-        .arrow-btn:hover { transform: translateY(-50%) scale(1.1); }
-        .arrow-btn.left { left: 35px; }
-        .arrow-btn.right { right: 35px; }
-
-        .slider-dots {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-            margin-top: 1rem;
+        .top-right a{
+            color:white;
+            font-weight:500;
         }
 
-        .dot-btn {
-            width: 32px;
-            height: 32px;
-            border: 1px solid var(--gray-border);
-            background: #fff;
-            color: var(--text-dark);
-            font-size: 0.8rem;
-            font-weight: 700;
-            cursor: pointer;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
+        /* =====================================
+           HEADER PRINCIPAL
+        ===================================== */
+
+        .main-header{
+            min-height:65px;
+            display:flex;
+            align-items:center;
+            padding:0 5%;
+            background:white;
+            box-shadow:0 2px 8px rgba(0,0,0,.08);
+            position:relative;
+            z-index:10;
         }
 
-        .dot-btn.active {
-            background: var(--orbit-gradient);
-            color: #fff;
-            border: none;
-            box-shadow: 0 2px 8px rgba(0, 210, 255, 0.4);
+        .logo{
+            min-width:135px;
+            font-size:27px;
+            font-weight:800;
+            font-style:italic;
+            color:var(--blue);
+            letter-spacing:-1px;
         }
 
-        /* --- 4. ACCIONES RÁPIDAS (FIGURAS IDENTICAS) --- */
-        .quick-actions { padding: 4rem 8%; text-align: center; background-color: #f8fafc; }
-        .quick-actions h2 { font-size: 1.8rem; margin-bottom: 2.5rem; color: #0b1128; }
-
-        .actions-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
+        .menu-btn{
+            display:flex;
+            align-items:center;
+            gap:8px;
+            margin-left:30px;
+            color:#4c4c4c;
+            font-size:16px;
         }
 
-        .action-card {
-            background: #fff;
-            padding: 2.5rem 1.5rem;
-            border-radius: 20px;
-            text-decoration: none;
-            color: var(--text-dark);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            border: 1px solid var(--gray-border);
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .header-spacer{
+            flex:1;
         }
 
-        .action-card .icon-circle {
-            width: 70px;
-            height: 70px;
-            font-size: 1.6rem;
-            margin-bottom: 1.2rem;
+        .header-links{
+            display:flex;
+            align-items:center;
+            gap:27px;
+            margin-right:25px;
+            font-weight:600;
+            font-size:15px;
+            color:#34506d;
         }
 
-        .action-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--orbit-blue);
-            box-shadow: 0 12px 25px rgba(0, 210, 255, 0.15);
+        .header-links i{
+            color:var(--blue);
+            font-size:18px;
         }
 
-        .action-card:hover .icon-circle {
-            transform: rotate(15deg) scale(1.05);
+        .search-box{
+            width:220px;
+            height:35px;
+            border-radius:20px;
+            background:#f0f2f4;
+            display:flex;
+            align-items:center;
+            padding:0 15px;
+            margin-right:20px;
         }
 
-        .action-card h3 { font-size: 1.05rem; font-weight: 700; color: #0b1128; }
-
-        /* --- 5. VERIFICADOR DE COMPATIBILIDAD --- */
-        .imei-section { padding: 4rem 8%; text-align: center; }
-        .imei-container {
-            max-width: 650px;
-            margin: 0 auto;
-            background: #fff;
-            border: 1px solid var(--gray-border);
-            padding: 2.5rem;
-            border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-            position: relative;
+        .search-box input{
+            border:none;
+            outline:none;
+            background:transparent;
+            width:100%;
+            color:#555;
         }
 
-        .imei-badge {
-            width: 50px;
-            height: 50px;
-            margin: 0 auto 1rem auto;
-            font-size: 1.3rem;
+        .mi-orbit{
+            display:flex;
+            align-items:center;
+            gap:10px;
+            font-weight:bold;
+            color:var(--blue);
         }
 
-        .imei-input-box { display: flex; gap: 10px; margin-top: 1.5rem; }
-        .imei-input-box input {
-            flex: 1;
-            padding: 0.9rem 1.2rem;
-            border-radius: 50px;
-            border: 1px solid var(--gray-border);
-            font-size: 1rem;
-            outline: none;
-        }
-        .imei-input-box input:focus { border-color: var(--orbit-blue); }
-
-        .btn-orbit-action {
-            background: var(--orbit-gradient);
-            color: #fff;
-            border: none;
-            padding: 0.9rem 2rem;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 210, 255, 0.3);
-            transition: transform 0.2s;
-        }
-        .btn-orbit-action:hover { transform: scale(1.03); }
-
-        /* --- 6. BASE LEGAL --- */
-        .legal-dropdown-section { max-width: 1200px; margin: 2rem auto 3rem auto; padding: 0 8%; }
-        .legal-dropdown {
-            width: 100%;
-            background: #ffffff;
-            border: 1px solid var(--gray-border);
-            border-radius: 12px;
-            padding: 1.2rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            font-weight: 700;
-            color: #0b1128;
+        .user-icon{
+            width:38px;
+            height:38px;
+            border-radius:50%;
+            background:#1c7ca8;
+            color:white;
+            display:flex;
+            align-items:center;
+            justify-content:center;
         }
 
-        /* --- 7. FOOTER --- */
-        .site-footer { background-color: #f4f6f9; border-top: 1px solid var(--gray-border); padding-top: 3rem; }
-        .footer-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 8%;
-            display: grid;
-            grid-template-columns: 180px repeat(4, 1fr) 260px;
-            gap: 1.5rem;
+
+        /* =====================================
+           HERO / BANNER
+        ===================================== */
+
+        .hero-section{
+            width:100%;
+            background:#f3f3f3;
+            padding:0 0 20px;
         }
 
-        .footer-logo { font-size: 1.5rem; font-weight: 800; color: #0b1128; text-decoration: none; display: flex; align-items: center; gap: 8px; margin-bottom: 1rem; }
-        .pill-btn { display: block; text-align: center; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.82rem; font-weight: 700; text-decoration: none; margin-bottom: 0.5rem; }
-        .pill-btn.primary { background-color: #dbeafe; color: #0284c7; }
-        .pill-btn.secondary { background-color: #ffffff; color: #475569; border: 1px solid #cbd5e1; }
-
-        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.9rem; }
-        .footer-col ul a { color: #0072ce; text-decoration: none; font-weight: 700; font-size: 0.88rem; }
-
-        .footer-apps h4 { font-size: 0.95rem; font-weight: 700; color: #1e293b; margin-bottom: 1rem; text-align: center; }
-        .app-badges { display: flex; flex-direction: column; gap: 0.5rem; align-items: center; margin-bottom: 1.5rem; }
-        .badge-btn { background-color: #000; color: #fff; width: 140px; padding: 0.4rem 0.6rem; border-radius: 8px; text-decoration: none; display: flex; align-items: center; gap: 8px; font-size: 0.65rem; }
-
-        .social-icons { display: flex; gap: 0.8rem; justify-content: center; }
-        .social-icon-btn { width: 36px; height: 36px; font-size: 0.9rem; text-decoration: none; }
-
-        .scroll-top-btn { position: fixed; bottom: 30px; right: 25px; width: 48px; height: 48px; font-size: 1.1rem; text-decoration: none; z-index: 90; }
-
-        /* --- 8. COPYRIGHT --- */
-        .footer-bottom-bar {
-            background-color: #002b66;
-            color: #ffffff;
-            padding: 1.2rem 8%;
-            font-size: 0.82rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
+        .hero-container{
+            position:relative;
+            width:100%;
+            overflow:hidden;
         }
-        .bottom-links a { color: #ffffff; text-decoration: none; margin-left: 1.5rem; font-weight: 600; }
 
-        @media (max-width: 992px) {
-            .footer-container { grid-template-columns: repeat(2, 1fr); }
-            .footer-apps { grid-column: span 2; }
+        .banner{
+            width:100%;
+            height:267px;
+            position:relative;
+            overflow:hidden;
+            background:
+                linear-gradient(90deg,
+                #739bc0,
+                #b8c8d9 45%,
+                #5c88b0);
         }
+
+        .banner img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            display:block;
+        }
+
+        /* Fondo en caso de no usar imagen */
+        .banner-content{
+            height:100%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            position:relative;
+            padding:20px 15%;
+        }
+
+        .banner-person{
+            position:absolute;
+            left:12%;
+            bottom:0;
+            font-size:150px;
+            color:rgba(255,255,255,.25);
+        }
+
+        .banner-box{
+            width:650px;
+            max-width:80%;
+            background:#143f78;
+            border:4px solid #d4ecf8;
+            border-radius:25px;
+            padding:12px 30px 20px;
+            text-align:center;
+            color:white;
+            box-shadow:0 5px 15px rgba(0,0,0,.15);
+        }
+
+        .banner-box h1{
+            font-size:39px;
+            line-height:1.1;
+            margin-bottom:5px;
+            font-weight:800;
+        }
+
+        .banner-box p{
+            font-size:25px;
+            color:#8fd1f1;
+            line-height:1.2;
+        }
+
+        .banner-box strong{
+            color:white;
+        }
+
+        .banner-button{
+            margin-top:18px;
+            display:inline-block;
+            padding:7px 20px;
+            border-radius:25px;
+            background:#204a82;
+            border:2px solid #74c9e9;
+            color:white;
+            font-size:22px;
+            font-weight:bold;
+            box-shadow:0 0 8px rgba(86,208,255,.8);
+        }
+
+        .arrow{
+            position:absolute;
+            top:50%;
+            transform:translateY(-50%);
+            width:42px;
+            height:42px;
+            background:white;
+            border-radius:6px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            color:var(--blue);
+            cursor:pointer;
+            z-index:5;
+            box-shadow:0 3px 10px rgba(0,0,0,.15);
+            border:none;
+            font-size:20px;
+        }
+
+        .arrow.left{
+            left:27px;
+        }
+
+        .arrow.right{
+            right:27px;
+        }
+
+
+        /* =====================================
+           INDICADORES SLIDER
+        ===================================== */
+
+        .slider-controls{
+            height:75px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            gap:22px;
+            background:#f6f6f6;
+        }
+
+        .play-button{
+            width:19px;
+            height:19px;
+            border:1px solid var(--blue);
+            border-radius:50%;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            color:var(--blue);
+            font-size:8px;
+        }
+
+        .separator{
+            height:25px;
+            width:1px;
+            background:#d5d5d5;
+        }
+
+        .slide-number{
+            width:22px;
+            height:22px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-size:13px;
+            font-weight:bold;
+            color:#315778;
+            cursor:pointer;
+        }
+
+        .slide-number.active{
+            border-radius:50%;
+            background:#e2eaf0;
+        }
+
+
+        /* =====================================
+           ACCIONES RAPIDAS
+        ===================================== */
+
+        .quick-section{
+            background:#f4f4f4;
+            border-top:1px solid #ececec;
+            padding:25px 12% 15px;
+        }
+
+        .quick-wrapper{
+            max-width:1000px;
+            margin:auto;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+        }
+
+        .quick-title{
+            font-size:26px;
+            font-weight:bold;
+            color:#254b70;
+            white-space:nowrap;
+        }
+
+        .quick-actions{
+            display:flex;
+            justify-content:space-between;
+            width:70%;
+            gap:25px;
+        }
+
+        .quick-action{
+            min-width:130px;
+            text-align:center;
+            color:#24527d;
+            cursor:pointer;
+        }
+
+        .quick-action i{
+            display:block;
+            font-size:35px;
+            margin-bottom:12px;
+            font-weight:300;
+        }
+
+        .quick-action span{
+            font-size:14px;
+            font-weight:bold;
+        }
+
+        .quick-action:hover{
+            color:#0072ce;
+        }
+
+
+        /* =====================================
+           SECCIÓN IMEI
+        ===================================== */
+
+        .imei-section{
+            padding:65px 20px;
+            text-align:center;
+        }
+
+        .imei-box{
+            max-width:650px;
+            margin:auto;
+            border:1px solid #ddd;
+            border-radius:12px;
+            padding:30px;
+            box-shadow:0 5px 20px rgba(0,0,0,.06);
+        }
+
+        .imei-box h2{
+            color:var(--blue);
+            margin-bottom:10px;
+        }
+
+        .imei-box p{
+            color:#777;
+            margin-bottom:20px;
+        }
+
+        .imei-form{
+            display:flex;
+            gap:10px;
+        }
+
+        .imei-form input{
+            flex:1;
+            height:48px;
+            border:1px solid #ccc;
+            border-radius:7px;
+            padding:0 15px;
+            font-size:16px;
+        }
+
+        .imei-form button{
+            border:none;
+            background:var(--blue);
+            color:white;
+            border-radius:7px;
+            padding:0 25px;
+            font-weight:bold;
+            cursor:pointer;
+        }
+
+
+        /* =====================================
+           FOOTER
+        ===================================== */
+
+        footer{
+            background:#f4f6f8;
+            border-top:1px solid #ddd;
+            padding-top:40px;
+        }
+
+        .footer-content{
+            max-width:1200px;
+            margin:auto;
+            padding:0 30px 40px;
+            display:grid;
+            grid-template-columns:repeat(4,1fr);
+            gap:30px;
+        }
+
+        .footer-col h3{
+            color:var(--blue);
+            margin-bottom:15px;
+            font-size:16px;
+        }
+
+        .footer-col a{
+            display:block;
+            color:#4b6680;
+            margin-bottom:10px;
+            font-size:14px;
+        }
+
+        .footer-bottom{
+            background:#073865;
+            color:white;
+            text-align:center;
+            padding:18px;
+            font-size:13px;
+        }
+
+
+        /* =====================================
+           RESPONSIVE
+        ===================================== */
+
+        @media(max-width:1000px){
+
+            .top-right,
+            .header-links,
+            .search-box{
+                display:none;
+            }
+
+            .main-header{
+                justify-content:space-between;
+            }
+
+            .header-spacer{
+                display:none;
+            }
+
+            .quick-wrapper{
+                flex-direction:column;
+                gap:30px;
+            }
+
+            .quick-actions{
+                width:100%;
+            }
+
+            .banner-box h1{
+                font-size:28px;
+            }
+
+            .banner-box p{
+                font-size:18px;
+            }
+
+        }
+
+
+        @media(max-width:650px){
+
+            .topbar{
+                padding:0;
+            }
+
+            .top-tab{
+                padding:0 15px;
+            }
+
+            .logo{
+                font-size:22px;
+            }
+
+            .menu-btn{
+                margin-left:10px;
+            }
+
+            .banner{
+                height:300px;
+            }
+
+            .banner-box{
+                max-width:95%;
+                padding:15px;
+            }
+
+            .banner-box h1{
+                font-size:24px;
+            }
+
+            .banner-box p{
+                font-size:16px;
+            }
+
+            .quick-actions{
+                display:grid;
+                grid-template-columns:1fr 1fr;
+            }
+
+            .footer-content{
+                grid-template-columns:1fr 1fr;
+            }
+
+            .imei-form{
+                flex-direction:column;
+            }
+
+            .imei-form button{
+                height:48px;
+            }
+
+        }
+
     </style>
 </head>
+
+
 <body>
 
-    <div class="top-bar">
-        <div class="top-bar-left">
-            <a href="#" class="tab-btn active">PERSONAS</a>
-            <a href="#" class="tab-btn">EMPRESAS</a>
-        </div>
-        <div class="top-bar-right">
-            <a href="#"><i class="fa-solid fa-location-dot"></i> Chihuahua</a>
-            <a href="portabilidad.html"><i class="fa-solid fa-arrow-right-arrows"></i> Portabilidad</a>
-            <a href="#"><i class="fa-solid fa-headset"></i> Ayuda</a>
-        </div>
+
+<!-- =====================================
+     BARRA SUPERIOR
+===================================== -->
+
+<div class="topbar">
+
+    <div class="top-tabs">
+
+        <a href="#" class="top-tab active">
+            PERSONAS
+        </a>
+
+        <a href="#" class="top-tab">
+            EMPRESAS
+        </a>
+
     </div>
 
-    <header>
-        <a href="index.html" class="logo">
-            <div class="orbit-shape logo-icon"><i class="fa-solid fa-planet"></i></div>
-            ORBIT <span class="gradient-text">MOBILE</span>
-        </a>
-        <nav class="main-nav">
-            <a href="#compatibilidad">eSIM</a>
-            <a href="planes.html">Paquetes y Recargas</a>
-            <a href="planes.html">Planes</a>
-            <a href="portabilidad.html">Cámbiate a Orbit</a>
-            <a href="#" class="btn-mi-orbit"><i class="fa-solid fa-user"></i> Mi Orbit</a>
-        </nav>
-    </header>
 
-    <section class="hero-banner">
-        <div class="orbit-shape arrow-btn left"><i class="fa-solid fa-chevron-left"></i></div>
-        
-        <div class="banner-wrapper">
-            <img src="home-registro-julio-2026-v1-bne.avif" alt="¿Ya registraste tu línea?" class="
+    <div class="top-right">
+
+        <a href="#">
+            <i class="fa-solid fa-store"></i>
+            Orbit Shop
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-plane"></i>
+            Viaja con Orbit
+        </a>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="main-header">
+
+    <a href="index.html" class="logo">
+        orbit
+    </a>
+
+
+    <a href="#" class="menu-btn">
+
+        Menú
+
+        <i class="fa-solid fa-caret-down"></i>
+
+    </a>
+
+
+    <div class="header-spacer"></div>
+
+
+    <nav class="header-links">
+
+        <a href="planes.html">
+
+            <i class="fa-solid fa-bolt"></i>
+            Paquetes
+
+        </a>
+
+
+        <a href="#">
+
+            <i class="fa-solid fa-location-dot"></i>
+            Chihuahua
+
+        </a>
+
+
+        <a href="#">
+
+            <i class="fa-solid fa-bag-shopping"></i>
+            Tienda en línea
+
+        </a>
+
+
+        <a href="portabilidad.html">
+
+            <i class="fa-solid fa-dollar-sign"></i>
+            Recargas
+
+        </a>
+
+    </nav>
+
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            placeholder="Buscar..."
+        >
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+    </div>
+
+
+    <a href="#" class="mi-orbit">
+
+        <div class="user-icon">
+            <i class="fa-solid fa-user"></i>
+        </div>
+
+        Mi Orbit
+
+    </a>
+
+</header>
+
+
+
+<!-- =====================================
+     BANNER
+===================================== -->
+
+<section class="hero-section">
+
+
+    <div class="hero-container">
+
+
+        <button class="arrow left" onclick="previousSlide()">
+
+            <i class="fa-solid fa-chevron-left"></i>
+
+        </button>
+
+
+        <div class="banner">
+
+
+            <!--
+            SI QUIERES USAR TU IMAGEN:
+            
+            <img
+            id="bannerImage"
+            src="home-registro-julio-2026-v1-bne.avif"
+            alt="Banner Orbit Mobile">
+            -->
+
+
+            <div class="banner-content">
+
+                <div class="banner-person">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                </div>
+
+
+                <div class="banner-box">
+
+                    <h1 id="bannerTitle">
+                        ¿Ya registraste tu línea?
+                    </h1>
+
+
+                    <p id="bannerText">
+
+                        Recuerda que por disposición oficial debes realizar
+                        el registro de tu línea móvil.
+
+                    </p>
+
+
+                    <a
+                        href="#compatibilidad"
+                        class="banner-button"
+                        id="bannerButton"
+                    >
+                        Conoce más
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <button class="arrow right" onclick="nextSlide()">
+
+            <i class="fa-solid fa-chevron-right"></i>
+
+        </button>
+
+
+    </div>
+
+
+
+    <!-- INDICADORES -->
+
+    <div class="slider-controls">
+
+
+        <button
+            class="play-button"
+            id="playButton"
+            onclick="toggleAutoplay()"
+        >
+
+            <i class="fa-solid fa-pause"></i>
+
+        </button>
+
+
+        <div class="separator"></div>
+
+
+        <div
+            class="slide-number active"
+            onclick="goToSlide(0)"
+        >
+            1
+        </div>
+
+
+        <div
+            class="slide-number"
+            onclick="goToSlide(1)"
+        >
+            2
+        </div>
+
+
+        <div
+            class="slide-number"
+            onclick="goToSlide(2)"
+        >
+            3
+        </div>
+
+
+        <div
+            class="slide-number"
+            onclick="goToSlide(3)"
+        >
+            4
+        </div>
+
+
+        <div
+            class="slide-number"
+            onclick="goToSlide(4)"
+        >
+            5
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================
+     ACCIONES RÁPIDAS
+===================================== -->
+
+<section class="quick-section">
+
+
+    <div class="quick-wrapper">
+
+
+        <h2 class="quick-title">
+
+            ¿Qué quieres hacer?
+
+        </h2>
+
+
+
+        <div class="quick-actions">
+
+
+            <a
+                href="planes.html"
+                class="quick-action"
+            >
+
+                <i class="fa-solid fa-hand-holding-dollar"></i>
+
+                <span>
+                    Paquetes y Recargas
+                </span>
+
+            </a>
+
+
+
+            <a
+                href="#"
+                class="quick-action"
+            >
+
+                <i class="fa-regular fa-file-lines"></i>
+
+                <span>
+                    Paga tu factura
+                </span>
+
+            </a>
+
+
+
+            <a
+                href="planes.html"
+                class="quick-action"
+            >
+
+                <i class="fa-solid fa-mobile-screen-button"></i>
+
+                <span>
+                    Planes de renta
+                </span>
+
+            </a>
+
+
+
+            <a
+                href="#"
+                class="quick-action"
+            >
+
+                <i class="fa-solid fa-earth-americas"></i>
+
+                <span>
+                    Viajero Internacional
+                </span>
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================
+     COMPATIBILIDAD eSIM
+===================================== -->
+
+<section
+    class="imei-section"
+    id="compatibilidad"
+>
+
+
+    <div class="imei-box">
+
+
+        <h2>
+            Consulta tu compatibilidad eSIM
+        </h2>
+
+
+        <p>
+            Ingresa los 15 dígitos de tu IMEI.
+            Puedes obtenerlo marcando *#06#.
+        </p>
+
+
+        <div class="imei-form">
+
+
+            <input
+                type="text"
+                id="imei"
+                maxlength="15"
+                placeholder="Ej. 356789012345678"
+            >
+
+
+            <button onclick="validarIMEI()">
+
+                Consultar
+
+            </button>
+
+
+        </div>
+
+
+        <div
+            id="resultado"
+            style="margin-top:20px;font-weight:bold;"
+        ></div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================
+     FOOTER
+===================================== -->
+
+<footer>
+
+
+    <div class="footer-content">
+
+
+        <div class="footer-col">
+
+            <h3>
+                Orbit Mobile
+            </h3>
+
+            <a href="#">
+                Conoce Orbit
+            </a>
+
+            <a href="#">
+                Tienda en línea
+            </a>
+
+            <a href="#">
+                Promociones
+            </a>
+
+        </div>
+
+
+
+        <div class="footer-col">
+
+            <h3>
+                Servicios
+            </h3>
+
+            <a href="planes.html">
+                Paquetes y Recargas
+            </a>
+
+            <a href="#">
+                Planes de renta
+            </a>
+
+            <a href="#compatibilidad">
+                eSIM
+            </a>
+
+        </div>
+
+
+
+        <div class="footer-col">
+
+            <h3>
+                Ayuda
+            </h3>
+
+            <a href="#">
+                Preguntas frecuentes
+            </a>
+
+            <a href="#">
+                Soporte
+            </a>
+
+            <a href="#">
+                Contáctanos
+            </a>
+
+        </div>
+
+
+
+        <div class="footer-col">
+
+            <h3>
+                Síguenos
+            </h3>
+
+            <a href="#">
+                <i class="fa-brands fa-facebook"></i>
+                Facebook
+            </a>
+
+            <a href="#">
+                <i class="fa-brands fa-instagram"></i>
+                Instagram
+            </a>
+
+            <a href="#">
+                <i class="fa-brands fa-tiktok"></i>
+                TikTok
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="footer-bottom">
+
+        © 2026 ORBIT MOBILE.
+        Todos los derechos reservados.
+
+    </div>
+
+
+</footer>
+
+
+
+<script>
+
+
+/* =====================================
+   DATOS DEL CARRUSEL
+===================================== */
+
+const slides = [
+
+    {
+        title:
+        "¿Ya registraste tu línea?",
+
+        text:
+        "Recuerda que por disposición oficial debes realizar el registro de tu línea móvil.",
+
+        button:
+        "Conoce más",
+
+        link:
+        "#compatibilidad"
+    },
+
+
+    {
+        title:
+        "Paquetes para todos",
+
+        text:
+        "Elige el paquete que más se adapte a tu forma de navegar.",
+
+        button:
+        "Ver paquetes",
+
+        link:
+        "planes.html"
+    },
+
+
+    {
+        title:
+        "Conoce nuestros planes",
+
+        text:
+        "Disfruta más datos, llamadas y beneficios con Orbit Mobile.",
+
+        button:
+        "Ver planes",
+
+        link:
+        "planes.html"
+    },
+
+
+    {
+        title:
+        "Cámbiate a Orbit",
+
+        text:
+        "Conserva tu número y disfruta una nueva experiencia móvil.",
+
+        button:
+        "Iniciar portabilidad",
+
+        link:
+        "portabilidad.html"
+    },
+
+
+    {
+        title:
+        "Activa tu eSIM",
+
+        text:
+        "Disfruta una experiencia completamente digital con Orbit Mobile.",
+
+        button:
+        "Conocer eSIM",
+
+        link:
+        "#compatibilidad"
+    }
+
+];
+
+
+let currentSlide = 0;
+
+let autoplay = true;
+
+let interval;
+
+
+
+/* =====================================
+   MOSTRAR SLIDE
+===================================== */
+
+function showSlide(index){
+
+    if(index < 0){
+        index = slides.length - 1;
+    }
+
+
+    if(index >= slides.length){
+        index = 0;
+    }
+
+
+    currentSlide = index;
+
+
+    const slide = slides[currentSlide];
+
+
+    document.getElementById("bannerTitle").textContent =
+        slide.title;
+
+
+    document.getElementById("bannerText").textContent =
+        slide.text;
+
+
+    const button =
+        document.getElementById("bannerButton");
+
+
+    button.textContent =
+        slide.button;
+
+
+    button.href =
+        slide.link;
+
+
+
+    const numbers =
+        document.querySelectorAll(".slide-number");
+
+
+    numbers.forEach((number,index)=>{
+
+        number.classList.remove("active");
+
+
+        if(index === currentSlide){
+
+            number.classList.add("active");
+
+        }
+
+    });
+
+}
+
+
+
+/* =====================================
+   SIGUIENTE
+===================================== */
+
+function nextSlide(){
+
+    showSlide(currentSlide + 1);
+
+    restartAutoplay();
+
+}
+
+
+
+/* =====================================
+   ANTERIOR
+===================================== */
+
+function previousSlide(){
+
+    showSlide(currentSlide - 1);
+
+    restartAutoplay();
+
+}
+
+
+
+/* =====================================
+   IR A SLIDE
+===================================== */
+
+function goToSlide(index){
+
+    showSlide(index);
+
+    restartAutoplay();
+
+}
+
+
+
+/* =====================================
+   AUTOPLAY
+===================================== */
+
+function startAutoplay(){
+
+    clearInterval(interval);
+
+
+    if(!autoplay){
+        return;
+    }
+
+
+    interval =
+    setInterval(()=>{
+
+        nextSlide();
+
+    },5000);
+
+}
+
+
+
+/* =====================================
+   REINICIAR
+===================================== */
+
+function restartAutoplay(){
+
+    if(autoplay){
+
+        startAutoplay();
+
+    }
+
+}
+
+
+
+/* =====================================
+   PAUSA
+===================================== */
+
+function toggleAutoplay(){
+
+    const button =
+        document.getElementById("playButton");
+
+
+    autoplay = !autoplay;
+
+
+    if(autoplay){
+
+        button.innerHTML =
+        '<i class="fa-solid fa-pause"></i>';
+
+
+        startAutoplay();
+
+    }else{
+
+        button.innerHTML =
+        '<i class="fa-solid fa-play"></i>';
+
+
+        clearInterval(interval);
+
+    }
+
+}
+
+
+
+/* =====================================
+   VALIDAR IMEI
+===================================== */
+
+function validarIMEI(){
+
+    const imei =
+        document.getElementById("imei").value;
+
+
+    const resultado =
+        document.getElementById("resultado");
+
+
+    if(!/^\d{15}$/.test(imei)){
+
+        resultado.innerHTML =
+        "<span style='color:#d62828;'>⚠ Ingresa un IMEI válido de 15 dígitos.</span>";
+
+        return;
+
+    }
+
+
+    resultado.innerHTML =
+    "<span style='color:#0b4f8a;'>Verificando equipo...</span>";
+
+
+
+    setTimeout(()=>{
+
+        resultado.innerHTML =
+        "<span style='color:#14804a;'>✓ Tu dispositivo es compatible con eSIM Orbit Mobile.</span>";
+
+    },1200);
+
+}
+
+
+
+/* INICIAR */
+
+showSlide(0);
+
+startAutoplay();
+
+
+</script>
+
+
+</body>
+</html>
