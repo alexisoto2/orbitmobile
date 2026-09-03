@@ -82,31 +82,92 @@
             gap: 6px;
         }
 
-        /* --- 3. CARROUSEL BANNER PRINCIPAL --- */
+        /* --- 3. CARROUSEL BANNER IMAGEN --- */
         .hero-banner {
-            background: linear-gradient(135deg, #0d1b3e 0%, #1a0b2e 100%);
-            color: #fff;
-            padding: 4rem 8%;
             position: relative;
-            min-height: 380px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 1.5rem auto;
+            padding: 0 20px;
+        }
+
+        .banner-wrapper {
+            position: relative;
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .banner-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .banner-link {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+        }
+
+        .arrow-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #ffffff;
+            color: #0b1128;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            z-index: 20;
+            transition: transform 0.2s, background-color 0.2s;
         }
 
-        .banner-content {
-            max-width: 700px;
-            border: 2px solid var(--orbit-blue);
-            border-radius: 24px;
-            padding: 2.5rem;
-            background: rgba(11, 17, 40, 0.7);
-            backdrop-filter: blur(8px);
-            margin: 0 auto;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 210, 255, 0.2);
+        .arrow-btn:hover {
+            transform: translateY(-50%) scale(1.08);
+            background: #f1f5f9;
         }
 
-        .banner-content h1 { font-size: 2.2rem; margin-bottom: 1rem; }
-        .banner-content p { font-size: 1.1rem; color: #cbd5e1; margin-bottom: 1.5rem; }
+        .arrow-btn.left { left: 35px; }
+        .arrow-btn.right { right: 35px; }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-top: 1rem;
+        }
+
+        .dot-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 1px solid var(--gray-border);
+            background: #fff;
+            color: var(--text-dark);
+            font-size: 0.8rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dot-btn.active {
+            background: var(--orbit-blue);
+            color: #fff;
+            border-color: var(--orbit-blue);
+        }
 
         .btn-banner {
             background: var(--orbit-blue);
@@ -120,24 +181,6 @@
             text-decoration: none;
             display: inline-block;
         }
-
-        .arrow-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: #fff;
-            color: #0b1128;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-        .arrow-btn.left { left: 4%; }
-        .arrow-btn.right { right: 4%; }
 
         /* --- 4. ACCIONES RÁPIDAS (¿QUÉ QUIERES HACER?) --- */
         .quick-actions { padding: 4rem 8%; text-align: center; background-color: var(--gray-light); }
@@ -222,17 +265,26 @@
         </nav>
     </header>
 
-    <!-- 3. Banner Principal Estilo Telcel -->
+    <!-- 3. Banner Principal con Imagen -->
     <section class="hero-banner">
         <div class="arrow-btn left"><i class="fa-solid fa-chevron-left"></i></div>
         
-        <div class="banner-content">
-            <h1>¿Ya vinculaste tu línea?</h1>
-            <p>Recuerda que por disposición oficial y regulatoria debes realizar la identificación de tu número celular.</p>
-            <a href="#compatibilidad" class="btn-banner">Conoce más</a>
+        <div class="banner-wrapper">
+            <img src="home-registro-julio-2026-v1-bne.avif" alt="¿Ya registraste tu línea?" class="banner-img">
+            <a href="#compatibilidad" class="banner-link" title="Conoce más sobre el registro de línea"></a>
         </div>
 
         <div class="arrow-btn right"><i class="fa-solid fa-chevron-right"></i></div>
+
+        <!-- Indicadores numerados del Slider -->
+        <div class="slider-dots">
+            <button class="dot-btn"><i class="fa-solid fa-pause" style="font-size: 0.7rem;"></i></button>
+            <button class="dot-btn active">1</button>
+            <button class="dot-btn">2</button>
+            <button class="dot-btn">3</button>
+            <button class="dot-btn">4</button>
+            <button class="dot-btn">5</button>
+        </div>
     </section>
 
     <!-- 4. Sección "¿Qué quieres hacer?" -->
