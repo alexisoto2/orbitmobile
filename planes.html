@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Portabilidad | Orbit Mobile</title>
+    <title>Planes | Orbit Mobile</title>
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -21,7 +21,6 @@
             --gray:#f5f5f5;
             --border:#e4e4e4;
             --green:#14804a;
-            --red:#d62828;
         }
 
         *{
@@ -144,6 +143,10 @@
             font-size:18px;
         }
 
+        .header-links a.active{
+            color:var(--blue);
+        }
+
         .search-box{
             width:220px;
             height:35px;
@@ -185,10 +188,10 @@
 
 
         /* =====================================
-           HERO PORTABILIDAD
+           HERO PLANES
         ===================================== */
 
-        .hero{
+        .plans-hero{
             position:relative;
             overflow:hidden;
             background:
@@ -196,36 +199,36 @@
                     120deg,
                     #073865,
                     #0b4f8a 55%,
-                    #1d82b5
+                    #1b79ad
                 );
 
             color:white;
             padding:75px 8%;
         }
 
-        .hero::before{
+        .plans-hero::before{
             content:"";
             position:absolute;
-            width:430px;
-            height:430px;
-            border:70px solid rgba(255,255,255,.06);
+            width:450px;
+            height:450px;
             border-radius:50%;
+            border:80px solid rgba(255,255,255,.06);
             right:-150px;
-            top:-190px;
+            top:-180px;
         }
 
-        .hero::after{
+        .plans-hero::after{
             content:"";
             position:absolute;
-            width:270px;
-            height:270px;
-            background:rgba(255,255,255,.04);
+            width:300px;
+            height:300px;
             border-radius:50%;
+            background:rgba(255,255,255,.04);
             left:-100px;
-            bottom:-150px;
+            bottom:-160px;
         }
 
-        .hero-container{
+        .hero-content{
             position:relative;
             z-index:2;
             max-width:1200px;
@@ -233,7 +236,7 @@
             display:flex;
             align-items:center;
             justify-content:space-between;
-            gap:50px;
+            gap:40px;
         }
 
         .hero-text{
@@ -243,284 +246,253 @@
         .hero-tag{
             display:inline-flex;
             align-items:center;
-            gap:9px;
-            padding:9px 17px;
+            gap:8px;
+            padding:9px 16px;
             background:rgba(255,255,255,.12);
             border:1px solid rgba(255,255,255,.25);
             border-radius:25px;
-            margin-bottom:20px;
             font-size:14px;
-            font-weight:bold;
+            margin-bottom:20px;
         }
 
-        .hero h1{
+        .hero-text h1{
             font-size:48px;
-            line-height:1.08;
+            line-height:1.05;
             margin-bottom:18px;
         }
 
-        .hero p{
-            color:#d8efff;
+        .hero-text p{
             font-size:20px;
             line-height:1.5;
-            margin-bottom:28px;
+            color:#d9efff;
         }
 
-        .hero-button{
-            display:inline-flex;
-            align-items:center;
-            gap:10px;
-            padding:15px 28px;
-            background:white;
-            color:var(--blue);
-            border-radius:28px;
-            font-weight:bold;
-            transition:.2s;
-        }
-
-        .hero-button:hover{
-            transform:translateY(-2px);
-        }
-
-        .hero-phone{
-            width:270px;
-            min-width:240px;
+        .hero-svg{
+            width:300px;
+            min-width:250px;
         }
 
 
         /* =====================================
-           INFORMACIÓN
+           INTRO
         ===================================== */
 
-        .intro{
+        .plans-intro{
+            padding:55px 20px 30px;
             text-align:center;
-            padding:60px 20px 30px;
         }
 
-        .intro h2{
+        .plans-intro h2{
             color:var(--blue);
             font-size:32px;
             margin-bottom:12px;
         }
 
-        .intro p{
-            color:#718092;
-            max-width:680px;
+        .plans-intro p{
+            color:#65788b;
+            font-size:17px;
+            max-width:650px;
             margin:auto;
             line-height:1.5;
         }
 
 
         /* =====================================
-           PASOS
+           PLANES
         ===================================== */
 
-        .steps-section{
-            padding:25px 5% 70px;
+        .plans-section{
+            padding:20px 5% 75px;
+            background:#fff;
         }
 
-        .steps{
-            max-width:1100px;
+        .plans-grid{
+            max-width:1200px;
             margin:auto;
             display:grid;
-            grid-template-columns:repeat(3,1fr);
+            grid-template-columns:
+                repeat(3, 1fr);
             gap:25px;
+            align-items:stretch;
         }
 
-        .step{
+        .plan-card{
+            position:relative;
             background:white;
-            border:1px solid #e2e9ee;
+            border:1px solid #dfe7ed;
             border-radius:18px;
-            padding:30px 25px;
-            text-align:center;
-            box-shadow:0 8px 25px rgba(10,60,100,.06);
+            padding:30px 27px;
+            box-shadow:0 8px 25px rgba(10,60,100,.08);
+            transition:.25s;
+            overflow:hidden;
         }
 
-        .step-number{
-            width:45px;
-            height:45px;
-            border-radius:50%;
+        .plan-card:hover{
+            transform:translateY(-7px);
+            box-shadow:0 14px 35px rgba(10,60,100,.15);
+        }
+
+        .plan-card.featured{
+            border:2px solid var(--blue);
+        }
+
+        .featured-label{
+            position:absolute;
+            top:0;
+            left:0;
+            right:0;
+            text-align:center;
             background:var(--blue);
             color:white;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-size:18px;
+            padding:9px;
+            font-size:13px;
             font-weight:bold;
-            margin:0 auto 18px;
+            letter-spacing:.5px;
         }
 
-        .step-icon{
-            font-size:35px;
+        .featured .plan-top{
+            margin-top:18px;
+        }
+
+        .plan-name{
             color:var(--blue);
-            margin-bottom:16px;
-        }
-
-        .step h3{
-            color:#214a70;
+            font-size:22px;
+            font-weight:bold;
             margin-bottom:10px;
         }
 
-        .step p{
+        .plan-description{
             color:#718092;
             font-size:14px;
-            line-height:1.5;
+            min-height:42px;
+            line-height:1.4;
         }
 
-
-        /* =====================================
-           FORMULARIO
-        ===================================== */
-
-        .form-section{
-            background:#f4f7fa;
-            padding:70px 20px;
+        .plan-price{
+            margin:25px 0 5px;
+            display:flex;
+            align-items:flex-start;
+            color:var(--blue-dark);
         }
 
-        .form-container{
-            max-width:800px;
-            margin:auto;
+        .currency{
+            font-size:24px;
+            margin-top:8px;
         }
 
-        .form-header{
-            text-align:center;
-            margin-bottom:30px;
+        .price{
+            font-size:55px;
+            font-weight:800;
+            line-height:1;
         }
 
-        .form-header h2{
-            color:var(--blue);
-            font-size:30px;
-            margin-bottom:10px;
+        .month{
+            font-size:14px;
+            color:#728295;
+            margin:30px 0 0 6px;
         }
 
-        .form-header p{
-            color:#718092;
+        .plan-divider{
+            height:1px;
+            background:#e8edf1;
+            margin:25px 0;
         }
 
-        .port-form{
-            background:white;
-            padding:35px;
-            border-radius:18px;
-            box-shadow:0 8px 30px rgba(10,60,100,.08);
-        }
-
-        .form-grid{
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:20px;
-        }
-
-        .form-group{
+        .data-box{
+            display:flex;
+            align-items:center;
+            gap:13px;
             margin-bottom:20px;
         }
 
-        .form-group.full{
-            grid-column:1 / -1;
-        }
-
-        .form-group label{
-            display:block;
-            margin-bottom:8px;
-            color:#34506d;
-            font-size:14px;
-            font-weight:bold;
-        }
-
-        .input-box{
-            position:relative;
-        }
-
-        .input-box i{
-            position:absolute;
-            left:15px;
-            top:50%;
-            transform:translateY(-50%);
-            color:var(--blue);
-        }
-
-        .form-group input,
-        .form-group select{
-            width:100%;
+        .data-icon{
+            width:50px;
             height:50px;
-            border:1px solid #d7e0e7;
-            border-radius:9px;
-            outline:none;
-            padding:0 15px;
-            font-size:15px;
-            color:#405d78;
-            background:white;
-        }
-
-        .input-box input{
-            padding-left:45px;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus{
-            border-color:var(--blue);
-            box-shadow:0 0 0 3px rgba(11,79,138,.08);
-        }
-
-        .notice{
-            background:#eaf4fc;
-            border-left:4px solid var(--blue);
-            padding:15px;
-            border-radius:7px;
-            color:#49677f;
-            font-size:13px;
-            line-height:1.5;
-            margin:10px 0 22px;
-        }
-
-        .notice i{
+            border-radius:13px;
+            background:var(--blue-light);
             color:var(--blue);
-            margin-right:7px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:22px;
         }
 
-        .checkbox-group{
+        .data-info strong{
+            display:block;
+            color:#173f63;
+            font-size:20px;
+        }
+
+        .data-info span{
+            color:#718092;
+            font-size:13px;
+        }
+
+        .benefits{
+            list-style:none;
+            margin-bottom:28px;
+        }
+
+        .benefits li{
             display:flex;
             align-items:flex-start;
             gap:10px;
-            margin-bottom:22px;
-            color:#68798a;
-            font-size:13px;
-            line-height:1.5;
+            padding:9px 0;
+            color:#526c84;
+            font-size:14px;
+            border-bottom:1px solid #f0f2f4;
         }
 
-        .checkbox-group input{
-            margin-top:3px;
-            accent-color:var(--blue);
+        .benefits li i{
+            color:var(--green);
+            margin-top:2px;
         }
 
-        .submit-button{
+        .plan-button{
             width:100%;
-            height:52px;
+            height:48px;
             border:none;
-            border-radius:28px;
+            border-radius:25px;
             background:var(--blue);
             color:white;
-            font-size:16px;
+            font-size:15px;
             font-weight:bold;
             cursor:pointer;
             transition:.2s;
         }
 
-        .submit-button:hover{
+        .plan-button:hover{
             background:var(--blue-dark);
+        }
+
+        .plan-button.outline{
+            background:white;
+            color:var(--blue);
+            border:2px solid var(--blue);
+        }
+
+        .plan-button.outline:hover{
+            background:var(--blue-light);
         }
 
 
         /* =====================================
-           BENEFICIOS
+           BENEFICIOS GENERALES
         ===================================== */
 
-        .why-section{
+        .benefits-section{
+            background:#f4f7fa;
             padding:70px 5%;
+        }
+
+        .benefits-container{
+            max-width:1150px;
+            margin:auto;
         }
 
         .section-title{
             text-align:center;
-            margin-bottom:40px;
+            margin-bottom:45px;
         }
 
         .section-title h2{
@@ -533,73 +505,157 @@
             color:#718092;
         }
 
-        .why-grid{
-            max-width:1100px;
-            margin:auto;
+        .benefits-grid{
             display:grid;
-            grid-template-columns:repeat(4,1fr);
-            gap:20px;
+            grid-template-columns:
+                repeat(4,1fr);
+            gap:22px;
         }
 
-        .why-card{
-            border:1px solid #e4ebf0;
-            border-radius:15px;
+        .benefit-card{
+            background:white;
             padding:28px 20px;
+            border-radius:15px;
             text-align:center;
+            border:1px solid #e5ebef;
         }
 
-        .why-card i{
+        .benefit-card i{
             width:60px;
             height:60px;
-            border-radius:50%;
-            background:var(--blue-light);
-            color:var(--blue);
             display:inline-flex;
             align-items:center;
             justify-content:center;
+            border-radius:50%;
+            background:var(--blue-light);
+            color:var(--blue);
             font-size:25px;
-            margin-bottom:17px;
+            margin-bottom:18px;
         }
 
-        .why-card h3{
+        .benefit-card h3{
             color:#214a70;
-            font-size:16px;
-            margin-bottom:9px;
+            font-size:17px;
+            margin-bottom:10px;
         }
 
-        .why-card p{
+        .benefit-card p{
             color:#718092;
-            font-size:13px;
+            font-size:14px;
             line-height:1.5;
         }
 
 
         /* =====================================
-           RESULTADO
+           REDES
         ===================================== */
 
-        .result{
-            display:none;
-            margin-top:20px;
-            padding:18px;
-            border-radius:10px;
-            text-align:center;
-            font-size:14px;
+        .social-section{
+            padding:70px 5%;
+            background:white;
+        }
+
+        .social-container{
+            max-width:1050px;
+            margin:auto;
+            background:
+                linear-gradient(
+                    135deg,
+                    #073865,
+                    #0b5b9f
+                );
+            border-radius:22px;
+            padding:45px;
+            color:white;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:35px;
+            overflow:hidden;
+            position:relative;
+        }
+
+        .social-container::after{
+            content:"";
+            position:absolute;
+            width:300px;
+            height:300px;
+            border:50px solid rgba(255,255,255,.06);
+            border-radius:50%;
+            right:-140px;
+            bottom:-180px;
+        }
+
+        .social-info{
+            position:relative;
+            z-index:2;
+            max-width:520px;
+        }
+
+        .social-info h2{
+            font-size:30px;
+            margin-bottom:12px;
+        }
+
+        .social-info p{
+            color:#d5edff;
             line-height:1.5;
         }
 
-        .result.success{
-            display:block;
-            background:#eaf8ef;
-            color:var(--green);
-            border:1px solid #bde4ca;
+        .social-icons{
+            position:relative;
+            z-index:2;
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:center;
+            gap:15px;
+            max-width:350px;
         }
 
-        .result.error{
-            display:block;
-            background:#fff0f0;
-            color:var(--red);
-            border:1px solid #f2c3c3;
+        .social-icon{
+            width:65px;
+            height:65px;
+            border-radius:16px;
+            background:white;
+            color:var(--blue);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:26px;
+            box-shadow:0 5px 15px rgba(0,0,0,.12);
+        }
+
+
+        /* =====================================
+           CTA
+        ===================================== */
+
+        .cta-section{
+            background:#f5f5f5;
+            padding:65px 20px;
+            text-align:center;
+        }
+
+        .cta-section h2{
+            color:var(--blue);
+            font-size:30px;
+            margin-bottom:12px;
+        }
+
+        .cta-section p{
+            color:#6d7e8d;
+            margin-bottom:25px;
+        }
+
+        .cta-button{
+            display:inline-flex;
+            align-items:center;
+            gap:10px;
+            background:var(--blue);
+            color:white;
+            padding:15px 30px;
+            border-radius:28px;
+            font-weight:bold;
         }
 
 
@@ -645,37 +701,115 @@
 
 
         /* =====================================
+           MODAL
+        ===================================== */
+
+        .modal{
+            position:fixed;
+            inset:0;
+            background:rgba(0,0,0,.55);
+            display:none;
+            align-items:center;
+            justify-content:center;
+            z-index:100;
+            padding:20px;
+        }
+
+        .modal.active{
+            display:flex;
+        }
+
+        .modal-content{
+            width:100%;
+            max-width:460px;
+            background:white;
+            border-radius:18px;
+            padding:32px;
+            position:relative;
+            text-align:center;
+            box-shadow:0 15px 45px rgba(0,0,0,.25);
+        }
+
+        .close-modal{
+            position:absolute;
+            right:18px;
+            top:15px;
+            border:none;
+            background:none;
+            font-size:22px;
+            color:#777;
+            cursor:pointer;
+        }
+
+        .modal-icon{
+            width:65px;
+            height:65px;
+            margin:0 auto 18px;
+            border-radius:50%;
+            background:var(--blue-light);
+            color:var(--blue);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:27px;
+        }
+
+        .modal-content h2{
+            color:var(--blue);
+            margin-bottom:12px;
+        }
+
+        .modal-content p{
+            color:#687a8b;
+            line-height:1.5;
+        }
+
+
+        /* =====================================
            RESPONSIVE
         ===================================== */
 
         @media(max-width:1100px){
 
-            .top-right,
             .header-links,
-            .search-box{
+            .search-box,
+            .top-right{
                 display:none;
             }
 
-            .why-grid{
+            .header-spacer{
+                display:block;
+            }
+
+            .plans-grid{
+                grid-template-columns:repeat(2,1fr);
+            }
+
+            .benefits-grid{
                 grid-template-columns:repeat(2,1fr);
             }
 
         }
 
 
-        @media(max-width:850px){
+        @media(max-width:800px){
 
-            .hero-container{
+            .hero-content{
                 flex-direction:column;
                 text-align:center;
             }
 
-            .hero h1{
-                font-size:40px;
+            .hero-text h1{
+                font-size:38px;
             }
 
-            .steps{
-                grid-template-columns:1fr;
+            .hero-svg{
+                width:230px;
+            }
+
+            .social-container{
+                flex-direction:column;
+                text-align:center;
             }
 
         }
@@ -705,32 +839,36 @@
                 font-size:0;
             }
 
-            .hero{
+            .plans-hero{
                 padding:55px 22px;
             }
 
-            .hero h1{
-                font-size:33px;
+            .hero-text h1{
+                font-size:34px;
             }
 
-            .hero p{
+            .hero-text p{
                 font-size:17px;
             }
 
-            .form-grid{
+            .plans-grid{
                 grid-template-columns:1fr;
             }
 
-            .port-form{
-                padding:25px 20px;
+            .plans-intro h2{
+                font-size:27px;
             }
 
-            .why-grid{
+            .benefits-grid{
                 grid-template-columns:1fr;
             }
 
             .footer-content{
                 grid-template-columns:1fr 1fr;
+            }
+
+            .social-container{
+                padding:35px 22px;
             }
 
         }
@@ -807,7 +945,7 @@
     <nav class="header-links">
 
 
-        <a href="planes.html">
+        <a href="planes.html" class="active">
 
             <i class="fa-solid fa-bolt"></i>
             Planes
@@ -873,10 +1011,10 @@
      HERO
 ===================================== -->
 
-<section class="hero">
+<section class="plans-hero">
 
 
-    <div class="hero-container">
+    <div class="hero-content">
 
 
         <div class="hero-text">
@@ -884,138 +1022,139 @@
 
             <div class="hero-tag">
 
-                <i class="fa-solid fa-right-left"></i>
+                <i class="fa-solid fa-bolt"></i>
 
-                PORTABILIDAD ORBIT
+                PLANES ORBIT MOBILE
 
             </div>
 
 
             <h1>
 
-                Cámbiate a Orbit
-                sin cambiar tu número.
+                Más datos.
+                Más velocidad.
+                Más libertad.
 
             </h1>
 
 
             <p>
 
-                Conserva tu número actual y disfruta
-                una nueva experiencia móvil con Orbit Mobile.
+                Elige un plan mensual con todos los beneficios
+                que necesitas para mantenerte conectado.
 
             </p>
-
-
-            <a
-                href="#portabilidad"
-                class="hero-button"
-            >
-
-                <i class="fa-solid fa-mobile-screen"></i>
-
-                Iniciar portabilidad
-
-            </a>
 
 
         </div>
 
 
 
-        <!-- SVG TELÉFONO -->
+        <!-- SVG -->
 
         <svg
-            class="hero-phone"
-            viewBox="0 0 350 400"
+            class="hero-svg"
+            viewBox="0 0 400 400"
             xmlns="http://www.w3.org/2000/svg"
         >
 
 
             <circle
-                cx="175"
+                cx="200"
                 cy="200"
-                r="165"
+                r="160"
                 fill="rgba(255,255,255,.08)"
             />
 
 
+            <circle
+                cx="200"
+                cy="200"
+                r="125"
+                fill="rgba(255,255,255,.06)"
+            />
+
+
+            <!-- TELEFONO -->
+
             <rect
-                x="100"
-                y="40"
-                width="150"
-                height="310"
-                rx="28"
+                x="130"
+                y="65"
+                width="140"
+                height="270"
+                rx="25"
                 fill="#ffffff"
             />
 
 
             <rect
-                x="113"
-                y="70"
-                width="124"
-                height="225"
-                rx="12"
+                x="143"
+                y="90"
+                width="114"
+                height="200"
+                rx="10"
                 fill="#0b4f8a"
             />
 
 
-            <rect
-                x="155"
-                y="52"
-                width="40"
-                height="5"
-                rx="3"
-                fill="#d9e5ed"
+            <circle
+                cx="200"
+                cy="312"
+                r="10"
+                fill="#dbeaf5"
+            />
+
+
+            <!-- SEÑAL -->
+
+            <path
+                d="M175 130
+                   Q200 105 225 130"
+                stroke="white"
+                stroke-width="8"
+                fill="none"
+                stroke-linecap="round"
+            />
+
+
+            <path
+                d="M165 115
+                   Q200 80 235 115"
+                stroke="white"
+                stroke-width="8"
+                fill="none"
+                stroke-linecap="round"
+            />
+
+
+            <path
+                d="M155 98
+                   Q200 55 245 98"
+                stroke="white"
+                stroke-width="8"
+                fill="none"
+                stroke-linecap="round"
             />
 
 
             <circle
-                cx="175"
-                cy="322"
-                r="11"
-                fill="#d9e5ed"
-            />
-
-
-            <!-- FLECHAS -->
-
-            <path
-                d="M135 150
-                   H210
-                   L190 130"
-
-                stroke="white"
-                stroke-width="9"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-            />
-
-
-            <path
-                d="M215 205
-                   H140
-                   L160 225"
-
-                stroke="white"
-                stroke-width="9"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                cx="200"
+                cy="145"
+                r="7"
+                fill="white"
             />
 
 
             <text
-                x="175"
-                y="265"
+                x="200"
+                y="205"
                 text-anchor="middle"
                 fill="white"
-                font-size="18"
+                font-size="28"
                 font-weight="bold"
             >
 
-                TU NÚMERO
+                5G
 
             </text>
 
@@ -1034,18 +1173,18 @@
      INTRO
 ===================================== -->
 
-<section class="intro">
+<section class="plans-intro">
 
 
     <h2>
-        Cambiarte es muy fácil
+        Encuentra tu plan ideal
     </h2>
 
 
     <p>
 
-        Realiza tu solicitud y conserva tu mismo número.
-        Nosotros te acompañaremos durante el proceso.
+        Todos nuestros planes incluyen llamadas y SMS ilimitados,
+        navegación en nuestra red y acceso a beneficios exclusivos.
 
     </p>
 
@@ -1055,314 +1194,51 @@
 
 
 <!-- =====================================
-     PASOS
+     PLANES
 ===================================== -->
 
-<section class="steps-section">
+<section class="plans-section">
 
 
-    <div class="steps">
+    <div class="plans-grid">
 
 
-        <div class="step">
+        <!-- =====================================
+             PLAN 199
+        ===================================== -->
 
+        <article class="plan-card">
 
-            <div class="step-number">
-                1
-            </div>
 
+            <div class="plan-top">
 
-            <div class="step-icon">
 
-                <i class="fa-solid fa-mobile-screen"></i>
-
-            </div>
-
-
-            <h3>
-                Ingresa tu número
-            </h3>
-
-
-            <p>
-
-                Escribe el número que deseas conservar
-                al cambiarte a Orbit Mobile.
-
-            </p>
-
-
-        </div>
-
-
-
-        <div class="step">
-
-
-            <div class="step-number">
-                2
-            </div>
-
-
-            <div class="step-icon">
-
-                <i class="fa-solid fa-file-signature"></i>
-
-            </div>
-
-
-            <h3>
-                Completa tu solicitud
-            </h3>
-
-
-            <p>
-
-                Ingresa la información necesaria
-                para iniciar el proceso de portabilidad.
-
-            </p>
-
-
-        </div>
-
-
-
-        <div class="step">
-
-
-            <div class="step-number">
-                3
-            </div>
-
-
-            <div class="step-icon">
-
-                <i class="fa-solid fa-signal"></i>
-
-            </div>
-
-
-            <h3>
-                Disfruta Orbit
-            </h3>
-
-
-            <p>
-
-                Una vez completado el proceso,
-                podrás disfrutar tu nueva línea Orbit.
-
-            </p>
-
-
-        </div>
-
-
-    </div>
-
-
-</section>
-
-
-
-<!-- =====================================
-     FORMULARIO
-===================================== -->
-
-<section
-    class="form-section"
-    id="portabilidad"
->
-
-
-    <div class="form-container">
-
-
-        <div class="form-header">
-
-
-            <h2>
-                Inicia tu portabilidad
-            </h2>
-
-
-            <p>
-                Completa los siguientes datos para comenzar.
-            </p>
-
-
-        </div>
-
-
-
-        <form
-            class="port-form"
-            onsubmit="enviarSolicitud(event)"
-        >
-
-
-            <div class="form-grid">
-
-
-                <!-- NOMBRE -->
-
-                <div class="form-group">
-
-
-                    <label>
-                        Nombre completo
-                    </label>
-
-
-                    <div class="input-box">
-
-                        <i class="fa-solid fa-user"></i>
-
-
-                        <input
-                            type="text"
-                            id="nombre"
-                            placeholder="Escribe tu nombre"
-                        >
-
-                    </div>
-
-
+                <div class="plan-name">
+                    Orbit Esencial
                 </div>
 
 
+                <p class="plan-description">
 
-                <!-- NÚMERO -->
+                    Lo necesario para mantenerte conectado
+                    todos los días.
 
-                <div class="form-group">
-
-
-                    <label>
-                        Número que deseas conservar
-                    </label>
+                </p>
 
 
-                    <div class="input-box">
+                <div class="plan-price">
 
-                        <i class="fa-solid fa-mobile-screen"></i>
+                    <span class="currency">
+                        $
+                    </span>
 
+                    <span class="price">
+                        199
+                    </span>
 
-                        <input
-                            type="tel"
-                            id="numero"
-                            maxlength="10"
-                            placeholder="10 dígitos"
-                        >
-
-                    </div>
-
-
-                </div>
-
-
-
-                <!-- OPERADOR -->
-
-                <div class="form-group">
-
-
-                    <label>
-                        Operador actual
-                    </label>
-
-
-                    <select id="operador">
-
-                        <option value="">
-                            Selecciona tu operador
-                        </option>
-
-                        <option>
-                            Telcel
-                        </option>
-
-                        <option>
-                            AT&T
-                        </option>
-
-                        <option>
-                            Movistar
-                        </option>
-
-                        <option>
-                            BAIT
-                        </option>
-
-                        <option>
-                            Otro
-                        </option>
-
-                    </select>
-
-
-                </div>
-
-
-
-                <!-- PLAN -->
-
-                <div class="form-group">
-
-
-                    <label>
-                        Plan que deseas contratar
-                    </label>
-
-
-                    <select id="plan">
-
-                        <option value="">
-                            Selecciona un plan
-                        </option>
-
-                        <option>
-                            Orbit Esencial - $199
-                        </option>
-
-                        <option>
-                            Orbit Conecta - $299
-                        </option>
-
-                        <option>
-                            Orbit Max - $399
-                        </option>
-
-                    </select>
-
-
-                </div>
-
-
-
-                <!-- EMAIL -->
-
-                <div class="form-group full">
-
-
-                    <label>
-                        Correo electrónico
-                    </label>
-
-
-                    <div class="input-box">
-
-                        <i class="fa-solid fa-envelope"></i>
-
-
-                        <input
-                            type="email"
-                            id="email"
-                            placeholder="correo@ejemplo.com"
-                        >
-
-                    </div>
-
+                    <span class="month">
+                        / mes
+                    </span>
 
                 </div>
 
@@ -1370,61 +1246,369 @@
             </div>
 
 
+            <div class="plan-divider"></div>
 
-            <div class="notice">
 
-                <i class="fa-solid fa-circle-info"></i>
+            <div class="data-box">
 
-                La solicitud mostrada en esta página es una
-                demostración visual. La portabilidad real requiere
-                validación y los procedimientos correspondientes.
+
+                <div class="data-icon">
+
+                    <i class="fa-solid fa-wifi"></i>
+
+                </div>
+
+
+                <div class="data-info">
+
+                    <strong>
+                        5 GB
+                    </strong>
+
+                    <span>
+                        Datos para navegar
+                    </span>
+
+                </div>
+
 
             </div>
 
 
-
-            <label class="checkbox-group">
-
-
-                <input
-                    type="checkbox"
-                    id="terminos"
-                >
+            <ul class="benefits">
 
 
-                <span>
+                <li>
 
-                    Confirmo que deseo iniciar una solicitud
-                    de portabilidad y acepto ser contactado
-                    para continuar con el proceso.
+                    <i class="fa-solid fa-circle-check"></i>
 
-                </span>
+                    Llamadas ilimitadas
+
+                </li>
 
 
-            </label>
+                <li>
 
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    SMS ilimitados
+
+                </li>
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Redes sociales incluidas
+
+                </li>
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Compatible con eSIM
+
+                </li>
+
+
+            </ul>
 
 
             <button
-                type="submit"
-                class="submit-button"
+                class="plan-button outline"
+                onclick="contratarPlan('Orbit Esencial', '$199 al mes')"
             >
 
-                <i class="fa-solid fa-right-left"></i>
-
-                Solicitar portabilidad
+                Contratar plan
 
             </button>
 
 
-
-            <div
-                class="result"
-                id="resultado"
-            ></div>
+        </article>
 
 
-        </form>
+
+        <!-- =====================================
+             PLAN DESTACADO
+        ===================================== -->
+
+        <article class="plan-card featured">
+
+
+            <div class="featured-label">
+
+                MÁS POPULAR
+
+            </div>
+
+
+            <div class="plan-top">
+
+
+                <div class="plan-name">
+                    Orbit Conecta
+                </div>
+
+
+                <p class="plan-description">
+
+                    Más datos para disfrutar tu contenido
+                    favorito sin preocupaciones.
+
+                </p>
+
+
+                <div class="plan-price">
+
+                    <span class="currency">
+                        $
+                    </span>
+
+                    <span class="price">
+                        299
+                    </span>
+
+                    <span class="month">
+                        / mes
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="plan-divider"></div>
+
+
+            <div class="data-box">
+
+
+                <div class="data-icon">
+
+                    <i class="fa-solid fa-bolt"></i>
+
+                </div>
+
+
+                <div class="data-info">
+
+                    <strong>
+                        12 GB
+                    </strong>
+
+                    <span>
+                        Datos para navegar
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <ul class="benefits">
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Llamadas ilimitadas
+
+                </li>
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    SMS ilimitados
+
+                </li>
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Redes sociales ilimitadas
+
+                </li>
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    5G donde esté disponible
+
+                </li>
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Compatible con eSIM
+
+                </li>
+
+
+            </ul>
+
+
+            <button
+                class="plan-button"
+                onclick="contratarPlan('Orbit Conecta', '$299 al mes')"
+            >
+
+                Contratar ahora
+
+            </button>
+
+
+        </article>
+
+
+
+        <!-- =====================================
+             PLAN 399
+        ===================================== -->
+
+        <article class="plan-card">
+
+
+            <div class="plan-top">
+
+
+                <div class="plan-name">
+                    Orbit Max
+                </div>
+
+
+                <p class="plan-description">
+
+                    Diseñado para quienes necesitan
+                    más conectividad.
+
+                </p>
+
+
+                <div class="plan-price">
+
+                    <span class="currency">
+                        $
+                    </span>
+
+                    <span class="price">
+                        399
+                    </span>
+
+                    <span class="month">
+                        / mes
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="plan-divider"></div>
+
+
+            <div class="data-box">
+
+
+                <div class="data-icon">
+
+                    <i class="fa-solid fa-rocket"></i>
+
+                </div>
+
+
+                <div class="data-info">
+
+                    <strong>
+                        25 GB
+                    </strong>
+
+                    <span>
+                        Datos para navegar
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <ul class="benefits">
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Llamadas ilimitadas
+
+                </li>
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    SMS ilimitados
+
+                </li>
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Redes sociales ilimitadas
+
+                </li>
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    5G donde esté disponible
+
+                </li>
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Atención preferencial
+
+                </li>
+
+
+            </ul>
+
+
+            <button
+                class="plan-button outline"
+                onclick="contratarPlan('Orbit Max', '$399 al mes')"
+            >
+
+                Contratar plan
+
+            </button>
+
+
+        </article>
 
 
     </div>
@@ -1438,44 +1622,155 @@
      BENEFICIOS
 ===================================== -->
 
-<section class="why-section">
+<section class="benefits-section">
 
 
-    <div class="section-title">
+    <div class="benefits-container">
 
 
-        <h2>
-            ¿Por qué cambiarte a Orbit?
-        </h2>
+        <div class="section-title">
 
 
-        <p>
-            Conserva tu número y descubre una nueva forma de conectarte.
-        </p>
+            <h2>
+                Todo lo que necesitas
+            </h2>
+
+
+            <p>
+                Beneficios incluidos en los planes Orbit Mobile.
+            </p>
+
+
+        </div>
+
+
+
+        <div class="benefits-grid">
+
+
+            <div class="benefit-card">
+
+
+                <i class="fa-solid fa-signal"></i>
+
+
+                <h3>
+                    Red 5G
+                </h3>
+
+
+                <p>
+
+                    Disfruta velocidades superiores
+                    donde la cobertura esté disponible.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="benefit-card">
+
+
+                <i class="fa-solid fa-comments"></i>
+
+
+                <h3>
+                    Comunicación ilimitada
+                </h3>
+
+
+                <p>
+
+                    Mantente comunicado con llamadas
+                    y SMS incluidos.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="benefit-card">
+
+
+                <i class="fa-solid fa-sim-card"></i>
+
+
+                <h3>
+                    eSIM
+                </h3>
+
+
+                <p>
+
+                    Activa tu línea digitalmente
+                    en equipos compatibles.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="benefit-card">
+
+
+                <i class="fa-solid fa-headset"></i>
+
+
+                <h3>
+                    Soporte Orbit
+                </h3>
+
+
+                <p>
+
+                    Estamos disponibles para ayudarte
+                    cuando lo necesites.
+
+                </p>
+
+
+            </div>
+
+
+        </div>
 
 
     </div>
 
 
-
-    <div class="why-grid">
-
-
-        <div class="why-card">
+</section>
 
 
-            <i class="fa-solid fa-hashtag"></i>
+
+<!-- =====================================
+     REDES SOCIALES
+===================================== -->
+
+<section class="social-section">
 
 
-            <h3>
-                Conserva tu número
-            </h3>
+    <div class="social-container">
+
+
+        <div class="social-info">
+
+
+            <h2>
+                Tus redes siempre contigo
+            </h2>
 
 
             <p>
 
-                No necesitas avisar a todos
-                que tienes un número nuevo.
+                Disfruta tus aplicaciones favoritas incluidas
+                en los planes seleccionados de Orbit Mobile.
 
             </p>
 
@@ -1484,75 +1779,88 @@
 
 
 
-        <div class="why-card">
+        <div class="social-icons">
 
 
-            <i class="fa-solid fa-wifi"></i>
+            <div class="social-icon">
+
+                <i class="fa-brands fa-facebook-f"></i>
+
+            </div>
 
 
-            <h3>
-                Conectividad
-            </h3>
+            <div class="social-icon">
+
+                <i class="fa-brands fa-instagram"></i>
+
+            </div>
 
 
-            <p>
+            <div class="social-icon">
 
-                Disfruta los beneficios
-                disponibles en Orbit Mobile.
+                <i class="fa-brands fa-whatsapp"></i>
 
-            </p>
-
-
-        </div>
+            </div>
 
 
+            <div class="social-icon">
 
-        <div class="why-card">
+                <i class="fa-brands fa-tiktok"></i>
 
-
-            <i class="fa-solid fa-sim-card"></i>
-
-
-            <h3>
-                Opción eSIM
-            </h3>
+            </div>
 
 
-            <p>
+            <div class="social-icon">
 
-                Utiliza una experiencia digital
-                en dispositivos compatibles.
+                <i class="fa-brands fa-x-twitter"></i>
 
-            </p>
-
-
-        </div>
+            </div>
 
 
+            <div class="social-icon">
 
-        <div class="why-card">
+                <i class="fa-brands fa-youtube"></i>
 
-
-            <i class="fa-solid fa-headset"></i>
-
-
-            <h3>
-                Te acompañamos
-            </h3>
-
-
-            <p>
-
-                Recibe orientación durante
-                las diferentes etapas del proceso.
-
-            </p>
+            </div>
 
 
         </div>
 
 
     </div>
+
+
+</section>
+
+
+
+<!-- =====================================
+     CTA
+===================================== -->
+
+<section class="cta-section">
+
+
+    <h2>
+        ¿Ya tienes una línea Orbit?
+    </h2>
+
+
+    <p>
+        También puedes consultar nuestras opciones de recargas.
+    </p>
+
+
+    <a
+        href="recargas.html"
+        class="cta-button"
+    >
+
+        <i class="fa-solid fa-dollar-sign"></i>
+
+        Ver paquetes y recargas
+
+    </a>
 
 
 </section>
@@ -1704,149 +2012,138 @@
 
 
 
+<!-- =====================================
+     MODAL CONTRATACIÓN
+===================================== -->
+
+<div
+    class="modal"
+    id="modal"
+>
+
+
+    <div class="modal-content">
+
+
+        <button
+            class="close-modal"
+            onclick="cerrarModal()"
+        >
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <div class="modal-icon">
+
+            <i class="fa-solid fa-mobile-screen-button"></i>
+
+        </div>
+
+
+        <h2 id="modalTitle">
+            Contratar plan
+        </h2>
+
+
+        <p id="modalText">
+
+        </p>
+
+
+        <br>
+
+
+        <button
+            class="plan-button"
+            onclick="cerrarModal()"
+        >
+
+            Continuar
+
+        </button>
+
+
+    </div>
+
+
+</div>
+
+
+
 <script>
 
 
 /* =====================================
-   VALIDAR SOLO NÚMEROS
+   CONTRATAR PLAN
 ===================================== */
 
-document
-.getElementById("numero")
-.addEventListener("input", function(){
+function contratarPlan(nombre, precio){
 
-    this.value =
-    this.value.replace(/\D/g, "");
 
-});
+    const modal =
+        document.getElementById("modal");
 
 
-/* =====================================
-   ENVIAR SOLICITUD
-===================================== */
+    const titulo =
+        document.getElementById("modalTitle");
 
-function enviarSolicitud(event){
 
+    const texto =
+        document.getElementById("modalText");
 
-    event.preventDefault();
 
+    titulo.textContent =
+        nombre;
 
-    const nombre =
-        document.getElementById("nombre").value.trim();
 
+    texto.innerHTML =
+        "Has seleccionado el plan <strong>" +
+        nombre +
+        "</strong> por <strong>" +
+        precio +
+        "</strong>.<br><br>" +
+        "En la siguiente etapa podrás ingresar tus datos para continuar con la contratación.";
 
-    const numero =
-        document.getElementById("numero").value.trim();
 
-
-    const operador =
-        document.getElementById("operador").value;
-
-
-    const plan =
-        document.getElementById("plan").value;
-
-
-    const email =
-        document.getElementById("email").value.trim();
-
-
-    const terminos =
-        document.getElementById("terminos").checked;
-
-
-    const resultado =
-        document.getElementById("resultado");
-
-
-    resultado.className =
-        "result";
-
-
-    /* VALIDACIONES */
-
-    if(
-        nombre === "" ||
-        numero === "" ||
-        operador === "" ||
-        plan === "" ||
-        email === ""
-    ){
-
-
-        resultado.innerHTML =
-        '<i class="fa-solid fa-triangle-exclamation"></i> ' +
-        'Completa todos los campos para continuar.';
-
-
-        resultado.classList.add("error");
-
-
-        return;
-
-    }
-
-
-    if(!/^\d{10}$/.test(numero)){
-
-
-        resultado.innerHTML =
-        '<i class="fa-solid fa-triangle-exclamation"></i> ' +
-        'Ingresa un número válido de 10 dígitos.';
-
-
-        resultado.classList.add("error");
-
-
-        return;
-
-    }
-
-
-    if(!terminos){
-
-
-        resultado.innerHTML =
-        '<i class="fa-solid fa-triangle-exclamation"></i> ' +
-        'Debes confirmar tu solicitud para continuar.';
-
-
-        resultado.classList.add("error");
-
-
-        return;
-
-    }
-
-
-    /* ÉXITO */
-
-    resultado.innerHTML =
-    '<i class="fa-solid fa-circle-check"></i><br><br>' +
-
-    '<strong>¡Solicitud iniciada!</strong><br>' +
-
-    'Gracias, ' + nombre + '. ' +
-
-    'Hemos registrado tu interés para portar el número ' +
-
-    '<strong>' + numero + '</strong> a Orbit Mobile.<br><br>' +
-
-    '<small>Esta demostración no realiza una portabilidad real.</small>';
-
-
-    resultado.classList.add("success");
-
-
-    resultado.scrollIntoView({
-
-        behavior:"smooth",
-        block:"center"
-
-    });
+    modal.classList.add("active");
 
 
 }
+
+
+/* =====================================
+   CERRAR MODAL
+===================================== */
+
+function cerrarModal(){
+
+    document
+    .getElementById("modal")
+    .classList
+    .remove("active");
+
+}
+
+
+/* =====================================
+   CERRAR AL DAR CLICK AFUERA
+===================================== */
+
+document
+.getElementById("modal")
+.addEventListener("click", function(event){
+
+
+    if(event.target === this){
+
+        cerrarModal();
+
+    }
+
+
+});
 
 
 </script>
