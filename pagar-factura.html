@@ -1,0 +1,2052 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Paga tu factura | Orbit Mobile</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+
+        :root{
+            --blue:#0b4f8a;
+            --blue-dark:#073865;
+            --blue-light:#eaf4fc;
+            --navy:#123f70;
+            --text:#294b6b;
+            --gray:#f5f5f5;
+            --border:#e4e4e4;
+            --green:#14804a;
+            --red:#d62828;
+            --orange:#f39c12;
+        }
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        html{
+            scroll-behavior:smooth;
+        }
+
+        body{
+            background:#f5f7f9;
+            color:var(--text);
+        }
+
+        a{
+            text-decoration:none;
+            color:inherit;
+        }
+
+
+        /* =====================================
+           BARRA SUPERIOR
+        ===================================== */
+
+        .topbar{
+            height:44px;
+            background:var(--blue);
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            padding:0 5%;
+            color:white;
+        }
+
+        .top-tabs{
+            display:flex;
+            height:100%;
+        }
+
+        .top-tab{
+            padding:0 22px;
+            display:flex;
+            align-items:center;
+            font-size:14px;
+            font-weight:bold;
+        }
+
+        .top-tab.active{
+            background:white;
+            color:var(--blue);
+        }
+
+        .top-right{
+            display:flex;
+            align-items:center;
+            gap:25px;
+            font-size:14px;
+        }
+
+        .top-right a{
+            color:white;
+        }
+
+
+        /* =====================================
+           HEADER
+        ===================================== */
+
+        .main-header{
+            min-height:65px;
+            display:flex;
+            align-items:center;
+            padding:0 5%;
+            background:white;
+            box-shadow:0 2px 8px rgba(0,0,0,.08);
+            position:relative;
+            z-index:10;
+        }
+
+        .logo{
+            min-width:135px;
+            font-size:27px;
+            font-weight:800;
+            font-style:italic;
+            color:var(--blue);
+            letter-spacing:-1px;
+        }
+
+        .menu-btn{
+            display:flex;
+            align-items:center;
+            gap:8px;
+            margin-left:30px;
+            color:#4c4c4c;
+            font-size:16px;
+        }
+
+        .header-spacer{
+            flex:1;
+        }
+
+        .header-links{
+            display:flex;
+            align-items:center;
+            gap:27px;
+            margin-right:25px;
+            font-weight:600;
+            font-size:15px;
+            color:#34506d;
+        }
+
+        .header-links i{
+            color:var(--blue);
+            font-size:18px;
+        }
+
+        .search-box{
+            width:220px;
+            height:35px;
+            border-radius:20px;
+            background:#f0f2f4;
+            display:flex;
+            align-items:center;
+            padding:0 15px;
+            margin-right:20px;
+        }
+
+        .search-box input{
+            border:none;
+            outline:none;
+            background:transparent;
+            width:100%;
+        }
+
+        .mi-orbit{
+            display:flex;
+            align-items:center;
+            gap:10px;
+            font-weight:bold;
+            color:var(--blue);
+            white-space:nowrap;
+        }
+
+        .user-icon{
+            width:38px;
+            height:38px;
+            border-radius:50%;
+            background:#1c7ca8;
+            color:white;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+
+
+        /* =====================================
+           HERO
+        ===================================== */
+
+        .hero{
+            background:
+                linear-gradient(
+                    120deg,
+                    #073865,
+                    #0b4f8a,
+                    #197caf
+                );
+
+            color:white;
+            padding:55px 8%;
+            position:relative;
+            overflow:hidden;
+        }
+
+        .hero::after{
+            content:"";
+            position:absolute;
+            width:400px;
+            height:400px;
+            border-radius:50%;
+            border:60px solid rgba(255,255,255,.05);
+            right:-150px;
+            top:-180px;
+        }
+
+        .hero-content{
+            max-width:1100px;
+            margin:auto;
+            position:relative;
+            z-index:2;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:30px;
+        }
+
+        .hero h1{
+            font-size:42px;
+            margin-bottom:12px;
+        }
+
+        .hero p{
+            color:#d8efff;
+            font-size:18px;
+            line-height:1.5;
+        }
+
+        .hero-icon{
+            width:100px;
+            height:100px;
+            border-radius:50%;
+            background:rgba(255,255,255,.12);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:42px;
+        }
+
+
+        /* =====================================
+           PROCESO
+        ===================================== */
+
+        .progress-section{
+            background:white;
+            border-bottom:1px solid #e5e5e5;
+            padding:22px 20px;
+        }
+
+        .progress{
+            max-width:800px;
+            margin:auto;
+            display:flex;
+            justify-content:space-between;
+            position:relative;
+        }
+
+        .progress::before{
+            content:"";
+            position:absolute;
+            height:2px;
+            background:#dce5eb;
+            left:12%;
+            right:12%;
+            top:20px;
+            z-index:0;
+        }
+
+        .progress-step{
+            position:relative;
+            z-index:1;
+            text-align:center;
+            color:#7c8c9b;
+            font-size:13px;
+            background:white;
+            padding:0 10px;
+        }
+
+        .progress-circle{
+            width:40px;
+            height:40px;
+            margin:0 auto 8px;
+            border-radius:50%;
+            background:#e4e9ed;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            color:#758697;
+            font-weight:bold;
+        }
+
+        .progress-step.active{
+            color:var(--blue);
+            font-weight:bold;
+        }
+
+        .progress-step.active .progress-circle{
+            background:var(--blue);
+            color:white;
+        }
+
+
+        /* =====================================
+           CONTENEDOR
+        ===================================== */
+
+        .main-content{
+            max-width:1050px;
+            margin:50px auto;
+            padding:0 20px;
+        }
+
+        .page-title{
+            text-align:center;
+            margin-bottom:30px;
+        }
+
+        .page-title h2{
+            color:var(--blue);
+            font-size:30px;
+            margin-bottom:10px;
+        }
+
+        .page-title p{
+            color:#748493;
+        }
+
+
+        /* =====================================
+           CONSULTA
+        ===================================== */
+
+        .lookup-card{
+            max-width:650px;
+            margin:0 auto;
+            background:white;
+            border-radius:16px;
+            padding:35px;
+            box-shadow:0 8px 28px rgba(0,0,0,.07);
+            border:1px solid #e6ebef;
+        }
+
+        .lookup-card h3{
+            text-align:center;
+            color:#214a70;
+            margin-bottom:10px;
+        }
+
+        .lookup-card > p{
+            text-align:center;
+            color:#748493;
+            font-size:14px;
+            margin-bottom:25px;
+        }
+
+        .lookup-form{
+            display:flex;
+            gap:12px;
+        }
+
+        .input-wrapper{
+            position:relative;
+            flex:1;
+        }
+
+        .input-wrapper i{
+            position:absolute;
+            left:16px;
+            top:50%;
+            transform:translateY(-50%);
+            color:var(--blue);
+        }
+
+        .input-wrapper input{
+            width:100%;
+            height:50px;
+            border:1px solid #d7e0e7;
+            border-radius:9px;
+            outline:none;
+            padding:0 15px 0 45px;
+            font-size:16px;
+        }
+
+        .lookup-button{
+            border:none;
+            background:var(--blue);
+            color:white;
+            padding:0 25px;
+            border-radius:9px;
+            font-weight:bold;
+            cursor:pointer;
+        }
+
+        .lookup-button:hover{
+            background:var(--blue-dark);
+        }
+
+
+        /* =====================================
+           FACTURA
+        ===================================== */
+
+        .bill-section{
+            display:none;
+            margin-top:35px;
+        }
+
+        .bill-layout{
+            display:grid;
+            grid-template-columns:1.3fr .7fr;
+            gap:25px;
+        }
+
+        .card{
+            background:white;
+            border-radius:16px;
+            border:1px solid #e4eaee;
+            padding:30px;
+            box-shadow:0 5px 20px rgba(0,0,0,.04);
+        }
+
+        .card-title{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:25px;
+        }
+
+        .card-title h3{
+            color:#214a70;
+        }
+
+        .status{
+            background:#fff5e3;
+            color:#b36b00;
+            padding:7px 12px;
+            border-radius:20px;
+            font-size:12px;
+            font-weight:bold;
+        }
+
+        .user-info{
+            padding-bottom:20px;
+            border-bottom:1px solid #e8edf0;
+            margin-bottom:20px;
+        }
+
+        .user-name{
+            font-size:20px;
+            font-weight:bold;
+            color:#214a70;
+            margin-bottom:7px;
+        }
+
+        .phone-number{
+            color:#718092;
+            font-size:15px;
+        }
+
+        .bill-row{
+            display:flex;
+            justify-content:space-between;
+            padding:14px 0;
+            border-bottom:1px solid #edf0f2;
+            font-size:14px;
+        }
+
+        .bill-row span:last-child{
+            font-weight:bold;
+            color:#214a70;
+        }
+
+        .total-row{
+            display:flex;
+            justify-content:space-between;
+            padding-top:22px;
+            font-size:18px;
+            font-weight:bold;
+            color:var(--blue);
+        }
+
+
+        /* =====================================
+           RESUMEN
+        ===================================== */
+
+        .amount-card{
+            background:linear-gradient(
+                135deg,
+                #073865,
+                #0b4f8a
+            );
+
+            color:white;
+            text-align:center;
+        }
+
+        .amount-card p{
+            color:#cde8f8;
+            margin-bottom:10px;
+            font-size:14px;
+        }
+
+        .amount{
+            font-size:42px;
+            font-weight:bold;
+            margin-bottom:10px;
+        }
+
+        .due-date{
+            font-size:13px;
+            color:#d7edfb;
+            margin-bottom:25px;
+        }
+
+        .pay-now{
+            width:100%;
+            height:50px;
+            border:none;
+            border-radius:25px;
+            background:white;
+            color:var(--blue);
+            font-weight:bold;
+            cursor:pointer;
+            font-size:15px;
+        }
+
+        .pay-now:hover{
+            transform:translateY(-1px);
+        }
+
+
+        /* =====================================
+           PAGO
+        ===================================== */
+
+        .payment-section{
+            display:none;
+            margin-top:30px;
+        }
+
+        .payment-card{
+            max-width:650px;
+            margin:auto;
+            background:white;
+            padding:35px;
+            border-radius:16px;
+            box-shadow:0 8px 28px rgba(0,0,0,.07);
+            border:1px solid #e4eaee;
+        }
+
+        .payment-card h2{
+            text-align:center;
+            color:var(--blue);
+            margin-bottom:10px;
+        }
+
+        .payment-card > p{
+            text-align:center;
+            color:#718092;
+            margin-bottom:25px;
+            font-size:14px;
+        }
+
+        .payment-methods{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:12px;
+            margin-bottom:25px;
+        }
+
+        .method{
+            border:2px solid #e1e7eb;
+            border-radius:10px;
+            padding:16px;
+            text-align:center;
+            cursor:pointer;
+            color:#526d84;
+            transition:.2s;
+        }
+
+        .method i{
+            font-size:25px;
+            color:var(--blue);
+            display:block;
+            margin-bottom:8px;
+        }
+
+        .method.active{
+            border-color:var(--blue);
+            background:var(--blue-light);
+            color:var(--blue);
+            font-weight:bold;
+        }
+
+        .form-group{
+            margin-bottom:18px;
+        }
+
+        .form-group label{
+            display:block;
+            margin-bottom:8px;
+            font-size:14px;
+            color:#34506d;
+            font-weight:bold;
+        }
+
+        .form-group input{
+            width:100%;
+            height:50px;
+            border:1px solid #d7e0e7;
+            border-radius:9px;
+            padding:0 15px;
+            outline:none;
+            font-size:15px;
+        }
+
+        .form-group input:focus{
+            border-color:var(--blue);
+        }
+
+        .small-grid{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:15px;
+        }
+
+        .payment-notice{
+            background:#fff8e9;
+            border-left:4px solid var(--orange);
+            padding:14px;
+            border-radius:7px;
+            font-size:12px;
+            color:#8a6a30;
+            line-height:1.5;
+            margin-bottom:20px;
+        }
+
+        .confirm-button{
+            width:100%;
+            height:52px;
+            border:none;
+            border-radius:26px;
+            background:var(--blue);
+            color:white;
+            font-size:16px;
+            font-weight:bold;
+            cursor:pointer;
+        }
+
+        .confirm-button:hover{
+            background:var(--blue-dark);
+        }
+
+
+        /* =====================================
+           RESULTADO
+        ===================================== */
+
+        .result{
+            display:none;
+            margin-top:25px;
+            padding:22px;
+            border-radius:12px;
+            text-align:center;
+            line-height:1.6;
+        }
+
+        .result.success{
+            display:block;
+            background:#eaf8ef;
+            border:1px solid #bee4ca;
+            color:var(--green);
+        }
+
+        .result.error{
+            display:block;
+            background:#fff0f0;
+            border:1px solid #f1c4c4;
+            color:var(--red);
+        }
+
+        .result i{
+            font-size:30px;
+            margin-bottom:8px;
+        }
+
+
+        /* =====================================
+           AYUDA
+        ===================================== */
+
+        .help-section{
+            margin-top:50px;
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:20px;
+        }
+
+        .help-card{
+            background:white;
+            border:1px solid #e4eaee;
+            padding:25px;
+            border-radius:14px;
+            text-align:center;
+        }
+
+        .help-card i{
+            font-size:28px;
+            color:var(--blue);
+            margin-bottom:13px;
+        }
+
+        .help-card h3{
+            color:#214a70;
+            margin-bottom:8px;
+            font-size:16px;
+        }
+
+        .help-card p{
+            color:#718092;
+            font-size:13px;
+            line-height:1.5;
+        }
+
+
+        /* =====================================
+           FOOTER
+        ===================================== */
+
+        footer{
+            margin-top:60px;
+            background:#f4f6f8;
+            border-top:1px solid #ddd;
+            padding-top:40px;
+        }
+
+        .footer-content{
+            max-width:1200px;
+            margin:auto;
+            padding:0 30px 40px;
+            display:grid;
+            grid-template-columns:repeat(4,1fr);
+            gap:30px;
+        }
+
+        .footer-col h3{
+            color:var(--blue);
+            margin-bottom:15px;
+            font-size:16px;
+        }
+
+        .footer-col a{
+            display:block;
+            color:#4b6680;
+            margin-bottom:10px;
+            font-size:14px;
+        }
+
+        .footer-bottom{
+            background:#073865;
+            color:white;
+            text-align:center;
+            padding:18px;
+            font-size:13px;
+        }
+
+
+        /* =====================================
+           RESPONSIVE
+        ===================================== */
+
+        @media(max-width:1000px){
+
+            .top-right,
+            .header-links,
+            .search-box{
+                display:none;
+            }
+
+            .bill-layout{
+                grid-template-columns:1fr;
+            }
+
+        }
+
+        @media(max-width:700px){
+
+            .hero-content{
+                text-align:center;
+                flex-direction:column;
+            }
+
+            .hero h1{
+                font-size:34px;
+            }
+
+            .hero-icon{
+                width:80px;
+                height:80px;
+                font-size:34px;
+            }
+
+            .lookup-form{
+                flex-direction:column;
+            }
+
+            .lookup-button{
+                height:50px;
+            }
+
+            .help-section{
+                grid-template-columns:1fr;
+            }
+
+            .footer-content{
+                grid-template-columns:1fr 1fr;
+            }
+
+        }
+
+        @media(max-width:500px){
+
+            .topbar{
+                padding:0;
+            }
+
+            .top-tab{
+                padding:0 15px;
+            }
+
+            .logo{
+                min-width:auto;
+                font-size:23px;
+            }
+
+            .menu-btn{
+                margin-left:15px;
+                font-size:14px;
+            }
+
+            .mi-orbit{
+                font-size:0;
+            }
+
+            .lookup-card,
+            .payment-card,
+            .card{
+                padding:22px;
+            }
+
+            .payment-methods{
+                grid-template-columns:1fr;
+            }
+
+            .small-grid{
+                grid-template-columns:1fr;
+            }
+
+            .progress{
+                font-size:10px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     BARRA SUPERIOR
+===================================== -->
+
+<div class="topbar">
+
+    <div class="top-tabs">
+
+        <a href="#" class="top-tab active">
+            PERSONAS
+        </a>
+
+        <a href="#" class="top-tab">
+            EMPRESAS
+        </a>
+
+    </div>
+
+    <div class="top-right">
+
+        <a href="#">
+            <i class="fa-solid fa-store"></i>
+            Orbit Shop
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-plane"></i>
+            Viaja con Orbit
+        </a>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="main-header">
+
+    <a href="index.html" class="logo">
+        orbit
+    </a>
+
+    <a href="#" class="menu-btn">
+        Menú
+        <i class="fa-solid fa-caret-down"></i>
+    </a>
+
+    <div class="header-spacer"></div>
+
+    <nav class="header-links">
+
+        <a href="planes.html">
+            <i class="fa-solid fa-bolt"></i>
+            Planes
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-location-dot"></i>
+            Chihuahua
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-bag-shopping"></i>
+            Tienda en línea
+        </a>
+
+        <a href="recargas.html">
+            <i class="fa-solid fa-dollar-sign"></i>
+            Recargas
+        </a>
+
+    </nav>
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            placeholder="Buscar..."
+        >
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+    </div>
+
+    <a href="#" class="mi-orbit">
+
+        <div class="user-icon">
+            <i class="fa-solid fa-user"></i>
+        </div>
+
+        Mi Orbit
+
+    </a>
+
+</header>
+
+
+
+<!-- =====================================
+     HERO
+===================================== -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div>
+
+            <h1>
+                Paga tu factura Orbit
+            </h1>
+
+            <p>
+                Consulta tu saldo pendiente y realiza
+                el pago de tu servicio en unos cuantos pasos.
+            </p>
+
+        </div>
+
+        <div class="hero-icon">
+            <i class="fa-solid fa-file-invoice-dollar"></i>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     PROGRESO
+===================================== -->
+
+<section class="progress-section">
+
+    <div class="progress">
+
+        <div class="progress-step active">
+
+            <div class="progress-circle">
+                1
+            </div>
+
+            Consultar
+
+        </div>
+
+        <div class="progress-step" id="step2">
+
+            <div class="progress-circle">
+                2
+            </div>
+
+            Revisar factura
+
+        </div>
+
+        <div class="progress-step" id="step3">
+
+            <div class="progress-circle">
+                3
+            </div>
+
+            Realizar pago
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     CONTENIDO
+===================================== -->
+
+<main class="main-content">
+
+
+    <div class="page-title">
+
+        <h2>
+            Consulta tu factura
+        </h2>
+
+        <p>
+            Ingresa tu número Orbit para consultar tu saldo.
+        </p>
+
+    </div>
+
+
+
+    <!-- CONSULTA -->
+
+    <div class="lookup-card">
+
+        <h3>
+            Ingresa tu línea Orbit
+        </h3>
+
+        <p>
+            Escribe los 10 dígitos de tu número móvil.
+        </p>
+
+        <div class="lookup-form">
+
+            <div class="input-wrapper">
+
+                <i class="fa-solid fa-mobile-screen"></i>
+
+                <input
+                    type="tel"
+                    id="numero"
+                    maxlength="10"
+                    placeholder="Número Orbit a 10 dígitos"
+                >
+
+            </div>
+
+            <button
+                class="lookup-button"
+                onclick="consultarFactura()"
+            >
+
+                Consultar
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- FACTURA -->
+
+    <section
+        class="bill-section"
+        id="billSection"
+    >
+
+        <div class="bill-layout">
+
+
+            <!-- DETALLE -->
+
+            <div class="card">
+
+                <div class="card-title">
+
+                    <h3>
+                        Detalle de tu factura
+                    </h3>
+
+                    <span class="status">
+                        PENDIENTE
+                    </span>
+
+                </div>
+
+
+                <div class="user-info">
+
+                    <div
+                        class="user-name"
+                        id="clientName"
+                    >
+                        Usuario Orbit
+                    </div>
+
+                    <div
+                        class="phone-number"
+                        id="displayNumber"
+                    >
+                        +52 000 000 0000
+                    </div>
+
+                </div>
+
+
+                <div class="bill-row">
+
+                    <span>
+                        Plan Orbit
+                    </span>
+
+                    <span>
+                        $299.00
+                    </span>
+
+                </div>
+
+
+                <div class="bill-row">
+
+                    <span>
+                        Servicios adicionales
+                    </span>
+
+                    <span>
+                        $0.00
+                    </span>
+
+                </div>
+
+
+                <div class="bill-row">
+
+                    <span>
+                        Ajustes
+                    </span>
+
+                    <span>
+                        $0.00
+                    </span>
+
+                </div>
+
+
+                <div class="total-row">
+
+                    <span>
+                        Total a pagar
+                    </span>
+
+                    <span>
+                        $299.00
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- RESUMEN -->
+
+            <div class="card amount-card">
+
+                <p>
+                    SALDO PENDIENTE
+                </p>
+
+                <div class="amount">
+                    $299
+                </div>
+
+                <div class="due-date">
+                    Fecha límite de pago:
+                    15 de septiembre de 2026
+                </div>
+
+                <button
+                    class="pay-now"
+                    onclick="mostrarPago()"
+                >
+
+                    <i class="fa-solid fa-credit-card"></i>
+
+                    Pagar ahora
+
+                </button>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- PAGO -->
+
+    <section
+        class="payment-section"
+        id="paymentSection"
+    >
+
+
+        <div class="payment-card">
+
+
+            <h2>
+                Realiza tu pago
+            </h2>
+
+
+            <p>
+                Selecciona un método de pago.
+            </p>
+
+
+
+            <div class="payment-methods">
+
+
+                <div
+                    class="method active"
+                    onclick="seleccionarMetodo(this)"
+                >
+
+                    <i class="fa-solid fa-credit-card"></i>
+
+                    Tarjeta
+
+                </div>
+
+
+                <div
+                    class="method"
+                    onclick="seleccionarMetodo(this)"
+                >
+
+                    <i class="fa-solid fa-building-columns"></i>
+
+                    Transferencia
+
+                </div>
+
+
+            </div>
+
+
+
+            <div id="cardFields">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Nombre del titular
+                    </label>
+
+                    <input
+                        type="text"
+                        id="titular"
+                        placeholder="Como aparece en la tarjeta"
+                    >
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Número de tarjeta
+                    </label>
+
+                    <input
+                        type="text"
+                        id="tarjeta"
+                        maxlength="19"
+                        placeholder="0000 0000 0000 0000"
+                    >
+
+                </div>
+
+
+
+                <div class="small-grid">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Vencimiento
+                        </label>
+
+                        <input
+                            type="text"
+                            id="vencimiento"
+                            maxlength="5"
+                            placeholder="MM/AA"
+                        >
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label>
+                            CVV
+                        </label>
+
+                        <input
+                            type="password"
+                            id="cvv"
+                            maxlength="4"
+                            placeholder="•••"
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="payment-notice">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                Esta pantalla es una demostración para el
+                diseño de Orbit Mobile. No se realiza ningún
+                cobro real.
+
+            </div>
+
+
+
+            <button
+                class="confirm-button"
+                onclick="procesarPago()"
+            >
+
+                <i class="fa-solid fa-lock"></i>
+
+                Pagar $299.00
+
+            </button>
+
+
+
+            <div
+                class="result"
+                id="paymentResult"
+            ></div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- AYUDA -->
+
+    <section class="help-section">
+
+
+        <div class="help-card">
+
+            <i class="fa-solid fa-clock"></i>
+
+            <h3>
+                Consulta cuando quieras
+            </h3>
+
+            <p>
+                Revisa el estado de tu factura
+                desde el portal Orbit.
+            </p>
+
+        </div>
+
+
+
+        <div class="help-card">
+
+            <i class="fa-solid fa-receipt"></i>
+
+            <h3>
+                Historial de pagos
+            </h3>
+
+            <p>
+                Consulta tus movimientos
+                desde Mi Orbit.
+            </p>
+
+        </div>
+
+
+
+        <div class="help-card">
+
+            <i class="fa-solid fa-headset"></i>
+
+            <h3>
+                ¿Necesitas ayuda?
+            </h3>
+
+            <p>
+                Nuestro equipo puede ayudarte
+                con cualquier duda.
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =====================================
+     FOOTER
+===================================== -->
+
+<footer>
+
+    <div class="footer-content">
+
+
+        <div class="footer-col">
+
+            <h3>
+                Orbit Mobile
+            </h3>
+
+            <a href="index.html">
+                Conoce Orbit
+            </a>
+
+            <a href="#">
+                Tienda en línea
+            </a>
+
+            <a href="#">
+                Promociones
+            </a>
+
+        </div>
+
+
+
+        <div class="footer-col">
+
+            <h3>
+                Servicios
+            </h3>
+
+            <a href="recargas.html">
+                Paquetes y Recargas
+            </a>
+
+            <a href="planes.html">
+                Planes de renta
+            </a>
+
+            <a href="portabilidad.html">
+                Portabilidad
+            </a>
+
+        </div>
+
+
+
+        <div class="footer-col">
+
+            <h3>
+                Ayuda
+            </h3>
+
+            <a href="#">
+                Preguntas frecuentes
+            </a>
+
+            <a href="#">
+                Soporte
+            </a>
+
+            <a href="#">
+                Contáctanos
+            </a>
+
+        </div>
+
+
+
+        <div class="footer-col">
+
+            <h3>
+                Síguenos
+            </h3>
+
+            <a href="#">
+                <i class="fa-brands fa-facebook"></i>
+                Facebook
+            </a>
+
+            <a href="#">
+                <i class="fa-brands fa-instagram"></i>
+                Instagram
+            </a>
+
+            <a href="#">
+                <i class="fa-brands fa-tiktok"></i>
+                TikTok
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="footer-bottom">
+
+        © 2026 ORBIT MOBILE.
+        Todos los derechos reservados.
+
+    </div>
+
+</footer>
+
+
+
+<script>
+
+
+/* =====================================
+   SOLO NÚMEROS EN LÍNEA
+===================================== */
+
+const numeroInput =
+document.getElementById("numero");
+
+
+numeroInput.addEventListener("input",function(){
+
+    this.value =
+    this.value.replace(/\D/g,"");
+
+});
+
+
+
+/* =====================================
+   FORMATEAR TARJETA
+===================================== */
+
+const tarjetaInput =
+document.getElementById("tarjeta");
+
+
+tarjetaInput.addEventListener("input",function(){
+
+    let value =
+    this.value.replace(/\D/g,"");
+
+
+    value =
+    value.replace(/(.{4})/g,"$1 ");
+
+
+    this.value =
+    value.trim();
+
+});
+
+
+
+/* =====================================
+   FORMATEAR VENCIMIENTO
+===================================== */
+
+const vencimiento =
+document.getElementById("vencimiento");
+
+
+vencimiento.addEventListener("input",function(){
+
+    let value =
+    this.value.replace(/\D/g,"");
+
+
+    if(value.length > 2){
+
+        value =
+        value.substring(0,2)
+        + "/" +
+        value.substring(2,4);
+
+    }
+
+
+    this.value = value;
+
+});
+
+
+
+/* =====================================
+   CONSULTAR FACTURA
+===================================== */
+
+function consultarFactura(){
+
+
+    const numero =
+    document.getElementById("numero").value;
+
+
+    if(!/^\d{10}$/.test(numero)){
+
+
+        alert(
+            "Ingresa un número válido de 10 dígitos."
+        );
+
+
+        return;
+
+    }
+
+
+    document
+    .getElementById("displayNumber")
+    .textContent =
+
+    "+52 " +
+
+    numero.substring(0,3) +
+    " " +
+
+    numero.substring(3,6) +
+    " " +
+
+    numero.substring(6,10);
+
+
+    document
+    .getElementById("billSection")
+    .style.display = "block";
+
+
+    document
+    .getElementById("step2")
+    .classList.add("active");
+
+
+    document
+    .getElementById("billSection")
+    .scrollIntoView({
+
+        behavior:"smooth",
+        block:"start"
+
+    });
+
+
+}
+
+
+
+/* =====================================
+   MOSTRAR PAGO
+===================================== */
+
+function mostrarPago(){
+
+
+    document
+    .getElementById("paymentSection")
+    .style.display = "block";
+
+
+    document
+    .getElementById("step3")
+    .classList.add("active");
+
+
+    document
+    .getElementById("paymentSection")
+    .scrollIntoView({
+
+        behavior:"smooth",
+        block:"start"
+
+    });
+
+
+}
+
+
+
+/* =====================================
+   MÉTODO DE PAGO
+===================================== */
+
+function seleccionarMetodo(element){
+
+
+    const methods =
+    document.querySelectorAll(".method");
+
+
+    methods.forEach(method=>{
+
+        method.classList.remove("active");
+
+    });
+
+
+    element.classList.add("active");
+
+
+    const cardFields =
+    document.getElementById("cardFields");
+
+
+    if(
+        element.textContent
+        .trim()
+        .includes("Transferencia")
+    ){
+
+
+        cardFields.innerHTML =
+
+        `
+
+        <div class="payment-notice">
+
+            <strong>
+                Pago por transferencia
+            </strong>
+
+            <br><br>
+
+            Utiliza la información bancaria
+            proporcionada por Orbit Mobile
+            para completar tu pago.
+
+        </div>
+
+        `;
+
+
+    }else{
+
+
+        cardFields.innerHTML =
+
+        `
+
+        <div class="form-group">
+
+            <label>
+                Nombre del titular
+            </label>
+
+            <input
+                type="text"
+                id="titular"
+                placeholder="Como aparece en la tarjeta"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>
+                Número de tarjeta
+            </label>
+
+            <input
+                type="text"
+                id="tarjeta"
+                maxlength="19"
+                placeholder="0000 0000 0000 0000"
+            >
+
+        </div>
+
+
+        <div class="small-grid">
+
+
+            <div class="form-group">
+
+                <label>
+                    Vencimiento
+                </label>
+
+                <input
+                    type="text"
+                    id="vencimiento"
+                    maxlength="5"
+                    placeholder="MM/AA"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>
+                    CVV
+                </label>
+
+                <input
+                    type="password"
+                    id="cvv"
+                    maxlength="4"
+                    placeholder="•••"
+                >
+
+            </div>
+
+
+        </div>
+
+        `;
+
+    }
+
+
+}
+
+
+
+/* =====================================
+   PROCESAR PAGO
+===================================== */
+
+function procesarPago(){
+
+
+    const resultado =
+    document.getElementById("paymentResult");
+
+
+    resultado.className =
+    "result";
+
+
+    const activeMethod =
+    document.querySelector(".method.active");
+
+
+    if(
+        activeMethod.textContent
+        .trim()
+        .includes("Transferencia")
+    ){
+
+
+        resultado.innerHTML =
+
+        `
+
+        <i class="fa-solid fa-circle-info"></i>
+
+        <br>
+
+        <strong>
+            Solicitud de pago generada
+        </strong>
+
+        <br>
+
+        Sigue las instrucciones de transferencia
+        proporcionadas por Orbit Mobile.
+
+        `;
+
+
+        resultado.classList.add("success");
+
+
+        return;
+
+    }
+
+
+    const titular =
+    document.getElementById("titular")?.value.trim();
+
+
+    const tarjeta =
+    document.getElementById("tarjeta")
+    ?.value.replace(/\s/g,"");
+
+
+    const vencimiento =
+    document.getElementById("vencimiento")?.value;
+
+
+    const cvv =
+    document.getElementById("cvv")?.value;
+
+
+    if(
+        !titular ||
+        !/^\d{16}$/.test(tarjeta) ||
+        !/^\d{2}\/\d{2}$/.test(vencimiento) ||
+        !/^\d{3,4}$/.test(cvv)
+    ){
+
+
+        resultado.innerHTML =
+
+        `
+
+        <i class="fa-solid fa-triangle-exclamation"></i>
+
+        <br>
+
+        Completa correctamente todos
+        los datos del pago.
+
+        `;
+
+
+        resultado.classList.add("error");
+
+
+        return;
+
+    }
+
+
+    resultado.innerHTML =
+
+    `
+
+    <i class="fa-solid fa-circle-check"></i>
+
+    <br>
+
+    <strong>
+        ¡Pago simulado correctamente!
+    </strong>
+
+    <br>
+
+    Se registró un pago de
+    <strong>$299.00 MXN</strong>.
+
+    <br><br>
+
+    <small>
+        Esta es una demostración visual.
+        No se realizó ningún cargo real.
+    </small>
+
+    `;
+
+
+    resultado.classList.add("success");
+
+
+}
+
+
+</script>
+
+
+</body>
+</html>
