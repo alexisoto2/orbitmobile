@@ -1,75 +1,1856 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Portabilidad | Orbit Mobile</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
     <style>
-        :root { --bg-dark: #070913; --bg-card: #0e1225; --cyan-glow: #00d2ff; --purple-glow: #9b51e0; --text-main: #ffffff; --text-muted: #a0a5c0; }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.6; }
-        .gradient-text { background: linear-gradient(135deg, var(--cyan-glow), var(--purple-glow)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 8%; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-        .logo { font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; gap: 10px; }
-        nav a { color: var(--text-muted); text-decoration: none; margin-left: 2rem; }
-        nav a.active { color: var(--cyan-glow); }
+        :root{
+            --blue:#0b4f8a;
+            --blue-dark:#073865;
+            --blue-light:#eaf4fc;
+            --navy:#123f70;
+            --text:#294b6b;
+            --gray:#f5f5f5;
+            --border:#e4e4e4;
+            --green:#14804a;
+            --red:#d62828;
+        }
 
-        .form-container { max-width: 500px; margin: 4rem auto; background: var(--bg-card); border: 1px solid rgba(255,255,255,0.1); padding: 2.5rem; border-radius: 16px; }
-        .form-group { margin-bottom: 1.2rem; }
-        .form-group label { display: block; margin-bottom: 0.5rem; color: var(--text-muted); font-size: 0.9rem; }
-        .form-group input, .form-group select { width: 100%; padding: 0.8rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); color: #fff; }
-        .form-group input:focus { border-color: var(--cyan-glow); outline: none; }
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
 
-        .btn-gradient { background: linear-gradient(135deg, var(--cyan-glow), var(--purple-glow)); color: #fff; border: none; padding: 0.9rem; width: 100%; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 1rem; }
+        html{
+            scroll-behavior:smooth;
+        }
+
+        body{
+            background:#fff;
+            color:var(--text);
+        }
+
+        a{
+            text-decoration:none;
+            color:inherit;
+        }
+
+
+        /* =====================================
+           BARRA SUPERIOR
+        ===================================== */
+
+        .topbar{
+            height:44px;
+            background:var(--blue);
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            padding:0 5%;
+            color:white;
+        }
+
+        .top-tabs{
+            display:flex;
+            height:100%;
+        }
+
+        .top-tab{
+            padding:0 22px;
+            display:flex;
+            align-items:center;
+            font-size:14px;
+            font-weight:bold;
+            letter-spacing:.3px;
+        }
+
+        .top-tab.active{
+            background:white;
+            color:var(--blue);
+        }
+
+        .top-right{
+            display:flex;
+            align-items:center;
+            gap:25px;
+            font-size:14px;
+        }
+
+        .top-right a{
+            color:white;
+            font-weight:500;
+        }
+
+
+        /* =====================================
+           HEADER
+        ===================================== */
+
+        .main-header{
+            min-height:65px;
+            display:flex;
+            align-items:center;
+            padding:0 5%;
+            background:white;
+            box-shadow:0 2px 8px rgba(0,0,0,.08);
+            position:relative;
+            z-index:20;
+        }
+
+        .logo{
+            min-width:135px;
+            font-size:27px;
+            font-weight:800;
+            font-style:italic;
+            color:var(--blue);
+            letter-spacing:-1px;
+        }
+
+        .menu-btn{
+            display:flex;
+            align-items:center;
+            gap:8px;
+            margin-left:30px;
+            color:#4c4c4c;
+            font-size:16px;
+        }
+
+        .header-spacer{
+            flex:1;
+        }
+
+        .header-links{
+            display:flex;
+            align-items:center;
+            gap:27px;
+            margin-right:25px;
+            font-weight:600;
+            font-size:15px;
+            color:#34506d;
+        }
+
+        .header-links i{
+            color:var(--blue);
+            font-size:18px;
+        }
+
+        .search-box{
+            width:220px;
+            height:35px;
+            border-radius:20px;
+            background:#f0f2f4;
+            display:flex;
+            align-items:center;
+            padding:0 15px;
+            margin-right:20px;
+        }
+
+        .search-box input{
+            border:none;
+            outline:none;
+            background:transparent;
+            width:100%;
+            color:#555;
+        }
+
+        .mi-orbit{
+            display:flex;
+            align-items:center;
+            gap:10px;
+            font-weight:bold;
+            color:var(--blue);
+            white-space:nowrap;
+        }
+
+        .user-icon{
+            width:38px;
+            height:38px;
+            border-radius:50%;
+            background:#1c7ca8;
+            color:white;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+
+
+        /* =====================================
+           HERO PORTABILIDAD
+        ===================================== */
+
+        .hero{
+            position:relative;
+            overflow:hidden;
+            background:
+                linear-gradient(
+                    120deg,
+                    #073865,
+                    #0b4f8a 55%,
+                    #1d82b5
+                );
+
+            color:white;
+            padding:75px 8%;
+        }
+
+        .hero::before{
+            content:"";
+            position:absolute;
+            width:430px;
+            height:430px;
+            border:70px solid rgba(255,255,255,.06);
+            border-radius:50%;
+            right:-150px;
+            top:-190px;
+        }
+
+        .hero::after{
+            content:"";
+            position:absolute;
+            width:270px;
+            height:270px;
+            background:rgba(255,255,255,.04);
+            border-radius:50%;
+            left:-100px;
+            bottom:-150px;
+        }
+
+        .hero-container{
+            position:relative;
+            z-index:2;
+            max-width:1200px;
+            margin:auto;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:50px;
+        }
+
+        .hero-text{
+            max-width:650px;
+        }
+
+        .hero-tag{
+            display:inline-flex;
+            align-items:center;
+            gap:9px;
+            padding:9px 17px;
+            background:rgba(255,255,255,.12);
+            border:1px solid rgba(255,255,255,.25);
+            border-radius:25px;
+            margin-bottom:20px;
+            font-size:14px;
+            font-weight:bold;
+        }
+
+        .hero h1{
+            font-size:48px;
+            line-height:1.08;
+            margin-bottom:18px;
+        }
+
+        .hero p{
+            color:#d8efff;
+            font-size:20px;
+            line-height:1.5;
+            margin-bottom:28px;
+        }
+
+        .hero-button{
+            display:inline-flex;
+            align-items:center;
+            gap:10px;
+            padding:15px 28px;
+            background:white;
+            color:var(--blue);
+            border-radius:28px;
+            font-weight:bold;
+            transition:.2s;
+        }
+
+        .hero-button:hover{
+            transform:translateY(-2px);
+        }
+
+        .hero-phone{
+            width:270px;
+            min-width:240px;
+        }
+
+
+        /* =====================================
+           INFORMACIÓN
+        ===================================== */
+
+        .intro{
+            text-align:center;
+            padding:60px 20px 30px;
+        }
+
+        .intro h2{
+            color:var(--blue);
+            font-size:32px;
+            margin-bottom:12px;
+        }
+
+        .intro p{
+            color:#718092;
+            max-width:680px;
+            margin:auto;
+            line-height:1.5;
+        }
+
+
+        /* =====================================
+           PASOS
+        ===================================== */
+
+        .steps-section{
+            padding:25px 5% 70px;
+        }
+
+        .steps{
+            max-width:1100px;
+            margin:auto;
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:25px;
+        }
+
+        .step{
+            background:white;
+            border:1px solid #e2e9ee;
+            border-radius:18px;
+            padding:30px 25px;
+            text-align:center;
+            box-shadow:0 8px 25px rgba(10,60,100,.06);
+        }
+
+        .step-number{
+            width:45px;
+            height:45px;
+            border-radius:50%;
+            background:var(--blue);
+            color:white;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:18px;
+            font-weight:bold;
+            margin:0 auto 18px;
+        }
+
+        .step-icon{
+            font-size:35px;
+            color:var(--blue);
+            margin-bottom:16px;
+        }
+
+        .step h3{
+            color:#214a70;
+            margin-bottom:10px;
+        }
+
+        .step p{
+            color:#718092;
+            font-size:14px;
+            line-height:1.5;
+        }
+
+
+        /* =====================================
+           FORMULARIO
+        ===================================== */
+
+        .form-section{
+            background:#f4f7fa;
+            padding:70px 20px;
+        }
+
+        .form-container{
+            max-width:800px;
+            margin:auto;
+        }
+
+        .form-header{
+            text-align:center;
+            margin-bottom:30px;
+        }
+
+        .form-header h2{
+            color:var(--blue);
+            font-size:30px;
+            margin-bottom:10px;
+        }
+
+        .form-header p{
+            color:#718092;
+        }
+
+        .port-form{
+            background:white;
+            padding:35px;
+            border-radius:18px;
+            box-shadow:0 8px 30px rgba(10,60,100,.08);
+        }
+
+        .form-grid{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:20px;
+        }
+
+        .form-group{
+            margin-bottom:20px;
+        }
+
+        .form-group.full{
+            grid-column:1 / -1;
+        }
+
+        .form-group label{
+            display:block;
+            margin-bottom:8px;
+            color:#34506d;
+            font-size:14px;
+            font-weight:bold;
+        }
+
+        .input-box{
+            position:relative;
+        }
+
+        .input-box i{
+            position:absolute;
+            left:15px;
+            top:50%;
+            transform:translateY(-50%);
+            color:var(--blue);
+        }
+
+        .form-group input,
+        .form-group select{
+            width:100%;
+            height:50px;
+            border:1px solid #d7e0e7;
+            border-radius:9px;
+            outline:none;
+            padding:0 15px;
+            font-size:15px;
+            color:#405d78;
+            background:white;
+        }
+
+        .input-box input{
+            padding-left:45px;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus{
+            border-color:var(--blue);
+            box-shadow:0 0 0 3px rgba(11,79,138,.08);
+        }
+
+        .notice{
+            background:#eaf4fc;
+            border-left:4px solid var(--blue);
+            padding:15px;
+            border-radius:7px;
+            color:#49677f;
+            font-size:13px;
+            line-height:1.5;
+            margin:10px 0 22px;
+        }
+
+        .notice i{
+            color:var(--blue);
+            margin-right:7px;
+        }
+
+        .checkbox-group{
+            display:flex;
+            align-items:flex-start;
+            gap:10px;
+            margin-bottom:22px;
+            color:#68798a;
+            font-size:13px;
+            line-height:1.5;
+        }
+
+        .checkbox-group input{
+            margin-top:3px;
+            accent-color:var(--blue);
+        }
+
+        .submit-button{
+            width:100%;
+            height:52px;
+            border:none;
+            border-radius:28px;
+            background:var(--blue);
+            color:white;
+            font-size:16px;
+            font-weight:bold;
+            cursor:pointer;
+            transition:.2s;
+        }
+
+        .submit-button:hover{
+            background:var(--blue-dark);
+        }
+
+
+        /* =====================================
+           BENEFICIOS
+        ===================================== */
+
+        .why-section{
+            padding:70px 5%;
+        }
+
+        .section-title{
+            text-align:center;
+            margin-bottom:40px;
+        }
+
+        .section-title h2{
+            color:var(--blue);
+            font-size:31px;
+            margin-bottom:10px;
+        }
+
+        .section-title p{
+            color:#718092;
+        }
+
+        .why-grid{
+            max-width:1100px;
+            margin:auto;
+            display:grid;
+            grid-template-columns:repeat(4,1fr);
+            gap:20px;
+        }
+
+        .why-card{
+            border:1px solid #e4ebf0;
+            border-radius:15px;
+            padding:28px 20px;
+            text-align:center;
+        }
+
+        .why-card i{
+            width:60px;
+            height:60px;
+            border-radius:50%;
+            background:var(--blue-light);
+            color:var(--blue);
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            font-size:25px;
+            margin-bottom:17px;
+        }
+
+        .why-card h3{
+            color:#214a70;
+            font-size:16px;
+            margin-bottom:9px;
+        }
+
+        .why-card p{
+            color:#718092;
+            font-size:13px;
+            line-height:1.5;
+        }
+
+
+        /* =====================================
+           RESULTADO
+        ===================================== */
+
+        .result{
+            display:none;
+            margin-top:20px;
+            padding:18px;
+            border-radius:10px;
+            text-align:center;
+            font-size:14px;
+            line-height:1.5;
+        }
+
+        .result.success{
+            display:block;
+            background:#eaf8ef;
+            color:var(--green);
+            border:1px solid #bde4ca;
+        }
+
+        .result.error{
+            display:block;
+            background:#fff0f0;
+            color:var(--red);
+            border:1px solid #f2c3c3;
+        }
+
+
+        /* =====================================
+           FOOTER
+        ===================================== */
+
+        footer{
+            background:#f4f6f8;
+            border-top:1px solid #ddd;
+            padding-top:40px;
+        }
+
+        .footer-content{
+            max-width:1200px;
+            margin:auto;
+            padding:0 30px 40px;
+            display:grid;
+            grid-template-columns:repeat(4,1fr);
+            gap:30px;
+        }
+
+        .footer-col h3{
+            color:var(--blue);
+            margin-bottom:15px;
+            font-size:16px;
+        }
+
+        .footer-col a{
+            display:block;
+            color:#4b6680;
+            margin-bottom:10px;
+            font-size:14px;
+        }
+
+        .footer-bottom{
+            background:#073865;
+            color:white;
+            text-align:center;
+            padding:18px;
+            font-size:13px;
+        }
+
+
+        /* =====================================
+           RESPONSIVE
+        ===================================== */
+
+        @media(max-width:1100px){
+
+            .top-right,
+            .header-links,
+            .search-box{
+                display:none;
+            }
+
+            .why-grid{
+                grid-template-columns:repeat(2,1fr);
+            }
+
+        }
+
+
+        @media(max-width:850px){
+
+            .hero-container{
+                flex-direction:column;
+                text-align:center;
+            }
+
+            .hero h1{
+                font-size:40px;
+            }
+
+            .steps{
+                grid-template-columns:1fr;
+            }
+
+        }
+
+
+        @media(max-width:650px){
+
+            .topbar{
+                padding:0;
+            }
+
+            .top-tab{
+                padding:0 15px;
+            }
+
+            .logo{
+                min-width:auto;
+                font-size:23px;
+            }
+
+            .menu-btn{
+                margin-left:15px;
+                font-size:14px;
+            }
+
+            .mi-orbit{
+                font-size:0;
+            }
+
+            .hero{
+                padding:55px 22px;
+            }
+
+            .hero h1{
+                font-size:33px;
+            }
+
+            .hero p{
+                font-size:17px;
+            }
+
+            .form-grid{
+                grid-template-columns:1fr;
+            }
+
+            .port-form{
+                padding:25px 20px;
+            }
+
+            .why-grid{
+                grid-template-columns:1fr;
+            }
+
+            .footer-content{
+                grid-template-columns:1fr 1fr;
+            }
+
+        }
+
     </style>
+
 </head>
+
+
 <body>
-    <header>
-        <div class="logo"><i class="fa-solid fa-planet gradient-text"></i> ORBIT <span class="gradient-text">MOBILE</span></div>
-        <nav>
-            <a href="index.html">Inicio</a>
-            <a href="planes.html">Planes</a>
-            <a href="portabilidad.html" class="active">Portabilidad</a>
-        </nav>
-    </header>
 
-    <div class="form-container">
-        <h2 style="margin-bottom: 1rem;">Conserva tu número</h2>
-        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">Trae tu número actual a Orbit Mobile. Necesitas tu NIP enviando un SMS con la palabra <b>NIP al 051</b>.</p>
 
-        <form id="portForm" onsubmit="procesarPortabilidad(event)">
-            <div class="form-group">
-                <label>Número a Traer (10 dígitos)</label>
-                <input type="tel" maxlength="10" required placeholder="Ej. 6561234567">
-            </div>
+<!-- =====================================
+     BARRA SUPERIOR
+===================================== -->
 
-            <div class="form-group">
-                <label>NIP de Portabilidad (4 dígitos)</label>
-                <input type="text" maxlength="4" required placeholder="Ej. 1234">
-            </div>
+<div class="topbar">
 
-            <div class="form-group">
-                <label>Compañía Actual</label>
-                <select required>
-                    <option value="">Selecciona operador</option>
-                    <option value="telcel">Telcel</option>
-                    <option value="movistar">Movistar</option>
-                    <option value="att">AT&T</option>
-                    <option value="otro">Otro OMV</option>
-                </select>
-            </div>
+    <div class="top-tabs">
 
-            <button type="submit" class="btn-gradient">Iniciar Trámite</button>
-        </form>
+        <a href="#" class="top-tab active">
+            PERSONAS
+        </a>
+
+        <a href="#" class="top-tab">
+            EMPRESAS
+        </a>
+
     </div>
 
-    <script>
-        function procesarPortabilidad(e) {
-            e.preventDefault();
-            alert("Solicitud recibida. Se enviará a la API de Interlinked para procesar la portabilidad ante el IFT.");
-        }
-    </script>
+
+    <div class="top-right">
+
+        <a href="#">
+            <i class="fa-solid fa-store"></i>
+            Orbit Shop
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-plane"></i>
+            Viaja con Orbit
+        </a>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="main-header">
+
+
+    <a href="index.html" class="logo">
+        orbit
+    </a>
+
+
+    <a href="#" class="menu-btn">
+
+        Menú
+
+        <i class="fa-solid fa-caret-down"></i>
+
+    </a>
+
+
+    <div class="header-spacer"></div>
+
+
+    <nav class="header-links">
+
+
+        <a href="planes.html">
+
+            <i class="fa-solid fa-bolt"></i>
+            Planes
+
+        </a>
+
+
+        <a href="#">
+
+            <i class="fa-solid fa-location-dot"></i>
+            Chihuahua
+
+        </a>
+
+
+        <a href="#">
+
+            <i class="fa-solid fa-bag-shopping"></i>
+            Tienda en línea
+
+        </a>
+
+
+        <a href="recargas.html">
+
+            <i class="fa-solid fa-dollar-sign"></i>
+            Recargas
+
+        </a>
+
+
+    </nav>
+
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            placeholder="Buscar..."
+        >
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+    </div>
+
+
+    <a href="#" class="mi-orbit">
+
+        <div class="user-icon">
+            <i class="fa-solid fa-user"></i>
+        </div>
+
+        Mi Orbit
+
+    </a>
+
+
+</header>
+
+
+
+<!-- =====================================
+     HERO
+===================================== -->
+
+<section class="hero">
+
+
+    <div class="hero-container">
+
+
+        <div class="hero-text">
+
+
+            <div class="hero-tag">
+
+                <i class="fa-solid fa-right-left"></i>
+
+                PORTABILIDAD ORBIT
+
+            </div>
+
+
+            <h1>
+
+                Cámbiate a Orbit
+                sin cambiar tu número.
+
+            </h1>
+
+
+            <p>
+
+                Conserva tu número actual y disfruta
+                una nueva experiencia móvil con Orbit Mobile.
+
+            </p>
+
+
+            <a
+                href="#portabilidad"
+                class="hero-button"
+            >
+
+                <i class="fa-solid fa-mobile-screen"></i>
+
+                Iniciar portabilidad
+
+            </a>
+
+
+        </div>
+
+
+
+        <!-- SVG TELÉFONO -->
+
+        <svg
+            class="hero-phone"
+            viewBox="0 0 350 400"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+
+
+            <circle
+                cx="175"
+                cy="200"
+                r="165"
+                fill="rgba(255,255,255,.08)"
+            />
+
+
+            <rect
+                x="100"
+                y="40"
+                width="150"
+                height="310"
+                rx="28"
+                fill="#ffffff"
+            />
+
+
+            <rect
+                x="113"
+                y="70"
+                width="124"
+                height="225"
+                rx="12"
+                fill="#0b4f8a"
+            />
+
+
+            <rect
+                x="155"
+                y="52"
+                width="40"
+                height="5"
+                rx="3"
+                fill="#d9e5ed"
+            />
+
+
+            <circle
+                cx="175"
+                cy="322"
+                r="11"
+                fill="#d9e5ed"
+            />
+
+
+            <!-- FLECHAS -->
+
+            <path
+                d="M135 150
+                   H210
+                   L190 130"
+
+                stroke="white"
+                stroke-width="9"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+
+
+            <path
+                d="M215 205
+                   H140
+                   L160 225"
+
+                stroke="white"
+                stroke-width="9"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            />
+
+
+            <text
+                x="175"
+                y="265"
+                text-anchor="middle"
+                fill="white"
+                font-size="18"
+                font-weight="bold"
+            >
+
+                TU NÚMERO
+
+            </text>
+
+
+        </svg>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================
+     INTRO
+===================================== -->
+
+<section class="intro">
+
+
+    <h2>
+        Cambiarte es muy fácil
+    </h2>
+
+
+    <p>
+
+        Realiza tu solicitud y conserva tu mismo número.
+        Nosotros te acompañaremos durante el proceso.
+
+    </p>
+
+
+</section>
+
+
+
+<!-- =====================================
+     PASOS
+===================================== -->
+
+<section class="steps-section">
+
+
+    <div class="steps">
+
+
+        <div class="step">
+
+
+            <div class="step-number">
+                1
+            </div>
+
+
+            <div class="step-icon">
+
+                <i class="fa-solid fa-mobile-screen"></i>
+
+            </div>
+
+
+            <h3>
+                Ingresa tu número
+            </h3>
+
+
+            <p>
+
+                Escribe el número que deseas conservar
+                al cambiarte a Orbit Mobile.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="step">
+
+
+            <div class="step-number">
+                2
+            </div>
+
+
+            <div class="step-icon">
+
+                <i class="fa-solid fa-file-signature"></i>
+
+            </div>
+
+
+            <h3>
+                Completa tu solicitud
+            </h3>
+
+
+            <p>
+
+                Ingresa la información necesaria
+                para iniciar el proceso de portabilidad.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="step">
+
+
+            <div class="step-number">
+                3
+            </div>
+
+
+            <div class="step-icon">
+
+                <i class="fa-solid fa-signal"></i>
+
+            </div>
+
+
+            <h3>
+                Disfruta Orbit
+            </h3>
+
+
+            <p>
+
+                Una vez completado el proceso,
+                podrás disfrutar tu nueva línea Orbit.
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================
+     FORMULARIO
+===================================== -->
+
+<section
+    class="form-section"
+    id="portabilidad"
+>
+
+
+    <div class="form-container">
+
+
+        <div class="form-header">
+
+
+            <h2>
+                Inicia tu portabilidad
+            </h2>
+
+
+            <p>
+                Completa los siguientes datos para comenzar.
+            </p>
+
+
+        </div>
+
+
+
+        <form
+            class="port-form"
+            onsubmit="enviarSolicitud(event)"
+        >
+
+
+            <div class="form-grid">
+
+
+                <!-- NOMBRE -->
+
+                <div class="form-group">
+
+
+                    <label>
+                        Nombre completo
+                    </label>
+
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-user"></i>
+
+
+                        <input
+                            type="text"
+                            id="nombre"
+                            placeholder="Escribe tu nombre"
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- NÚMERO -->
+
+                <div class="form-group">
+
+
+                    <label>
+                        Número que deseas conservar
+                    </label>
+
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-mobile-screen"></i>
+
+
+                        <input
+                            type="tel"
+                            id="numero"
+                            maxlength="10"
+                            placeholder="10 dígitos"
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- OPERADOR -->
+
+                <div class="form-group">
+
+
+                    <label>
+                        Operador actual
+                    </label>
+
+
+                    <select id="operador">
+
+                        <option value="">
+                            Selecciona tu operador
+                        </option>
+
+                        <option>
+                            Telcel
+                        </option>
+
+                        <option>
+                            AT&T
+                        </option>
+
+                        <option>
+                            Movistar
+                        </option>
+
+                        <option>
+                            BAIT
+                        </option>
+
+                        <option>
+                            Otro
+                        </option>
+
+                    </select>
+
+
+                </div>
+
+
+
+                <!-- PLAN -->
+
+                <div class="form-group">
+
+
+                    <label>
+                        Plan que deseas contratar
+                    </label>
+
+
+                    <select id="plan">
+
+                        <option value="">
+                            Selecciona un plan
+                        </option>
+
+                        <option>
+                            Orbit Esencial - $199
+                        </option>
+
+                        <option>
+                            Orbit Conecta - $299
+                        </option>
+
+                        <option>
+                            Orbit Max - $399
+                        </option>
+
+                    </select>
+
+
+                </div>
+
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group full">
+
+
+                    <label>
+                        Correo electrónico
+                    </label>
+
+
+                    <div class="input-box">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="correo@ejemplo.com"
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="notice">
+
+                <i class="fa-solid fa-circle-info"></i>
+
+                La solicitud mostrada en esta página es una
+                demostración visual. La portabilidad real requiere
+                validación y los procedimientos correspondientes.
+
+            </div>
+
+
+
+            <label class="checkbox-group">
+
+
+                <input
+                    type="checkbox"
+                    id="terminos"
+                >
+
+
+                <span>
+
+                    Confirmo que deseo iniciar una solicitud
+                    de portabilidad y acepto ser contactado
+                    para continuar con el proceso.
+
+                </span>
+
+
+            </label>
+
+
+
+            <button
+                type="submit"
+                class="submit-button"
+            >
+
+                <i class="fa-solid fa-right-left"></i>
+
+                Solicitar portabilidad
+
+            </button>
+
+
+
+            <div
+                class="result"
+                id="resultado"
+            ></div>
+
+
+        </form>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================
+     BENEFICIOS
+===================================== -->
+
+<section class="why-section">
+
+
+    <div class="section-title">
+
+
+        <h2>
+            ¿Por qué cambiarte a Orbit?
+        </h2>
+
+
+        <p>
+            Conserva tu número y descubre una nueva forma de conectarte.
+        </p>
+
+
+    </div>
+
+
+
+    <div class="why-grid">
+
+
+        <div class="why-card">
+
+
+            <i class="fa-solid fa-hashtag"></i>
+
+
+            <h3>
+                Conserva tu número
+            </h3>
+
+
+            <p>
+
+                No necesitas avisar a todos
+                que tienes un número nuevo.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="why-card">
+
+
+            <i class="fa-solid fa-wifi"></i>
+
+
+            <h3>
+                Conectividad
+            </h3>
+
+
+            <p>
+
+                Disfruta los beneficios
+                disponibles en Orbit Mobile.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="why-card">
+
+
+            <i class="fa-solid fa-sim-card"></i>
+
+
+            <h3>
+                Opción eSIM
+            </h3>
+
+
+            <p>
+
+                Utiliza una experiencia digital
+                en dispositivos compatibles.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="why-card">
+
+
+            <i class="fa-solid fa-headset"></i>
+
+
+            <h3>
+                Te acompañamos
+            </h3>
+
+
+            <p>
+
+                Recibe orientación durante
+                las diferentes etapas del proceso.
+
+            </p>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================
+     FOOTER
+===================================== -->
+
+<footer>
+
+
+    <div class="footer-content">
+
+
+        <div class="footer-col">
+
+
+            <h3>
+                Orbit Mobile
+            </h3>
+
+
+            <a href="index.html">
+                Conoce Orbit
+            </a>
+
+
+            <a href="#">
+                Tienda en línea
+            </a>
+
+
+            <a href="#">
+                Promociones
+            </a>
+
+
+        </div>
+
+
+
+        <div class="footer-col">
+
+
+            <h3>
+                Servicios
+            </h3>
+
+
+            <a href="recargas.html">
+                Paquetes y Recargas
+            </a>
+
+
+            <a href="planes.html">
+                Planes de renta
+            </a>
+
+
+            <a href="index.html#compatibilidad">
+                eSIM
+            </a>
+
+
+        </div>
+
+
+
+        <div class="footer-col">
+
+
+            <h3>
+                Ayuda
+            </h3>
+
+
+            <a href="#">
+                Preguntas frecuentes
+            </a>
+
+
+            <a href="#">
+                Soporte
+            </a>
+
+
+            <a href="#">
+                Contáctanos
+            </a>
+
+
+        </div>
+
+
+
+        <div class="footer-col">
+
+
+            <h3>
+                Síguenos
+            </h3>
+
+
+            <a href="#">
+
+                <i class="fa-brands fa-facebook"></i>
+
+                Facebook
+
+            </a>
+
+
+            <a href="#">
+
+                <i class="fa-brands fa-instagram"></i>
+
+                Instagram
+
+            </a>
+
+
+            <a href="#">
+
+                <i class="fa-brands fa-tiktok"></i>
+
+                TikTok
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="footer-bottom">
+
+        © 2026 ORBIT MOBILE.
+        Todos los derechos reservados.
+
+    </div>
+
+
+</footer>
+
+
+
+<script>
+
+
+/* =====================================
+   VALIDAR SOLO NÚMEROS
+===================================== */
+
+document
+.getElementById("numero")
+.addEventListener("input", function(){
+
+    this.value =
+    this.value.replace(/\D/g, "");
+
+});
+
+
+/* =====================================
+   ENVIAR SOLICITUD
+===================================== */
+
+function enviarSolicitud(event){
+
+
+    event.preventDefault();
+
+
+    const nombre =
+        document.getElementById("nombre").value.trim();
+
+
+    const numero =
+        document.getElementById("numero").value.trim();
+
+
+    const operador =
+        document.getElementById("operador").value;
+
+
+    const plan =
+        document.getElementById("plan").value;
+
+
+    const email =
+        document.getElementById("email").value.trim();
+
+
+    const terminos =
+        document.getElementById("terminos").checked;
+
+
+    const resultado =
+        document.getElementById("resultado");
+
+
+    resultado.className =
+        "result";
+
+
+    /* VALIDACIONES */
+
+    if(
+        nombre === "" ||
+        numero === "" ||
+        operador === "" ||
+        plan === "" ||
+        email === ""
+    ){
+
+
+        resultado.innerHTML =
+        '<i class="fa-solid fa-triangle-exclamation"></i> ' +
+        'Completa todos los campos para continuar.';
+
+
+        resultado.classList.add("error");
+
+
+        return;
+
+    }
+
+
+    if(!/^\d{10}$/.test(numero)){
+
+
+        resultado.innerHTML =
+        '<i class="fa-solid fa-triangle-exclamation"></i> ' +
+        'Ingresa un número válido de 10 dígitos.';
+
+
+        resultado.classList.add("error");
+
+
+        return;
+
+    }
+
+
+    if(!terminos){
+
+
+        resultado.innerHTML =
+        '<i class="fa-solid fa-triangle-exclamation"></i> ' +
+        'Debes confirmar tu solicitud para continuar.';
+
+
+        resultado.classList.add("error");
+
+
+        return;
+
+    }
+
+
+    /* ÉXITO */
+
+    resultado.innerHTML =
+    '<i class="fa-solid fa-circle-check"></i><br><br>' +
+
+    '<strong>¡Solicitud iniciada!</strong><br>' +
+
+    'Gracias, ' + nombre + '. ' +
+
+    'Hemos registrado tu interés para portar el número ' +
+
+    '<strong>' + numero + '</strong> a Orbit Mobile.<br><br>' +
+
+    '<small>Esta demostración no realiza una portabilidad real.</small>';
+
+
+    resultado.classList.add("success");
+
+
+    resultado.scrollIntoView({
+
+        behavior:"smooth",
+        block:"center"
+
+    });
+
+
+}
+
+
+</script>
+
+
 </body>
 </html>
