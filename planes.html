@@ -1,306 +1,2153 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planes Orbit Mobile | Tarifas y Opciones</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+    <title>Planes | Orbit Mobile</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
     <style>
-        :root {
-            --orbit-blue: #00d2ff;
-            --orbit-purple: #9b51e0;
-            --orbit-dark: #0b1128;
-            --gray-bg: #f8fafc;
-            --gray-border: #e2e8f0;
-            --text-dark: #1e293b;
-            --text-muted: #64748b;
+
+        :root{
+            --blue:#0b4f8a;
+            --blue-dark:#073865;
+            --blue-light:#eaf4fc;
+            --navy:#123f70;
+            --text:#294b6b;
+            --gray:#f5f5f5;
+            --border:#e4e4e4;
+            --green:#14804a;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
-        body { background-color: #ffffff; color: var(--text-dark); line-height: 1.5; }
-
-        /* BARRA SUPERIOR */
-        .top-bar {
-            background-color: var(--orbit-dark);
-            color: #fff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 8%;
-            font-size: 0.85rem;
-            height: 40px;
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
         }
 
-        .top-bar-left { display: flex; height: 100%; }
-        .tab-btn {
-            padding: 0 1.2rem;
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-            color: #a0a5c0;
-            font-weight: 600;
-            height: 100%;
-        }
-        .tab-btn.active {
-            background-color: #172042;
-            color: var(--orbit-blue);
-            border-bottom: 3px solid var(--orbit-blue);
+        html{
+            scroll-behavior:smooth;
         }
 
-        .top-bar-right { display: flex; gap: 1.5rem; align-items: center; }
-        .top-bar-right a { color: #fff; text-decoration: none; font-size: 0.85rem; display: flex; align-items: center; gap: 5px; }
-
-        /* HEADER */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 8%;
-            border-bottom: 1px solid var(--gray-border);
-            background: #fff;
+        body{
+            background:#fff;
+            color:var(--text);
         }
 
-        .logo { font-size: 1.6rem; font-weight: 800; color: var(--orbit-dark); display: flex; align-items: center; gap: 8px; text-decoration: none; }
-        .gradient-text { background: linear-gradient(135deg, var(--orbit-blue), var(--orbit-purple)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-        .main-nav { display: flex; align-items: center; gap: 1.5rem; }
-        .main-nav a { color: var(--text-dark); text-decoration: none; font-weight: 600; font-size: 0.95rem; }
-        
-        .btn-mi-orbit {
-            background: linear-gradient(135deg, var(--orbit-blue), var(--orbit-purple));
-            color: #fff;
-            padding: 0.5rem 1.2rem;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.85rem;
+        a{
+            text-decoration:none;
+            color:inherit;
         }
 
-        /* CONTENIDO DE PLANES */
-        .plans-wrapper { max-width: 1100px; margin: 2rem auto 5rem auto; padding: 0 5%; }
 
-        .category-section { margin-bottom: 4rem; }
-        .category-title { font-size: 1.8rem; font-weight: 800; color: #0084c7; margin-bottom: 0.5rem; }
-        .category-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem; max-width: 900px; }
+        /* =====================================
+           BARRA SUPERIOR
+        ===================================== */
 
-        .plan-item { margin-bottom: 2rem; }
-        .plan-name-title { font-size: 1.2rem; font-weight: 700; color: #0084c7; margin-bottom: 0.8rem; }
-
-        /* CONTENEDOR HORIZONTAL DEL PLAN (Estilo captura) */
-        .plan-table {
-            border: 1px solid var(--gray-border);
-            border-radius: 8px;
-            overflow: hidden;
-            background-color: var(--gray-bg);
-            position: relative;
+        .topbar{
+            height:44px;
+            background:var(--blue);
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            padding:0 5%;
+            color:white;
         }
 
-        .badge-recomendado {
-            background-color: #00c49f;
-            color: white;
-            font-size: 0.75rem;
-            font-weight: 700;
-            padding: 4px 15px;
-            display: inline-block;
-            border-bottom-right-radius: 8px;
+        .top-tabs{
+            display:flex;
+            height:100%;
         }
 
-        .plan-row {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr) 1.2fr;
-            background: #f8fafc;
+        .top-tab{
+            padding:0 22px;
+            display:flex;
+            align-items:center;
+            font-size:14px;
+            font-weight:bold;
+            letter-spacing:.3px;
         }
 
-        .col-box {
-            padding: 1.2rem;
-            border-right: 1px solid var(--gray-border);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        .top-tab.active{
+            background:white;
+            color:var(--blue);
         }
 
-        .col-box:last-child { border-right: none; background: #f1f5f9; text-align: center; }
-
-        .col-label { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.4rem; font-weight: 500; }
-        .col-value-large { font-size: 1.6rem; font-weight: 800; color: var(--text-dark); }
-        .col-value-sub { font-size: 0.85rem; color: var(--text-muted); }
-        
-        .price-text { font-size: 2rem; font-weight: 800; color: var(--text-dark); line-height: 1; }
-        .price-sub { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.8rem; }
-
-        .btn-purple {
-            background-color: var(--orbit-purple);
-            color: #fff;
-            border: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            cursor: pointer;
-            width: 100%;
+        .top-right{
+            display:flex;
+            align-items:center;
+            gap:25px;
+            font-size:14px;
         }
 
-        .btn-link {
-            color: #0084c7;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 700;
-            display: inline-block;
-            margin-top: 0.5rem;
+        .top-right a{
+            color:white;
+            font-weight:500;
         }
 
-        footer { background: var(--orbit-dark); color: #a0a5c0; padding: 2rem 8%; text-align: center; font-size: 0.85rem; }
 
-        @media (max-width: 850px) {
-            .plan-row { grid-template-columns: 1fr; }
-            .col-box { border-right: none; border-bottom: 1px solid var(--gray-border); }
+        /* =====================================
+           HEADER
+        ===================================== */
+
+        .main-header{
+            min-height:65px;
+            display:flex;
+            align-items:center;
+            padding:0 5%;
+            background:white;
+            box-shadow:0 2px 8px rgba(0,0,0,.08);
+            position:relative;
+            z-index:20;
         }
+
+        .logo{
+            min-width:135px;
+            font-size:27px;
+            font-weight:800;
+            font-style:italic;
+            color:var(--blue);
+            letter-spacing:-1px;
+        }
+
+        .menu-btn{
+            display:flex;
+            align-items:center;
+            gap:8px;
+            margin-left:30px;
+            color:#4c4c4c;
+            font-size:16px;
+        }
+
+        .header-spacer{
+            flex:1;
+        }
+
+        .header-links{
+            display:flex;
+            align-items:center;
+            gap:27px;
+            margin-right:25px;
+            font-weight:600;
+            font-size:15px;
+            color:#34506d;
+        }
+
+        .header-links i{
+            color:var(--blue);
+            font-size:18px;
+        }
+
+        .header-links a.active{
+            color:var(--blue);
+        }
+
+        .search-box{
+            width:220px;
+            height:35px;
+            border-radius:20px;
+            background:#f0f2f4;
+            display:flex;
+            align-items:center;
+            padding:0 15px;
+            margin-right:20px;
+        }
+
+        .search-box input{
+            border:none;
+            outline:none;
+            background:transparent;
+            width:100%;
+            color:#555;
+        }
+
+        .mi-orbit{
+            display:flex;
+            align-items:center;
+            gap:10px;
+            font-weight:bold;
+            color:var(--blue);
+            white-space:nowrap;
+        }
+
+        .user-icon{
+            width:38px;
+            height:38px;
+            border-radius:50%;
+            background:#1c7ca8;
+            color:white;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+
+
+        /* =====================================
+           HERO PLANES
+        ===================================== */
+
+        .plans-hero{
+            position:relative;
+            overflow:hidden;
+            background:
+                linear-gradient(
+                    120deg,
+                    #073865,
+                    #0b4f8a 55%,
+                    #1b79ad
+                );
+
+            color:white;
+            padding:75px 8%;
+        }
+
+        .plans-hero::before{
+            content:"";
+            position:absolute;
+            width:450px;
+            height:450px;
+            border-radius:50%;
+            border:80px solid rgba(255,255,255,.06);
+            right:-150px;
+            top:-180px;
+        }
+
+        .plans-hero::after{
+            content:"";
+            position:absolute;
+            width:300px;
+            height:300px;
+            border-radius:50%;
+            background:rgba(255,255,255,.04);
+            left:-100px;
+            bottom:-160px;
+        }
+
+        .hero-content{
+            position:relative;
+            z-index:2;
+            max-width:1200px;
+            margin:auto;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:40px;
+        }
+
+        .hero-text{
+            max-width:650px;
+        }
+
+        .hero-tag{
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+            padding:9px 16px;
+            background:rgba(255,255,255,.12);
+            border:1px solid rgba(255,255,255,.25);
+            border-radius:25px;
+            font-size:14px;
+            margin-bottom:20px;
+        }
+
+        .hero-text h1{
+            font-size:48px;
+            line-height:1.05;
+            margin-bottom:18px;
+        }
+
+        .hero-text p{
+            font-size:20px;
+            line-height:1.5;
+            color:#d9efff;
+        }
+
+        .hero-svg{
+            width:300px;
+            min-width:250px;
+        }
+
+
+        /* =====================================
+           INTRO
+        ===================================== */
+
+        .plans-intro{
+            padding:55px 20px 30px;
+            text-align:center;
+        }
+
+        .plans-intro h2{
+            color:var(--blue);
+            font-size:32px;
+            margin-bottom:12px;
+        }
+
+        .plans-intro p{
+            color:#65788b;
+            font-size:17px;
+            max-width:650px;
+            margin:auto;
+            line-height:1.5;
+        }
+
+
+        /* =====================================
+           PLANES
+        ===================================== */
+
+        .plans-section{
+            padding:20px 5% 75px;
+            background:#fff;
+        }
+
+        .plans-grid{
+            max-width:1200px;
+            margin:auto;
+            display:grid;
+            grid-template-columns:
+                repeat(3, 1fr);
+            gap:25px;
+            align-items:stretch;
+        }
+
+        .plan-card{
+            position:relative;
+            background:white;
+            border:1px solid #dfe7ed;
+            border-radius:18px;
+            padding:30px 27px;
+            box-shadow:0 8px 25px rgba(10,60,100,.08);
+            transition:.25s;
+            overflow:hidden;
+        }
+
+        .plan-card:hover{
+            transform:translateY(-7px);
+            box-shadow:0 14px 35px rgba(10,60,100,.15);
+        }
+
+        .plan-card.featured{
+            border:2px solid var(--blue);
+        }
+
+        .featured-label{
+            position:absolute;
+            top:0;
+            left:0;
+            right:0;
+            text-align:center;
+            background:var(--blue);
+            color:white;
+            padding:9px;
+            font-size:13px;
+            font-weight:bold;
+            letter-spacing:.5px;
+        }
+
+        .featured .plan-top{
+            margin-top:18px;
+        }
+
+        .plan-name{
+            color:var(--blue);
+            font-size:22px;
+            font-weight:bold;
+            margin-bottom:10px;
+        }
+
+        .plan-description{
+            color:#718092;
+            font-size:14px;
+            min-height:42px;
+            line-height:1.4;
+        }
+
+        .plan-price{
+            margin:25px 0 5px;
+            display:flex;
+            align-items:flex-start;
+            color:var(--blue-dark);
+        }
+
+        .currency{
+            font-size:24px;
+            margin-top:8px;
+        }
+
+        .price{
+            font-size:55px;
+            font-weight:800;
+            line-height:1;
+        }
+
+        .month{
+            font-size:14px;
+            color:#728295;
+            margin:30px 0 0 6px;
+        }
+
+        .plan-divider{
+            height:1px;
+            background:#e8edf1;
+            margin:25px 0;
+        }
+
+        .data-box{
+            display:flex;
+            align-items:center;
+            gap:13px;
+            margin-bottom:20px;
+        }
+
+        .data-icon{
+            width:50px;
+            height:50px;
+            border-radius:13px;
+            background:var(--blue-light);
+            color:var(--blue);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:22px;
+        }
+
+        .data-info strong{
+            display:block;
+            color:#173f63;
+            font-size:20px;
+        }
+
+        .data-info span{
+            color:#718092;
+            font-size:13px;
+        }
+
+        .benefits{
+            list-style:none;
+            margin-bottom:28px;
+        }
+
+        .benefits li{
+            display:flex;
+            align-items:flex-start;
+            gap:10px;
+            padding:9px 0;
+            color:#526c84;
+            font-size:14px;
+            border-bottom:1px solid #f0f2f4;
+        }
+
+        .benefits li i{
+            color:var(--green);
+            margin-top:2px;
+        }
+
+        .plan-button{
+            width:100%;
+            height:48px;
+            border:none;
+            border-radius:25px;
+            background:var(--blue);
+            color:white;
+            font-size:15px;
+            font-weight:bold;
+            cursor:pointer;
+            transition:.2s;
+        }
+
+        .plan-button:hover{
+            background:var(--blue-dark);
+        }
+
+        .plan-button.outline{
+            background:white;
+            color:var(--blue);
+            border:2px solid var(--blue);
+        }
+
+        .plan-button.outline:hover{
+            background:var(--blue-light);
+        }
+
+
+        /* =====================================
+           BENEFICIOS GENERALES
+        ===================================== */
+
+        .benefits-section{
+            background:#f4f7fa;
+            padding:70px 5%;
+        }
+
+        .benefits-container{
+            max-width:1150px;
+            margin:auto;
+        }
+
+        .section-title{
+            text-align:center;
+            margin-bottom:45px;
+        }
+
+        .section-title h2{
+            color:var(--blue);
+            font-size:31px;
+            margin-bottom:10px;
+        }
+
+        .section-title p{
+            color:#718092;
+        }
+
+        .benefits-grid{
+            display:grid;
+            grid-template-columns:
+                repeat(4,1fr);
+            gap:22px;
+        }
+
+        .benefit-card{
+            background:white;
+            padding:28px 20px;
+            border-radius:15px;
+            text-align:center;
+            border:1px solid #e5ebef;
+        }
+
+        .benefit-card i{
+            width:60px;
+            height:60px;
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            border-radius:50%;
+            background:var(--blue-light);
+            color:var(--blue);
+            font-size:25px;
+            margin-bottom:18px;
+        }
+
+        .benefit-card h3{
+            color:#214a70;
+            font-size:17px;
+            margin-bottom:10px;
+        }
+
+        .benefit-card p{
+            color:#718092;
+            font-size:14px;
+            line-height:1.5;
+        }
+
+
+        /* =====================================
+           REDES
+        ===================================== */
+
+        .social-section{
+            padding:70px 5%;
+            background:white;
+        }
+
+        .social-container{
+            max-width:1050px;
+            margin:auto;
+            background:
+                linear-gradient(
+                    135deg,
+                    #073865,
+                    #0b5b9f
+                );
+            border-radius:22px;
+            padding:45px;
+            color:white;
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:35px;
+            overflow:hidden;
+            position:relative;
+        }
+
+        .social-container::after{
+            content:"";
+            position:absolute;
+            width:300px;
+            height:300px;
+            border:50px solid rgba(255,255,255,.06);
+            border-radius:50%;
+            right:-140px;
+            bottom:-180px;
+        }
+
+        .social-info{
+            position:relative;
+            z-index:2;
+            max-width:520px;
+        }
+
+        .social-info h2{
+            font-size:30px;
+            margin-bottom:12px;
+        }
+
+        .social-info p{
+            color:#d5edff;
+            line-height:1.5;
+        }
+
+        .social-icons{
+            position:relative;
+            z-index:2;
+            display:flex;
+            flex-wrap:wrap;
+            justify-content:center;
+            gap:15px;
+            max-width:350px;
+        }
+
+        .social-icon{
+            width:65px;
+            height:65px;
+            border-radius:16px;
+            background:white;
+            color:var(--blue);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:26px;
+            box-shadow:0 5px 15px rgba(0,0,0,.12);
+        }
+
+
+        /* =====================================
+           CTA
+        ===================================== */
+
+        .cta-section{
+            background:#f5f5f5;
+            padding:65px 20px;
+            text-align:center;
+        }
+
+        .cta-section h2{
+            color:var(--blue);
+            font-size:30px;
+            margin-bottom:12px;
+        }
+
+        .cta-section p{
+            color:#6d7e8d;
+            margin-bottom:25px;
+        }
+
+        .cta-button{
+            display:inline-flex;
+            align-items:center;
+            gap:10px;
+            background:var(--blue);
+            color:white;
+            padding:15px 30px;
+            border-radius:28px;
+            font-weight:bold;
+        }
+
+
+        /* =====================================
+           FOOTER
+        ===================================== */
+
+        footer{
+            background:#f4f6f8;
+            border-top:1px solid #ddd;
+            padding-top:40px;
+        }
+
+        .footer-content{
+            max-width:1200px;
+            margin:auto;
+            padding:0 30px 40px;
+            display:grid;
+            grid-template-columns:repeat(4,1fr);
+            gap:30px;
+        }
+
+        .footer-col h3{
+            color:var(--blue);
+            margin-bottom:15px;
+            font-size:16px;
+        }
+
+        .footer-col a{
+            display:block;
+            color:#4b6680;
+            margin-bottom:10px;
+            font-size:14px;
+        }
+
+        .footer-bottom{
+            background:#073865;
+            color:white;
+            text-align:center;
+            padding:18px;
+            font-size:13px;
+        }
+
+
+        /* =====================================
+           MODAL
+        ===================================== */
+
+        .modal{
+            position:fixed;
+            inset:0;
+            background:rgba(0,0,0,.55);
+            display:none;
+            align-items:center;
+            justify-content:center;
+            z-index:100;
+            padding:20px;
+        }
+
+        .modal.active{
+            display:flex;
+        }
+
+        .modal-content{
+            width:100%;
+            max-width:460px;
+            background:white;
+            border-radius:18px;
+            padding:32px;
+            position:relative;
+            text-align:center;
+            box-shadow:0 15px 45px rgba(0,0,0,.25);
+        }
+
+        .close-modal{
+            position:absolute;
+            right:18px;
+            top:15px;
+            border:none;
+            background:none;
+            font-size:22px;
+            color:#777;
+            cursor:pointer;
+        }
+
+        .modal-icon{
+            width:65px;
+            height:65px;
+            margin:0 auto 18px;
+            border-radius:50%;
+            background:var(--blue-light);
+            color:var(--blue);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:27px;
+        }
+
+        .modal-content h2{
+            color:var(--blue);
+            margin-bottom:12px;
+        }
+
+        .modal-content p{
+            color:#687a8b;
+            line-height:1.5;
+        }
+
+
+        /* =====================================
+           RESPONSIVE
+        ===================================== */
+
+        @media(max-width:1100px){
+
+            .header-links,
+            .search-box,
+            .top-right{
+                display:none;
+            }
+
+            .header-spacer{
+                display:block;
+            }
+
+            .plans-grid{
+                grid-template-columns:repeat(2,1fr);
+            }
+
+            .benefits-grid{
+                grid-template-columns:repeat(2,1fr);
+            }
+
+        }
+
+
+        @media(max-width:800px){
+
+            .hero-content{
+                flex-direction:column;
+                text-align:center;
+            }
+
+            .hero-text h1{
+                font-size:38px;
+            }
+
+            .hero-svg{
+                width:230px;
+            }
+
+            .social-container{
+                flex-direction:column;
+                text-align:center;
+            }
+
+        }
+
+
+        @media(max-width:650px){
+
+            .topbar{
+                padding:0;
+            }
+
+            .top-tab{
+                padding:0 15px;
+            }
+
+            .logo{
+                min-width:auto;
+                font-size:23px;
+            }
+
+            .menu-btn{
+                margin-left:15px;
+                font-size:14px;
+            }
+
+            .mi-orbit{
+                font-size:0;
+            }
+
+            .plans-hero{
+                padding:55px 22px;
+            }
+
+            .hero-text h1{
+                font-size:34px;
+            }
+
+            .hero-text p{
+                font-size:17px;
+            }
+
+            .plans-grid{
+                grid-template-columns:1fr;
+            }
+
+            .plans-intro h2{
+                font-size:27px;
+            }
+
+            .benefits-grid{
+                grid-template-columns:1fr;
+            }
+
+            .footer-content{
+                grid-template-columns:1fr 1fr;
+            }
+
+            .social-container{
+                padding:35px 22px;
+            }
+
+        }
+
     </style>
+
 </head>
+
+
 <body>
 
-    <!-- Barra Superior -->
-    <div class="top-bar">
-        <div class="top-bar-left">
-            <a href="#" class="tab-btn active">PERSONAS</a>
-            <a href="#" class="tab-btn">EMPRESAS</a>
-        </div>
-        <div class="top-bar-right">
-            <a href="#"><i class="fa-solid fa-location-dot"></i> Chihuahua</a>
-            <a href="portabilidad.html">Portabilidad</a>
-        </div>
+
+<!-- =====================================
+     BARRA SUPERIOR
+===================================== -->
+
+<div class="topbar">
+
+    <div class="top-tabs">
+
+        <a href="#" class="top-tab active">
+            PERSONAS
+        </a>
+
+        <a href="#" class="top-tab">
+            EMPRESAS
+        </a>
+
     </div>
 
-    <!-- Header -->
-    <header>
-        <a href="index.html" class="logo">
-            <i class="fa-solid fa-planet gradient-text"></i> ORBIT <span class="gradient-text">MOBILE</span>
+
+    <div class="top-right">
+
+        <a href="#">
+            <i class="fa-solid fa-store"></i>
+            Orbit Shop
         </a>
-        <nav class="main-nav">
-            <a href="esim.html">eSIM</a>
-            <a href="planes.html" style="color: var(--orbit-blue);">Planes de Renta</a>
-            <a href="portabilidad.html">Cámbiate a Orbit</a>
-            <a href="#" class="btn-mi-orbit">Mi Orbit</a>
-        </nav>
-    </header>
 
-    <main class="plans-wrapper">
+        <a href="#">
+            <i class="fa-solid fa-plane"></i>
+            Viaja con Orbit
+        </a>
 
-        <!-- CATEGORÍA 1: ORBIT LIBRE -->
-        <section class="category-section">
-            <h1 class="category-title">Orbit Libre</h1>
-            <p class="category-desc">
-                Con los planes Orbit Libre navega con la mayor velocidad 5G y disfruta de GB incluidos, Minutos y SMS ilimitados en México, E.U.A. y Canadá, así como Redes Sociales ilimitadas y Cashback Orbit. ¡Todos estos beneficios ahora sin plazos forzosos!
+    </div>
+
+</div>
+
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="main-header">
+
+
+    <a href="index.html" class="logo">
+        orbit
+    </a>
+
+
+    <a href="#" class="menu-btn">
+
+        Menú
+
+        <i class="fa-solid fa-caret-down"></i>
+
+    </a>
+
+
+    <div class="header-spacer"></div>
+
+
+    <nav class="header-links">
+
+
+        <a href="planes.html" class="active">
+
+            <i class="fa-solid fa-bolt"></i>
+            Planes
+
+        </a>
+
+
+        <a href="#">
+
+            <i class="fa-solid fa-location-dot"></i>
+            Chihuahua
+
+        </a>
+
+
+        <a href="#">
+
+            <i class="fa-solid fa-bag-shopping"></i>
+            Tienda en línea
+
+        </a>
+
+
+        <a href="recargas.html">
+
+            <i class="fa-solid fa-dollar-sign"></i>
+            Recargas
+
+        </a>
+
+
+    </nav>
+
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            placeholder="Buscar..."
+        >
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+    </div>
+
+
+    <a href="#" class="mi-orbit">
+
+        <div class="user-icon">
+            <i class="fa-solid fa-user"></i>
+        </div>
+
+        Mi Orbit
+
+    </a>
+
+
+</header>
+
+
+
+<!-- =====================================
+     HERO
+===================================== -->
+
+<section class="plans-hero">
+
+
+    <div class="hero-content">
+
+
+        <div class="hero-text">
+
+
+            <div class="hero-tag">
+
+                <i class="fa-solid fa-bolt"></i>
+
+                PLANES ORBIT MOBILE
+
+            </div>
+
+
+            <h1>
+
+                Más datos.
+                Más velocidad.
+                Más libertad.
+
+            </h1>
+
+
+            <p>
+
+                Elige un plan mensual con todos los beneficios
+                que necesitas para mantenerte conectado.
+
             </p>
 
-            <!-- Plan 1 -->
-            <div class="plan-item">
-                <h3 class="plan-name-title">Orbit Libre 5</h3>
-                <div class="plan-table">
-                    <span class="badge-recomendado">Recomendado</span>
-                    <div class="plan-row">
-                        <div class="col-box">
-                            <span class="col-label">Datos incluidos</span>
-                            <span class="col-value-large">20 GB</span>
-                        </div>
-                        <div class="col-box">
-                            <span class="col-label">WhatsApp, Facebook, X, Snapchat, Instagram y UBER</span>
-                            <span class="col-value-large">Ilimitado</span>
-                        </div>
-                        <div class="col-box">
-                            <span class="col-label">Minutos y SMS incluidos</span>
-                            <span class="col-value-large">Ilimitados</span>
-                        </div>
-                        <div class="col-box">
-                            <span class="col-label">Cashback Orbit</span>
-                            <span class="col-value-large">15%</span>
-                        </div>
-                        <div class="col-box">
-                            <div class="price-text">$599</div>
-                            <div class="price-sub">al mes</div>
-                            <button class="btn-purple">Más planes</button>
-                            <a href="#" class="btn-link">Comparar</a>
-                        </div>
-                    </div>
+
+        </div>
+
+
+
+        <!-- SVG -->
+
+        <svg
+            class="hero-svg"
+            viewBox="0 0 400 400"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+
+
+            <circle
+                cx="200"
+                cy="200"
+                r="160"
+                fill="rgba(255,255,255,.08)"
+            />
+
+
+            <circle
+                cx="200"
+                cy="200"
+                r="125"
+                fill="rgba(255,255,255,.06)"
+            />
+
+
+            <!-- TELEFONO -->
+
+            <rect
+                x="130"
+                y="65"
+                width="140"
+                height="270"
+                rx="25"
+                fill="#ffffff"
+            />
+
+
+            <rect
+                x="143"
+                y="90"
+                width="114"
+                height="200"
+                rx="10"
+                fill="#0b4f8a"
+            />
+
+
+            <circle
+                cx="200"
+                cy="312"
+                r="10"
+                fill="#dbeaf5"
+            />
+
+
+            <!-- SEÑAL -->
+
+            <path
+                d="M175 130
+                   Q200 105 225 130"
+                stroke="white"
+                stroke-width="8"
+                fill="none"
+                stroke-linecap="round"
+            />
+
+
+            <path
+                d="M165 115
+                   Q200 80 235 115"
+                stroke="white"
+                stroke-width="8"
+                fill="none"
+                stroke-linecap="round"
+            />
+
+
+            <path
+                d="M155 98
+                   Q200 55 245 98"
+                stroke="white"
+                stroke-width="8"
+                fill="none"
+                stroke-linecap="round"
+            />
+
+
+            <circle
+                cx="200"
+                cy="145"
+                r="7"
+                fill="white"
+            />
+
+
+            <text
+                x="200"
+                y="205"
+                text-anchor="middle"
+                fill="white"
+                font-size="28"
+                font-weight="bold"
+            >
+
+                5G
+
+            </text>
+
+
+        </svg>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================
+     INTRO
+===================================== -->
+
+<section class="plans-intro">
+
+
+    <h2>
+        Encuentra tu plan ideal
+    </h2>
+
+
+    <p>
+
+        Todos nuestros planes incluyen llamadas y SMS ilimitados,
+        navegación en nuestra red y acceso a beneficios exclusivos.
+
+    </p>
+
+
+</section>
+
+
+
+<!-- =====================================
+     PLANES
+===================================== -->
+
+<section class="plans-section">
+
+
+    <div class="plans-grid">
+
+
+        <!-- =====================================
+             PLAN 199
+        ===================================== -->
+
+        <article class="plan-card">
+
+
+            <div class="plan-top">
+
+
+                <div class="plan-name">
+                    Orbit Esencial
                 </div>
+
+
+                <p class="plan-description">
+
+                    Lo necesario para mantenerte conectado
+                    todos los días.
+
+                </p>
+
+
+                <div class="plan-price">
+
+                    <span class="currency">
+                        $
+                    </span>
+
+                    <span class="price">
+                        199
+                    </span>
+
+                    <span class="month">
+                        / mes
+                    </span>
+
+                </div>
+
+
             </div>
 
-            <!-- Plan 2 -->
-            <div class="plan-item">
-                <h3 class="plan-name-title">Orbit Libre 3</h3>
-                <div class="plan-table">
-                    <div class="plan-row">
-                        <div class="col-box">
-                            <span class="col-label">Datos incluidos</span>
-                            <span class="col-value-large">10 GB</span>
-                        </div>
-                        <div class="col-box">
-                            <span class="col-label">WhatsApp, Facebook, X, Snapchat, Instagram y UBER</span>
-                            <span class="col-value-large">Ilimitado</span>
-                        </div>
-                        <div class="col-box">
-                            <span class="col-label">Minutos y SMS incluidos</span>
-                            <span class="col-value-large">Ilimitados</span>
-                        </div>
-                        <div class="col-box">
-                            <span class="col-label">Cashback Orbit</span>
-                            <span class="col-value-large">10%</span>
-                        </div>
-                        <div class="col-box">
-                            <div class="price-text">$399</div>
-                            <div class="price-sub">al mes</div>
-                            <button class="btn-purple">Más planes</button>
-                            <a href="#" class="btn-link">Comparar</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- CATEGORÍA 2: ORBIT ULTRA -->
-        <section class="category-section">
-            <h2 class="category-title">Orbit Ultra</h2>
-            <p class="category-desc">
-                Disfruta la Ultra velocidad 5G con los nuevos planes Orbit Ultra. Obtén GB incluidos, minutos y SMS ilimitados para usar en México, Estados Unidos y Canadá. ¡Ultra libertad, todo sin plazos forzosos!
+            <div class="plan-divider"></div>
+
+
+            <div class="data-box">
+
+
+                <div class="data-icon">
+
+                    <i class="fa-solid fa-wifi"></i>
+
+                </div>
+
+
+                <div class="data-info">
+
+                    <strong>
+                        5 GB
+                    </strong>
+
+                    <span>
+                        Datos para navegar
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <ul class="benefits">
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Llamadas ilimitadas
+
+                </li>
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    SMS ilimitados
+
+                </li>
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Redes sociales incluidas
+
+                </li>
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Compatible con eSIM
+
+                </li>
+
+
+            </ul>
+
+
+            <button
+                class="plan-button outline"
+                onclick="contratarPlan('Orbit Esencial', '$199 al mes')"
+            >
+
+                Contratar plan
+
+            </button>
+
+
+        </article>
+
+
+
+        <!-- =====================================
+             PLAN DESTACADO
+        ===================================== -->
+
+        <article class="plan-card featured">
+
+
+            <div class="featured-label">
+
+                MÁS POPULAR
+
+            </div>
+
+
+            <div class="plan-top">
+
+
+                <div class="plan-name">
+                    Orbit Conecta
+                </div>
+
+
+                <p class="plan-description">
+
+                    Más datos para disfrutar tu contenido
+                    favorito sin preocupaciones.
+
+                </p>
+
+
+                <div class="plan-price">
+
+                    <span class="currency">
+                        $
+                    </span>
+
+                    <span class="price">
+                        299
+                    </span>
+
+                    <span class="month">
+                        / mes
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="plan-divider"></div>
+
+
+            <div class="data-box">
+
+
+                <div class="data-icon">
+
+                    <i class="fa-solid fa-bolt"></i>
+
+                </div>
+
+
+                <div class="data-info">
+
+                    <strong>
+                        12 GB
+                    </strong>
+
+                    <span>
+                        Datos para navegar
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <ul class="benefits">
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Llamadas ilimitadas
+
+                </li>
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    SMS ilimitados
+
+                </li>
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Redes sociales ilimitadas
+
+                </li>
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    5G donde esté disponible
+
+                </li>
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Compatible con eSIM
+
+                </li>
+
+
+            </ul>
+
+
+            <button
+                class="plan-button"
+                onclick="contratarPlan('Orbit Conecta', '$299 al mes')"
+            >
+
+                Contratar ahora
+
+            </button>
+
+
+        </article>
+
+
+
+        <!-- =====================================
+             PLAN 399
+        ===================================== -->
+
+        <article class="plan-card">
+
+
+            <div class="plan-top">
+
+
+                <div class="plan-name">
+                    Orbit Max
+                </div>
+
+
+                <p class="plan-description">
+
+                    Diseñado para quienes necesitan
+                    más conectividad.
+
+                </p>
+
+
+                <div class="plan-price">
+
+                    <span class="currency">
+                        $
+                    </span>
+
+                    <span class="price">
+                        399
+                    </span>
+
+                    <span class="month">
+                        / mes
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <div class="plan-divider"></div>
+
+
+            <div class="data-box">
+
+
+                <div class="data-icon">
+
+                    <i class="fa-solid fa-rocket"></i>
+
+                </div>
+
+
+                <div class="data-info">
+
+                    <strong>
+                        25 GB
+                    </strong>
+
+                    <span>
+                        Datos para navegar
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <ul class="benefits">
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Llamadas ilimitadas
+
+                </li>
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    SMS ilimitados
+
+                </li>
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Redes sociales ilimitadas
+
+                </li>
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    5G donde esté disponible
+
+                </li>
+
+
+                <li>
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    Atención preferencial
+
+                </li>
+
+
+            </ul>
+
+
+            <button
+                class="plan-button outline"
+                onclick="contratarPlan('Orbit Max', '$399 al mes')"
+            >
+
+                Contratar plan
+
+            </button>
+
+
+        </article>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================
+     BENEFICIOS
+===================================== -->
+
+<section class="benefits-section">
+
+
+    <div class="benefits-container">
+
+
+        <div class="section-title">
+
+
+            <h2>
+                Todo lo que necesitas
+            </h2>
+
+
+            <p>
+                Beneficios incluidos en los planes Orbit Mobile.
             </p>
 
-            <!-- Plan Ultra 10 -->
-            <div class="plan-item">
-                <h3 class="plan-name-title">Orbit Ultra 10</h3>
-                <div class="plan-table">
-                    <div class="plan-row">
-                        <div class="col-box">
-                            <span class="col-label">Datos incluidos</span>
-                            <span class="col-value-large">50 GB</span>
-                        </div>
-                        <div class="col-box">
-                            <span class="col-label">Todas las Redes Sociales + Roaming</span>
-                            <span class="col-value-large">Ilimitado</span>
-                        </div>
-                        <div class="col-box">
-                            <span class="col-label">Minutos y SMS incluidos</span>
-                            <span class="col-value-large">Ilimitados</span>
-                        </div>
-                        <div class="col-box">
-                            <span class="col-label">Cashback Orbit</span>
-                            <span class="col-value-large">20%</span>
-                        </div>
-                        <div class="col-box">
-                            <div class="price-text">$899</div>
-                            <div class="price-sub">al mes</div>
-                            <button class="btn-purple">Contratar</button>
-                            <a href="#" class="btn-link">Comparar</a>
-                        </div>
-                    </div>
-                </div>
+
+        </div>
+
+
+
+        <div class="benefits-grid">
+
+
+            <div class="benefit-card">
+
+
+                <i class="fa-solid fa-signal"></i>
+
+
+                <h3>
+                    Red 5G
+                </h3>
+
+
+                <p>
+
+                    Disfruta velocidades superiores
+                    donde la cobertura esté disponible.
+
+                </p>
+
+
             </div>
-        </section>
 
-    </main>
 
-    <footer>
-        <p>&copy; 2026 ORBIT MOBILE S.A. DE C.V. Todos los derechos reservados.</p>
-    </footer>
+
+            <div class="benefit-card">
+
+
+                <i class="fa-solid fa-comments"></i>
+
+
+                <h3>
+                    Comunicación ilimitada
+                </h3>
+
+
+                <p>
+
+                    Mantente comunicado con llamadas
+                    y SMS incluidos.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="benefit-card">
+
+
+                <i class="fa-solid fa-sim-card"></i>
+
+
+                <h3>
+                    eSIM
+                </h3>
+
+
+                <p>
+
+                    Activa tu línea digitalmente
+                    en equipos compatibles.
+
+                </p>
+
+
+            </div>
+
+
+
+            <div class="benefit-card">
+
+
+                <i class="fa-solid fa-headset"></i>
+
+
+                <h3>
+                    Soporte Orbit
+                </h3>
+
+
+                <p>
+
+                    Estamos disponibles para ayudarte
+                    cuando lo necesites.
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================
+     REDES SOCIALES
+===================================== -->
+
+<section class="social-section">
+
+
+    <div class="social-container">
+
+
+        <div class="social-info">
+
+
+            <h2>
+                Tus redes siempre contigo
+            </h2>
+
+
+            <p>
+
+                Disfruta tus aplicaciones favoritas incluidas
+                en los planes seleccionados de Orbit Mobile.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="social-icons">
+
+
+            <div class="social-icon">
+
+                <i class="fa-brands fa-facebook-f"></i>
+
+            </div>
+
+
+            <div class="social-icon">
+
+                <i class="fa-brands fa-instagram"></i>
+
+            </div>
+
+
+            <div class="social-icon">
+
+                <i class="fa-brands fa-whatsapp"></i>
+
+            </div>
+
+
+            <div class="social-icon">
+
+                <i class="fa-brands fa-tiktok"></i>
+
+            </div>
+
+
+            <div class="social-icon">
+
+                <i class="fa-brands fa-x-twitter"></i>
+
+            </div>
+
+
+            <div class="social-icon">
+
+                <i class="fa-brands fa-youtube"></i>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =====================================
+     CTA
+===================================== -->
+
+<section class="cta-section">
+
+
+    <h2>
+        ¿Ya tienes una línea Orbit?
+    </h2>
+
+
+    <p>
+        También puedes consultar nuestras opciones de recargas.
+    </p>
+
+
+    <a
+        href="recargas.html"
+        class="cta-button"
+    >
+
+        <i class="fa-solid fa-dollar-sign"></i>
+
+        Ver paquetes y recargas
+
+    </a>
+
+
+</section>
+
+
+
+<!-- =====================================
+     FOOTER
+===================================== -->
+
+<footer>
+
+
+    <div class="footer-content">
+
+
+        <div class="footer-col">
+
+
+            <h3>
+                Orbit Mobile
+            </h3>
+
+
+            <a href="index.html">
+                Conoce Orbit
+            </a>
+
+
+            <a href="#">
+                Tienda en línea
+            </a>
+
+
+            <a href="#">
+                Promociones
+            </a>
+
+
+        </div>
+
+
+
+        <div class="footer-col">
+
+
+            <h3>
+                Servicios
+            </h3>
+
+
+            <a href="recargas.html">
+                Paquetes y Recargas
+            </a>
+
+
+            <a href="planes.html">
+                Planes de renta
+            </a>
+
+
+            <a href="index.html#compatibilidad">
+                eSIM
+            </a>
+
+
+        </div>
+
+
+
+        <div class="footer-col">
+
+
+            <h3>
+                Ayuda
+            </h3>
+
+
+            <a href="#">
+                Preguntas frecuentes
+            </a>
+
+
+            <a href="#">
+                Soporte
+            </a>
+
+
+            <a href="#">
+                Contáctanos
+            </a>
+
+
+        </div>
+
+
+
+        <div class="footer-col">
+
+
+            <h3>
+                Síguenos
+            </h3>
+
+
+            <a href="#">
+
+                <i class="fa-brands fa-facebook"></i>
+
+                Facebook
+
+            </a>
+
+
+            <a href="#">
+
+                <i class="fa-brands fa-instagram"></i>
+
+                Instagram
+
+            </a>
+
+
+            <a href="#">
+
+                <i class="fa-brands fa-tiktok"></i>
+
+                TikTok
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="footer-bottom">
+
+        © 2026 ORBIT MOBILE.
+        Todos los derechos reservados.
+
+    </div>
+
+
+</footer>
+
+
+
+<!-- =====================================
+     MODAL CONTRATACIÓN
+===================================== -->
+
+<div
+    class="modal"
+    id="modal"
+>
+
+
+    <div class="modal-content">
+
+
+        <button
+            class="close-modal"
+            onclick="cerrarModal()"
+        >
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <div class="modal-icon">
+
+            <i class="fa-solid fa-mobile-screen-button"></i>
+
+        </div>
+
+
+        <h2 id="modalTitle">
+            Contratar plan
+        </h2>
+
+
+        <p id="modalText">
+
+        </p>
+
+
+        <br>
+
+
+        <button
+            class="plan-button"
+            onclick="cerrarModal()"
+        >
+
+            Continuar
+
+        </button>
+
+
+    </div>
+
+
+</div>
+
+
+
+<script>
+
+
+/* =====================================
+   CONTRATAR PLAN
+===================================== */
+
+function contratarPlan(nombre, precio){
+
+
+    const modal =
+        document.getElementById("modal");
+
+
+    const titulo =
+        document.getElementById("modalTitle");
+
+
+    const texto =
+        document.getElementById("modalText");
+
+
+    titulo.textContent =
+        nombre;
+
+
+    texto.innerHTML =
+        "Has seleccionado el plan <strong>" +
+        nombre +
+        "</strong> por <strong>" +
+        precio +
+        "</strong>.<br><br>" +
+        "En la siguiente etapa podrás ingresar tus datos para continuar con la contratación.";
+
+
+    modal.classList.add("active");
+
+
+}
+
+
+/* =====================================
+   CERRAR MODAL
+===================================== */
+
+function cerrarModal(){
+
+    document
+    .getElementById("modal")
+    .classList
+    .remove("active");
+
+}
+
+
+/* =====================================
+   CERRAR AL DAR CLICK AFUERA
+===================================== */
+
+document
+.getElementById("modal")
+.addEventListener("click", function(event){
+
+
+    if(event.target === this){
+
+        cerrarModal();
+
+    }
+
+
+});
+
+
+</script>
+
 
 </body>
 </html>
