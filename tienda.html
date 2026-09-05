@@ -1,0 +1,2453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Tienda en Línea | Orbit Mobile</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+:root{
+    --blue:#0b4f8a;
+    --blue-dark:#073865;
+    --blue-light:#eaf4fc;
+    --cyan:#159bd7;
+    --text:#294b6b;
+    --muted:#708397;
+    --gray:#f5f7f9;
+    --border:#e1e7ec;
+    --green:#16834b;
+    --red:#d52d2d;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f5f7f9;
+    color:var(--text);
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button,
+input{
+    font-family:inherit;
+}
+
+
+/* =====================================
+   BARRA SUPERIOR
+===================================== */
+
+.topbar{
+    height:44px;
+    background:var(--blue);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 5%;
+
+    color:white;
+}
+
+.top-tabs{
+    height:100%;
+    display:flex;
+}
+
+.top-tab{
+    padding:0 22px;
+
+    display:flex;
+    align-items:center;
+
+    font-size:14px;
+    font-weight:bold;
+}
+
+.top-tab.active{
+    background:white;
+    color:var(--blue);
+}
+
+.top-right{
+    display:flex;
+    gap:25px;
+    font-size:14px;
+}
+
+.top-right a{
+    color:white;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.main-header{
+    min-height:68px;
+
+    background:white;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 5%;
+
+    box-shadow:
+        0 2px 8px rgba(0,0,0,.08);
+
+    position:relative;
+    z-index:20;
+}
+
+.logo{
+    color:var(--blue);
+
+    font-size:29px;
+
+    font-weight:900;
+
+    font-style:italic;
+
+    letter-spacing:-2px;
+}
+
+.menu{
+    margin-left:35px;
+
+    color:#555;
+
+    font-size:15px;
+}
+
+.header-spacer{
+    flex:1;
+}
+
+.header-links{
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    color:#34506d;
+}
+
+.header-links i{
+    color:var(--blue);
+
+    margin-right:5px;
+}
+
+.header-user{
+    margin-left:25px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    color:var(--blue);
+
+    font-weight:bold;
+}
+
+.user-circle{
+    width:39px;
+    height:39px;
+
+    border-radius:50%;
+
+    background:#159bd7;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+
+/* =====================================
+   HERO TIENDA
+===================================== */
+
+.shop-hero{
+    background:
+        linear-gradient(
+            120deg,
+            #073865,
+            #0b4f8a,
+            #159bd7
+        );
+
+    min-height:260px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    color:white;
+
+    padding:45px 20px;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.shop-hero::before{
+    content:"";
+
+    position:absolute;
+
+    width:450px;
+    height:450px;
+
+    border-radius:50%;
+
+    border:80px solid rgba(255,255,255,.06);
+
+    left:-230px;
+    top:-220px;
+}
+
+.shop-hero::after{
+    content:"";
+
+    position:absolute;
+
+    width:350px;
+    height:350px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.18);
+
+    right:-130px;
+    bottom:-190px;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+
+    max-width:800px;
+}
+
+.hero-content h1{
+    font-size:40px;
+
+    margin-bottom:12px;
+}
+
+.hero-content p{
+    color:#c9e7f5;
+
+    font-size:17px;
+
+    line-height:1.5;
+}
+
+
+/* =====================================
+   BUSCADOR
+===================================== */
+
+.search-section{
+    background:white;
+
+    padding:25px 20px;
+
+    border-bottom:1px solid var(--border);
+}
+
+.shop-search{
+    max-width:800px;
+
+    height:52px;
+
+    margin:auto;
+
+    border:1px solid #d5e0e7;
+
+    border-radius:28px;
+
+    display:flex;
+
+    align-items:center;
+
+    padding:0 20px;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,.05);
+}
+
+.shop-search i{
+    color:var(--blue);
+
+    margin-right:12px;
+
+    font-size:18px;
+}
+
+.shop-search input{
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    font-size:15px;
+
+    color:#445e73;
+}
+
+
+/* =====================================
+   CATEGORÍAS
+===================================== */
+
+.categories{
+    max-width:1200px;
+
+    margin:30px auto 10px;
+
+    padding:0 25px;
+
+    display:flex;
+
+    gap:10px;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+}
+
+.category{
+    border:1px solid #d7e1e8;
+
+    background:white;
+
+    color:#45647b;
+
+    padding:10px 20px;
+
+    border-radius:22px;
+
+    cursor:pointer;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    transition:.2s;
+}
+
+.category i{
+    margin-right:7px;
+
+    color:var(--blue);
+}
+
+.category.active,
+.category:hover{
+    background:var(--blue);
+
+    color:white;
+
+    border-color:var(--blue);
+}
+
+.category.active i,
+.category:hover i{
+    color:white;
+}
+
+
+/* =====================================
+   CONTENEDOR
+===================================== */
+
+.shop-container{
+    max-width:1250px;
+
+    margin:auto;
+
+    padding:15px 25px 60px;
+}
+
+
+/* =====================================
+   TITULO
+===================================== */
+
+.shop-heading{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin:20px 0;
+}
+
+.shop-heading h2{
+    color:#214b73;
+
+    font-size:25px;
+}
+
+.shop-heading span{
+    color:#7d8d99;
+
+    font-size:13px;
+}
+
+
+/* =====================================
+   PRODUCTOS
+===================================== */
+
+.products-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:20px;
+}
+
+.product-card{
+    background:white;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    border:1px solid #e4eaee;
+
+    box-shadow:
+        0 5px 18px rgba(0,0,0,.06);
+
+    transition:.25s;
+
+    position:relative;
+}
+
+.product-card:hover{
+    transform:translateY(-5px);
+
+    box-shadow:
+        0 12px 25px rgba(0,0,0,.10);
+}
+
+.product-image{
+    height:210px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eef7fc,
+            #dcecf6
+        );
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    position:relative;
+}
+
+.product-image i{
+    font-size:80px;
+
+    color:#2d80b1;
+}
+
+.discount{
+    position:absolute;
+
+    top:12px;
+    left:12px;
+
+    background:#d52d2d;
+
+    color:white;
+
+    padding:6px 10px;
+
+    border-radius:5px;
+
+    font-size:11px;
+
+    font-weight:bold;
+}
+
+.product-info{
+    padding:20px;
+}
+
+.product-category{
+    color:#8a9aa7;
+
+    font-size:11px;
+
+    text-transform:uppercase;
+
+    font-weight:bold;
+
+    letter-spacing:.5px;
+}
+
+.product-info h3{
+    color:#294f70;
+
+    font-size:18px;
+
+    margin:7px 0;
+}
+
+.product-description{
+    color:#81909c;
+
+    font-size:12px;
+
+    line-height:1.5;
+
+    min-height:36px;
+}
+
+.price{
+    margin-top:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+}
+
+.price-old{
+    color:#9aa5ad;
+
+    font-size:12px;
+
+    text-decoration:line-through;
+}
+
+.price-new{
+    color:var(--blue);
+
+    font-size:22px;
+
+    font-weight:bold;
+}
+
+.buy-button{
+    width:100%;
+
+    height:43px;
+
+    border:none;
+
+    border-radius:22px;
+
+    margin-top:16px;
+
+    background:var(--blue);
+
+    color:white;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.buy-button:hover{
+    background:var(--blue-dark);
+}
+
+.buy-button i{
+    margin-right:7px;
+}
+
+
+/* =====================================
+   CARRITO
+===================================== */
+
+.cart-button{
+    position:fixed;
+
+    right:25px;
+
+    bottom:25px;
+
+    width:62px;
+    height:62px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:var(--blue);
+
+    color:white;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.25);
+
+    z-index:100;
+}
+
+.cart-count{
+    position:absolute;
+
+    top:-4px;
+    right:-4px;
+
+    width:23px;
+    height:23px;
+
+    border-radius:50%;
+
+    background:#e52d2d;
+
+    color:white;
+
+    font-size:11px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-weight:bold;
+}
+
+
+/* =====================================
+   PANEL CARRITO
+===================================== */
+
+.cart-overlay{
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    z-index:200;
+}
+
+.cart-panel{
+    position:absolute;
+
+    right:0;
+    top:0;
+
+    height:100%;
+
+    width:420px;
+
+    max-width:95%;
+
+    background:white;
+
+    display:flex;
+
+    flex-direction:column;
+
+    box-shadow:
+        -5px 0 25px rgba(0,0,0,.15);
+}
+
+.cart-header{
+    height:70px;
+
+    padding:0 22px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    border-bottom:1px solid var(--border);
+}
+
+.cart-header h2{
+    color:#214b73;
+
+    font-size:20px;
+}
+
+.close-cart{
+    border:none;
+
+    background:none;
+
+    color:#6e8191;
+
+    font-size:20px;
+
+    cursor:pointer;
+}
+
+.cart-items{
+    flex:1;
+
+    overflow:auto;
+
+    padding:20px;
+}
+
+.empty-cart{
+    text-align:center;
+
+    color:#8293a1;
+
+    padding:70px 20px;
+}
+
+.empty-cart i{
+    font-size:50px;
+
+    color:#b7cbd8;
+
+    margin-bottom:15px;
+}
+
+.cart-item{
+    display:flex;
+
+    gap:12px;
+
+    padding:15px 0;
+
+    border-bottom:1px solid #edf0f2;
+}
+
+.cart-item-icon{
+    width:55px;
+    height:55px;
+
+    border-radius:10px;
+
+    background:var(--blue-light);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:var(--blue);
+
+    font-size:22px;
+}
+
+.cart-item-info{
+    flex:1;
+}
+
+.cart-item-info strong{
+    display:block;
+
+    color:#385a73;
+
+    font-size:13px;
+
+    margin-bottom:5px;
+}
+
+.cart-item-info span{
+    color:#6f8291;
+
+    font-size:12px;
+}
+
+.remove-item{
+    border:none;
+
+    background:none;
+
+    color:#c75a5a;
+
+    cursor:pointer;
+}
+
+.cart-footer{
+    padding:20px;
+
+    border-top:1px solid var(--border);
+}
+
+.total-row{
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:15px;
+}
+
+.total-row span{
+    color:#667d8e;
+}
+
+.total-row strong{
+    color:#214b73;
+
+    font-size:24px;
+}
+
+.checkout{
+    width:100%;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:25px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--blue),
+            var(--cyan)
+        );
+
+    color:white;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+
+/* =====================================
+   BANNER BENEFICIO
+===================================== */
+
+.benefit-section{
+    max-width:1200px;
+
+    margin:0 auto 45px;
+
+    padding:0 25px;
+}
+
+.benefit-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:15px;
+}
+
+.benefit-card{
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:13px;
+
+    padding:20px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+}
+
+.benefit-card i{
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    background:var(--blue-light);
+
+    color:var(--blue);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:19px;
+}
+
+.benefit-card strong{
+    display:block;
+
+    color:#3d5b72;
+
+    font-size:13px;
+
+    margin-bottom:4px;
+}
+
+.benefit-card span{
+    color:#8a99a5;
+
+    font-size:11px;
+}
+
+
+/* =====================================
+   FOOTER
+===================================== */
+
+footer{
+    background:#073865;
+
+    color:white;
+
+    padding-top:40px;
+}
+
+.footer-content{
+    max-width:1200px;
+
+    margin:auto;
+
+    padding:0 30px 35px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:30px;
+}
+
+.footer-col h3{
+    font-size:15px;
+
+    margin-bottom:15px;
+}
+
+.footer-col a{
+    display:block;
+
+    color:#bdd4e3;
+
+    font-size:13px;
+
+    margin-bottom:10px;
+}
+
+.footer-col a:hover{
+    color:white;
+}
+
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,.12);
+
+    text-align:center;
+
+    padding:18px;
+
+    color:#bdd4e3;
+
+    font-size:12px;
+}
+
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media(max-width:1050px){
+
+    .products-grid{
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+
+    .header-links{
+        display:none;
+    }
+
+}
+
+@media(max-width:750px){
+
+    .top-right{
+        display:none;
+    }
+
+    .products-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .benefit-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-content h1{
+        font-size:31px;
+    }
+
+}
+
+@media(max-width:520px){
+
+    .topbar{
+        padding:0;
+    }
+
+    .top-tab{
+        padding:0 15px;
+    }
+
+    .main-header{
+        padding:0 20px;
+    }
+
+    .menu{
+        display:none;
+    }
+
+    .header-user span{
+        display:none;
+    }
+
+    .products-grid{
+        grid-template-columns:1fr;
+    }
+
+    .shop-heading{
+        align-items:flex-start;
+
+        flex-direction:column;
+
+        gap:5px;
+    }
+
+    .cart-panel{
+        width:100%;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     BARRA SUPERIOR
+===================================== -->
+
+<div class="topbar">
+
+    <div class="top-tabs">
+
+        <a href="#" class="top-tab active">
+            PERSONAS
+        </a>
+
+        <a href="#" class="top-tab">
+            EMPRESAS
+        </a>
+
+    </div>
+
+
+    <div class="top-right">
+
+        <a href="#">
+            <i class="fa-solid fa-store"></i>
+            Orbit Shop
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-plane"></i>
+            Viaja con Orbit
+        </a>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<header class="main-header">
+
+    <a href="index.html" class="logo">
+        orbit
+    </a>
+
+    <div class="menu">
+        Menú
+        <i class="fa-solid fa-caret-down"></i>
+    </div>
+
+    <div class="header-spacer"></div>
+
+    <nav class="header-links">
+
+        <a href="planes.html">
+            <i class="fa-solid fa-bolt"></i>
+            Planes
+        </a>
+
+        <a href="recargas.html">
+            <i class="fa-solid fa-dollar-sign"></i>
+            Recargas
+        </a>
+
+        <a href="portabilidad.html">
+            <i class="fa-solid fa-mobile-screen"></i>
+            Portabilidad
+        </a>
+
+    </nav>
+
+
+    <a href="mi-orbit.html" class="header-user">
+
+        <div class="user-circle">
+            <i class="fa-solid fa-user"></i>
+        </div>
+
+        <span>
+            Mi Orbit
+        </span>
+
+    </a>
+
+</header>
+
+
+
+<!-- =====================================
+     HERO
+===================================== -->
+
+<section class="shop-hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Tienda en línea
+        </h1>
+
+        <p>
+            Todo lo que necesitas para disfrutar
+            de Orbit Mobile.
+            <br>
+            Compra equipos, eSIM y accesorios
+            de forma fácil y segura.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     BUSCADOR
+===================================== -->
+
+<section class="search-section">
+
+    <div class="shop-search">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="¿Qué estás buscando?"
+            oninput="searchProducts()"
+        >
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     CATEGORÍAS
+===================================== -->
+
+<div class="categories">
+
+    <button
+        class="category active"
+        onclick="filterCategory('todos',this)"
+    >
+
+        <i class="fa-solid fa-grid-2"></i>
+
+        Todos
+
+    </button>
+
+
+    <button
+        class="category"
+        onclick="filterCategory('esim',this)"
+    >
+
+        <i class="fa-solid fa-sim-card"></i>
+
+        eSIM
+
+    </button>
+
+
+    <button
+        class="category"
+        onclick="filterCategory('celulares',this)"
+    >
+
+        <i class="fa-solid fa-mobile-screen"></i>
+
+        Celulares
+
+    </button>
+
+
+    <button
+        class="category"
+        onclick="filterCategory('accesorios',this)"
+    >
+
+        <i class="fa-solid fa-headphones"></i>
+
+        Accesorios
+
+    </button>
+
+
+    <button
+        class="category"
+        onclick="filterCategory('orbit',this)"
+    >
+
+        <i class="fa-solid fa-circle-nodes"></i>
+
+        Orbit
+
+    </button>
+
+</div>
+
+
+
+<!-- =====================================
+     PRODUCTOS
+===================================== -->
+
+<main class="shop-container">
+
+
+    <div class="shop-heading">
+
+        <h2>
+            Productos destacados
+        </h2>
+
+        <span id="productCount">
+            8 productos
+        </span>
+
+    </div>
+
+
+    <div
+        class="products-grid"
+        id="productsGrid"
+    >
+
+
+        <!-- PRODUCTO 1 -->
+
+        <article
+            class="product-card"
+            data-category="esim"
+            data-name="eSIM Orbit Mobile"
+        >
+
+            <div class="product-image">
+
+                <div class="discount">
+                    MÁS VENDIDO
+                </div>
+
+                <i class="fa-solid fa-sim-card"></i>
+
+            </div>
+
+            <div class="product-info">
+
+                <span class="product-category">
+                    eSIM
+                </span>
+
+                <h3>
+                    eSIM Orbit Mobile
+                </h3>
+
+                <p class="product-description">
+                    Activa tu línea Orbit completamente digital.
+                </p>
+
+                <div class="price">
+
+                    <span class="price-new">
+                        $50
+                    </span>
+
+                </div>
+
+                <button
+                    class="buy-button"
+                    onclick="addToCart(
+                    'eSIM Orbit Mobile',
+                    50,
+                    'fa-sim-card'
+                    )"
+                >
+
+                    <i class="fa-solid fa-cart-plus"></i>
+
+                    Agregar al carrito
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PRODUCTO 2 -->
+
+        <article
+            class="product-card"
+            data-category="celulares"
+            data-name="Orbit Phone O1"
+        >
+
+            <div class="product-image">
+
+                <div class="discount">
+                    10% OFF
+                </div>
+
+                <i class="fa-solid fa-mobile-screen-button"></i>
+
+            </div>
+
+            <div class="product-info">
+
+                <span class="product-category">
+                    Celular
+                </span>
+
+                <h3>
+                    Orbit Phone O1
+                </h3>
+
+                <p class="product-description">
+                    Smartphone Orbit con conectividad 5G.
+                </p>
+
+                <div class="price">
+
+                    <span class="price-old">
+                        $4,999
+                    </span>
+
+                    <span class="price-new">
+                        $4,499
+                    </span>
+
+                </div>
+
+                <button
+                    class="buy-button"
+                    onclick="addToCart(
+                    'Orbit Phone O1',
+                    4499,
+                    'fa-mobile-screen-button'
+                    )"
+                >
+
+                    <i class="fa-solid fa-cart-plus"></i>
+
+                    Agregar al carrito
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PRODUCTO 3 -->
+
+        <article
+            class="product-card"
+            data-category="accesorios"
+            data-name="Audífonos Orbit Buds"
+        >
+
+            <div class="product-image">
+
+                <i class="fa-solid fa-headphones"></i>
+
+            </div>
+
+            <div class="product-info">
+
+                <span class="product-category">
+                    Accesorios
+                </span>
+
+                <h3>
+                    Orbit Buds
+                </h3>
+
+                <p class="product-description">
+                    Audífonos inalámbricos para disfrutar tu música.
+                </p>
+
+                <div class="price">
+
+                    <span class="price-new">
+                        $799
+                    </span>
+
+                </div>
+
+                <button
+                    class="buy-button"
+                    onclick="addToCart(
+                    'Orbit Buds',
+                    799,
+                    'fa-headphones'
+                    )"
+                >
+
+                    <i class="fa-solid fa-cart-plus"></i>
+
+                    Agregar al carrito
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PRODUCTO 4 -->
+
+        <article
+            class="product-card"
+            data-category="accesorios"
+            data-name="Cargador Orbit 25W"
+        >
+
+            <div class="product-image">
+
+                <i class="fa-solid fa-plug"></i>
+
+            </div>
+
+            <div class="product-info">
+
+                <span class="product-category">
+                    Accesorios
+                </span>
+
+                <h3>
+                    Cargador Orbit 25W
+                </h3>
+
+                <p class="product-description">
+                    Carga rápida USB-C de 25W.
+                </p>
+
+                <div class="price">
+
+                    <span class="price-new">
+                        $399
+                    </span>
+
+                </div>
+
+                <button
+                    class="buy-button"
+                    onclick="addToCart(
+                    'Cargador Orbit 25W',
+                    399,
+                    'fa-plug'
+                    )"
+                >
+
+                    <i class="fa-solid fa-cart-plus"></i>
+
+                    Agregar al carrito
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PRODUCTO 5 -->
+
+        <article
+            class="product-card"
+            data-category="orbit"
+            data-name="Funda Orbit Mobile"
+        >
+
+            <div class="product-image">
+
+                <i class="fa-solid fa-mobile-screen"></i>
+
+            </div>
+
+            <div class="product-info">
+
+                <span class="product-category">
+                    Orbit
+                </span>
+
+                <h3>
+                    Funda Orbit Mobile
+                </h3>
+
+                <p class="product-description">
+                    Funda protectora con diseño Orbit.
+                </p>
+
+                <div class="price">
+
+                    <span class="price-new">
+                        $299
+                    </span>
+
+                </div>
+
+                <button
+                    class="buy-button"
+                    onclick="addToCart(
+                    'Funda Orbit Mobile',
+                    299,
+                    'fa-mobile-screen'
+                    )"
+                >
+
+                    <i class="fa-solid fa-cart-plus"></i>
+
+                    Agregar al carrito
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PRODUCTO 6 -->
+
+        <article
+            class="product-card"
+            data-category="celulares"
+            data-name="Orbit Phone O2"
+        >
+
+            <div class="product-image">
+
+                <i class="fa-solid fa-mobile"></i>
+
+            </div>
+
+            <div class="product-info">
+
+                <span class="product-category">
+                    Celular
+                </span>
+
+                <h3>
+                    Orbit Phone O2
+                </h3>
+
+                <p class="product-description">
+                    Pantalla amplia y batería de larga duración.
+                </p>
+
+                <div class="price">
+
+                    <span class="price-new">
+                        $5,999
+                    </span>
+
+                </div>
+
+                <button
+                    class="buy-button"
+                    onclick="addToCart(
+                    'Orbit Phone O2',
+                    5999,
+                    'fa-mobile'
+                    )"
+                >
+
+                    <i class="fa-solid fa-cart-plus"></i>
+
+                    Agregar al carrito
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PRODUCTO 7 -->
+
+        <article
+            class="product-card"
+            data-category="accesorios"
+            data-name="Cable USB-C Orbit"
+        >
+
+            <div class="product-image">
+
+                <i class="fa-solid fa-link"></i>
+
+            </div>
+
+            <div class="product-info">
+
+                <span class="product-category">
+                    Accesorios
+                </span>
+
+                <h3>
+                    Cable USB-C Orbit
+                </h3>
+
+                <p class="product-description">
+                    Cable USB-C de carga y transferencia.
+                </p>
+
+                <div class="price">
+
+                    <span class="price-new">
+                        $199
+                    </span>
+
+                </div>
+
+                <button
+                    class="buy-button"
+                    onclick="addToCart(
+                    'Cable USB-C Orbit',
+                    199,
+                    'fa-link'
+                    )"
+                >
+
+                    <i class="fa-solid fa-cart-plus"></i>
+
+                    Agregar al carrito
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+
+        <!-- PRODUCTO 8 -->
+
+        <article
+            class="product-card"
+            data-category="orbit"
+            data-name="Power Bank Orbit"
+        >
+
+            <div class="product-image">
+
+                <div class="discount">
+                    OFERTA
+                </div>
+
+                <i class="fa-solid fa-battery-full"></i>
+
+            </div>
+
+            <div class="product-info">
+
+                <span class="product-category">
+                    Orbit
+                </span>
+
+                <h3>
+                    Power Bank Orbit
+                </h3>
+
+                <p class="product-description">
+                    Batería portátil para cargar tus dispositivos.
+                </p>
+
+                <div class="price">
+
+                    <span class="price-old">
+                        $899
+                    </span>
+
+                    <span class="price-new">
+                        $699
+                    </span>
+
+                </div>
+
+                <button
+                    class="buy-button"
+                    onclick="addToCart(
+                    'Power Bank Orbit',
+                    699,
+                    'fa-battery-full'
+                    )"
+                >
+
+                    <i class="fa-solid fa-cart-plus"></i>
+
+                    Agregar al carrito
+
+                </button>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</main>
+
+
+
+<!-- =====================================
+     BENEFICIOS
+===================================== -->
+
+<section class="benefit-section">
+
+    <div class="benefit-grid">
+
+
+        <div class="benefit-card">
+
+            <i class="fa-solid fa-lock"></i>
+
+            <div>
+
+                <strong>
+                    Compra segura
+                </strong>
+
+                <span>
+                    Protegemos tus datos.
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="benefit-card">
+
+            <i class="fa-solid fa-truck"></i>
+
+            <div>
+
+                <strong>
+                    Envíos
+                </strong>
+
+                <span>
+                    Recibe tus productos.
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="benefit-card">
+
+            <i class="fa-solid fa-headset"></i>
+
+            <div>
+
+                <strong>
+                    Atención Orbit
+                </strong>
+
+                <span>
+                    Estamos para ayudarte.
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     BOTÓN CARRITO
+===================================== -->
+
+<button
+    class="cart-button"
+    onclick="openCart()"
+>
+
+    <i class="fa-solid fa-cart-shopping"></i>
+
+    <span
+        class="cart-count"
+        id="cartCount"
+    >
+        0
+    </span>
+
+</button>
+
+
+
+<!-- =====================================
+     CARRITO
+===================================== -->
+
+<div
+    class="cart-overlay"
+    id="cartOverlay"
+    onclick="closeCart(event)"
+>
+
+
+    <div
+        class="cart-panel"
+        onclick="event.stopPropagation()"
+    >
+
+
+        <div class="cart-header">
+
+            <h2>
+                Mi carrito
+            </h2>
+
+            <button
+                class="close-cart"
+                onclick="closeCart()"
+            >
+
+                <i class="fa-solid fa-xmark"></i>
+
+            </button>
+
+        </div>
+
+
+
+        <div
+            class="cart-items"
+            id="cartItems"
+        >
+
+            <div class="empty-cart">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <p>
+                    Tu carrito está vacío.
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="cart-footer">
+
+            <div class="total-row">
+
+                <span>
+                    Total
+                </span>
+
+                <strong id="cartTotal">
+                    $0.00
+                </strong>
+
+            </div>
+
+
+            <button
+                class="checkout"
+                onclick="checkout()"
+            >
+
+                <i class="fa-solid fa-credit-card"></i>
+
+                Continuar compra
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================
+     FOOTER
+===================================== -->
+
+<footer>
+
+    <div class="footer-content">
+
+
+        <div class="footer-col">
+
+            <h3>
+                Orbit Mobile
+            </h3>
+
+            <a href="index.html">
+                Inicio
+            </a>
+
+            <a href="planes.html">
+                Planes
+            </a>
+
+            <a href="recargas.html">
+                Recargas
+            </a>
+
+        </div>
+
+
+
+        <div class="footer-col">
+
+            <h3>
+                Tienda
+            </h3>
+
+            <a href="#">
+                Celulares
+            </a>
+
+            <a href="#">
+                Accesorios
+            </a>
+
+            <a href="#">
+                eSIM
+            </a>
+
+        </div>
+
+
+
+        <div class="footer-col">
+
+            <h3>
+                Ayuda
+            </h3>
+
+            <a href="#">
+                Preguntas frecuentes
+            </a>
+
+            <a href="#">
+                Envíos
+            </a>
+
+            <a href="#">
+                Contacto
+            </a>
+
+        </div>
+
+
+
+        <div class="footer-col">
+
+            <h3>
+                Mi Orbit
+            </h3>
+
+            <a href="mi-orbit.html">
+                Iniciar sesión
+            </a>
+
+            <a href="registro.html">
+                Crear cuenta
+            </a>
+
+            <a href="#">
+                Soporte
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 Orbit Mobile.
+        Todos los derechos reservados.
+
+    </div>
+
+</footer>
+
+
+
+<script>
+
+/* =====================================
+   VARIABLES
+===================================== */
+
+let cart = [];
+
+let currentCategory = "todos";
+
+
+/* =====================================
+   AGREGAR AL CARRITO
+===================================== */
+
+function addToCart(name,price,icon){
+
+    const existing =
+        cart.find(item => item.name === name);
+
+
+    if(existing){
+
+        existing.quantity++;
+
+    }else{
+
+        cart.push({
+            name:name,
+            price:price,
+            icon:icon,
+            quantity:1
+        });
+
+    }
+
+
+    updateCart();
+
+
+    openCart();
+
+}
+
+
+/* =====================================
+   ACTUALIZAR CARRITO
+===================================== */
+
+function updateCart(){
+
+    const container =
+        document.getElementById("cartItems");
+
+    const count =
+        document.getElementById("cartCount");
+
+    const total =
+        document.getElementById("cartTotal");
+
+
+    let totalItems = 0;
+
+    let totalPrice = 0;
+
+
+    cart.forEach(item => {
+
+        totalItems += item.quantity;
+
+        totalPrice +=
+            item.price * item.quantity;
+
+    });
+
+
+    count.textContent =
+        totalItems;
+
+
+    total.textContent =
+        "$" +
+        totalPrice.toLocaleString(
+            "es-MX",
+            {
+                minimumFractionDigits:2
+            }
+        );
+
+
+    if(cart.length === 0){
+
+        container.innerHTML = `
+
+            <div class="empty-cart">
+
+                <i class="fa-solid fa-cart-shopping"></i>
+
+                <p>
+                    Tu carrito está vacío.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML = "";
+
+
+    cart.forEach((item,index)=>{
+
+        const div =
+            document.createElement("div");
+
+        div.className =
+            "cart-item";
+
+
+        div.innerHTML = `
+
+            <div class="cart-item-icon">
+
+                <i class="fa-solid ${item.icon}"></i>
+
+            </div>
+
+
+            <div class="cart-item-info">
+
+                <strong>
+                    ${item.name}
+                </strong>
+
+                <span>
+                    $${item.price.toLocaleString("es-MX")}
+                    × ${item.quantity}
+                </span>
+
+            </div>
+
+
+            <button
+                class="remove-item"
+                onclick="removeItem(${index})"
+            >
+
+                <i class="fa-solid fa-trash"></i>
+
+            </button>
+
+        `;
+
+
+        container.appendChild(div);
+
+    });
+
+}
+
+
+/* =====================================
+   ELIMINAR
+===================================== */
+
+function removeItem(index){
+
+    cart.splice(index,1);
+
+    updateCart();
+
+}
+
+
+/* =====================================
+   ABRIR CARRITO
+===================================== */
+
+function openCart(){
+
+    document.getElementById(
+        "cartOverlay"
+    ).style.display = "block";
+
+}
+
+
+/* =====================================
+   CERRAR CARRITO
+===================================== */
+
+function closeCart(){
+
+    document.getElementById(
+        "cartOverlay"
+    ).style.display = "none";
+
+}
+
+
+/* =====================================
+   FILTRAR CATEGORÍA
+===================================== */
+
+function filterCategory(category,button){
+
+    currentCategory =
+        category;
+
+
+    document
+        .querySelectorAll(".category")
+        .forEach(btn =>
+            btn.classList.remove("active")
+        );
+
+
+    button.classList.add("active");
+
+
+    filterProducts();
+
+}
+
+
+/* =====================================
+   BUSCAR
+===================================== */
+
+function searchProducts(){
+
+    filterProducts();
+
+}
+
+
+/* =====================================
+   FILTRAR PRODUCTOS
+===================================== */
+
+function filterProducts(){
+
+    const search =
+        document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase();
+
+
+    const products =
+        document.querySelectorAll(
+            ".product-card"
+        );
+
+
+    let visible = 0;
+
+
+    products.forEach(product => {
+
+        const category =
+            product.dataset.category;
+
+        const name =
+            product.dataset.name.toLowerCase();
+
+
+        const categoryMatch =
+            currentCategory === "todos" ||
+            category === currentCategory;
+
+
+        const searchMatch =
+            name.includes(search);
+
+
+        if(categoryMatch && searchMatch){
+
+            product.style.display =
+                "block";
+
+            visible++;
+
+        }else{
+
+            product.style.display =
+                "none";
+
+        }
+
+    });
+
+
+    document.getElementById(
+        "productCount"
+    ).textContent =
+        visible +
+        (visible === 1
+            ? " producto"
+            : " productos");
+
+}
+
+
+/* =====================================
+   CHECKOUT
+===================================== */
+
+function checkout(){
+
+    if(cart.length === 0){
+
+        alert(
+            "Tu carrito está vacío."
+        );
+
+        return;
+
+    }
+
+
+    alert(
+        "Aquí comenzará el proceso de compra de Orbit Mobile."
+    );
+
+}
+
+
+/* =====================================
+   ESCAPE
+===================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Escape"){
+
+            closeCart();
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+</html>
