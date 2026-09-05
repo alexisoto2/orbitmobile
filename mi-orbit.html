@@ -1,0 +1,2062 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mi Orbit | Orbit Mobile</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+
+:root{
+    --blue:#0b4f8a;
+    --blue-dark:#073865;
+    --blue-light:#eaf4fc;
+    --cyan:#159bd7;
+    --text:#294b6b;
+    --muted:#708397;
+    --gray:#f5f7f9;
+    --border:#dfe6eb;
+    --green:#16834b;
+    --red:#d52d2d;
+    --white:#fff;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:#f4f7f9;
+    color:var(--text);
+}
+
+button,
+input{
+    font-family:inherit;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+
+/* =====================================
+   HEADER
+===================================== */
+
+.topbar{
+    height:44px;
+    background:var(--blue);
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 5%;
+}
+
+.topbar-left{
+    display:flex;
+    height:100%;
+}
+
+.top-tab{
+    padding:0 22px;
+
+    display:flex;
+    align-items:center;
+
+    font-size:14px;
+    font-weight:bold;
+}
+
+.top-tab.active{
+    background:white;
+    color:var(--blue);
+}
+
+.topbar-right{
+    display:flex;
+    gap:25px;
+    font-size:14px;
+}
+
+.topbar-right a{
+    color:white;
+}
+
+
+/* =====================================
+   HEADER PRINCIPAL
+===================================== */
+
+.main-header{
+    height:68px;
+    background:white;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 5%;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+
+    position:relative;
+    z-index:20;
+}
+
+.logo{
+    color:var(--blue);
+    font-size:29px;
+    font-weight:900;
+    font-style:italic;
+    letter-spacing:-2px;
+}
+
+.menu{
+    margin-left:35px;
+    color:#555;
+    font-size:15px;
+}
+
+.header-spacer{
+    flex:1;
+}
+
+.header-links{
+    display:flex;
+    align-items:center;
+    gap:27px;
+
+    font-size:14px;
+    font-weight:bold;
+
+    color:#34506d;
+}
+
+.header-links i{
+    color:var(--blue);
+    margin-right:5px;
+}
+
+.header-user{
+    margin-left:25px;
+
+    display:flex;
+    align-items:center;
+    gap:9px;
+
+    color:var(--blue);
+    font-weight:bold;
+}
+
+.user-circle{
+    width:39px;
+    height:39px;
+
+    border-radius:50%;
+
+    background:#159bd7;
+
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+
+/* =====================================
+   LOGIN
+===================================== */
+
+.login-page{
+    min-height:calc(100vh - 112px);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:50px 20px;
+
+    background:
+        radial-gradient(
+            circle at 15% 30%,
+            rgba(159,211,238,.35),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #eef6fb,
+            #dce8f0
+        );
+}
+
+.login-wrapper{
+    width:100%;
+    max-width:1050px;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    background:white;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:
+        0 15px 45px rgba(32,72,105,.15);
+}
+
+
+/* =====================================
+   LOGIN LADO IZQUIERDO
+===================================== */
+
+.login-info{
+    background:
+        linear-gradient(
+            145deg,
+            #0b4f8a,
+            #073865
+        );
+
+    color:white;
+
+    padding:55px 50px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.login-info::before{
+    content:"";
+
+    position:absolute;
+
+    width:400px;
+    height:400px;
+
+    border-radius:50%;
+
+    border:70px solid rgba(255,255,255,.06);
+
+    left:-230px;
+    top:-100px;
+}
+
+.login-info::after{
+    content:"";
+
+    position:absolute;
+
+    width:280px;
+    height:280px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    right:-100px;
+    bottom:-80px;
+}
+
+.info-content{
+    position:relative;
+    z-index:2;
+}
+
+.orbit-big{
+    font-size:48px;
+    font-weight:900;
+    font-style:italic;
+    letter-spacing:-3px;
+
+    margin-bottom:25px;
+}
+
+.login-info h1{
+    font-size:32px;
+    line-height:1.15;
+    margin-bottom:18px;
+}
+
+.login-info p{
+    color:#b9def2;
+    line-height:1.6;
+    font-size:16px;
+    max-width:400px;
+}
+
+.benefits{
+    margin-top:35px;
+}
+
+.benefit{
+    display:flex;
+    align-items:center;
+    gap:13px;
+
+    margin-bottom:17px;
+
+    font-size:14px;
+}
+
+.benefit i{
+    width:35px;
+    height:35px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.13);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#9edcf5;
+}
+
+
+/* =====================================
+   LOGIN FORM
+===================================== */
+
+.login-form{
+    padding:55px 50px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.login-form h2{
+    color:#214b73;
+    font-size:28px;
+
+    margin-bottom:8px;
+}
+
+.login-subtitle{
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.5;
+
+    margin-bottom:30px;
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+.form-group label{
+    display:block;
+
+    color:#385a76;
+
+    font-size:13px;
+    font-weight:bold;
+
+    margin-bottom:7px;
+}
+
+.input-wrapper{
+    position:relative;
+}
+
+.input-wrapper i{
+    position:absolute;
+
+    left:15px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#5890b1;
+}
+
+.input-wrapper input{
+    width:100%;
+    height:49px;
+
+    border:1px solid #d0dbe3;
+
+    border-radius:9px;
+
+    padding:0 15px 0 44px;
+
+    outline:none;
+
+    font-size:15px;
+}
+
+.input-wrapper input:focus{
+    border-color:var(--blue);
+
+    box-shadow:
+        0 0 0 3px rgba(11,79,138,.08);
+}
+
+.password-toggle{
+    position:absolute;
+
+    right:15px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    border:none;
+    background:none;
+
+    color:#708397;
+
+    cursor:pointer;
+}
+
+.login-options{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin:5px 0 22px;
+
+    font-size:12px;
+}
+
+.remember{
+    display:flex;
+    align-items:center;
+    gap:7px;
+
+    color:#66798a;
+}
+
+.remember input{
+    accent-color:var(--blue);
+}
+
+.forgot{
+    color:var(--blue);
+    font-weight:bold;
+}
+
+.login-button{
+    width:100%;
+    height:51px;
+
+    border:none;
+    border-radius:26px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0b4f8a,
+            #159bd7
+        );
+
+    color:white;
+
+    font-size:15px;
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.login-button:hover{
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 6px 16px rgba(11,79,138,.25);
+}
+
+.register-link{
+    text-align:center;
+
+    margin-top:22px;
+
+    color:#6c7d8d;
+
+    font-size:13px;
+}
+
+.register-link a{
+    color:var(--blue);
+    font-weight:bold;
+}
+
+.login-message{
+    display:none;
+
+    margin-top:15px;
+
+    padding:12px;
+
+    border-radius:8px;
+
+    text-align:center;
+
+    font-size:13px;
+}
+
+.login-message.error{
+    display:block;
+
+    background:#fff0f0;
+
+    color:var(--red);
+
+    border:1px solid #f0cccc;
+}
+
+
+/* =====================================
+   PORTAL
+===================================== */
+
+#portal{
+    display:none;
+}
+
+.portal-body{
+    min-height:calc(100vh - 112px);
+    background:#f5f7f9;
+}
+
+
+/* =====================================
+   DASHBOARD HEADER
+===================================== */
+
+.dashboard-header{
+    background:
+        linear-gradient(
+            110deg,
+            #0b4f8a,
+            #0a609f
+        );
+
+    color:white;
+
+    padding:35px 6%;
+}
+
+.dashboard-header-inner{
+    max-width:1250px;
+    margin:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.welcome h1{
+    font-size:28px;
+    margin-bottom:7px;
+}
+
+.welcome p{
+    color:#c5e5f4;
+    font-size:14px;
+}
+
+.logout{
+    border:1px solid rgba(255,255,255,.5);
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    padding:11px 18px;
+
+    border-radius:22px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+}
+
+
+/* =====================================
+   DASHBOARD
+===================================== */
+
+.dashboard{
+    max-width:1250px;
+
+    margin:-20px auto 0;
+
+    padding:0 25px 50px;
+
+    position:relative;
+    z-index:2;
+}
+
+
+/* =====================================
+   LINEA PRINCIPAL
+===================================== */
+
+.main-line-card{
+    background:white;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.07);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:25px;
+}
+
+.line-info{
+    display:flex;
+    align-items:center;
+    gap:18px;
+}
+
+.line-icon{
+    width:55px;
+    height:55px;
+
+    border-radius:13px;
+
+    background:var(--blue-light);
+
+    color:var(--blue);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:24px;
+}
+
+.line-info small{
+    color:#8494a2;
+    font-size:12px;
+}
+
+.line-info h2{
+    color:#214b73;
+    font-size:22px;
+
+    margin-top:3px;
+}
+
+.status{
+    background:#e4f6eb;
+    color:var(--green);
+
+    padding:7px 13px;
+
+    border-radius:20px;
+
+    font-size:11px;
+
+    font-weight:bold;
+}
+
+
+/* =====================================
+   CARDS
+===================================== */
+
+.cards-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:18px;
+
+    margin-bottom:25px;
+}
+
+.card{
+    background:white;
+
+    border-radius:14px;
+
+    padding:22px;
+
+    box-shadow:
+        0 4px 16px rgba(0,0,0,.06);
+
+    border:1px solid #edf0f2;
+}
+
+.card-icon{
+    width:42px;
+    height:42px;
+
+    border-radius:10px;
+
+    background:var(--blue-light);
+
+    color:var(--blue);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-bottom:15px;
+}
+
+.card small{
+    color:#82909c;
+    font-size:12px;
+}
+
+.card h3{
+    color:#214b73;
+    font-size:22px;
+
+    margin:5px 0;
+}
+
+.card p{
+    color:#7c8d9b;
+    font-size:12px;
+}
+
+
+/* =====================================
+   CONSUMO
+===================================== */
+
+.content-grid{
+    display:grid;
+
+    grid-template-columns:
+        1.4fr 1fr;
+
+    gap:20px;
+}
+
+.panel{
+    background:white;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    box-shadow:
+        0 4px 16px rgba(0,0,0,.06);
+}
+
+.panel-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:23px;
+}
+
+.panel-title h2{
+    font-size:19px;
+    color:#214b73;
+}
+
+.panel-title a{
+    font-size:12px;
+    color:var(--blue);
+    font-weight:bold;
+}
+
+.progress-item{
+    margin-bottom:23px;
+}
+
+.progress-header{
+    display:flex;
+    justify-content:space-between;
+
+    margin-bottom:8px;
+
+    font-size:13px;
+}
+
+.progress-header strong{
+    color:#34546f;
+}
+
+.progress-header span{
+    color:#778b9d;
+}
+
+.progress{
+    height:9px;
+
+    background:#e9eef2;
+
+    border-radius:10px;
+
+    overflow:hidden;
+}
+
+.progress-bar{
+    height:100%;
+
+    border-radius:10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #0b4f8a,
+            #28a7df
+        );
+}
+
+
+/* =====================================
+   ACCIONES
+===================================== */
+
+.actions-grid{
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:12px;
+}
+
+.action{
+    min-height:90px;
+
+    border:1px solid #e0e7ec;
+
+    border-radius:11px;
+
+    background:#fafcfd;
+
+    padding:17px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.action:hover{
+    border-color:#8abbd6;
+
+    background:#f0f8fc;
+
+    transform:translateY(-2px);
+}
+
+.action i{
+    color:var(--blue);
+
+    font-size:21px;
+
+    margin-bottom:10px;
+}
+
+.action strong{
+    display:block;
+
+    color:#34546f;
+
+    font-size:13px;
+}
+
+.action span{
+    display:block;
+
+    color:#8a99a6;
+
+    font-size:11px;
+
+    margin-top:4px;
+}
+
+
+/* =====================================
+   HISTORIAL
+===================================== */
+
+.history{
+    margin-top:20px;
+}
+
+.transaction{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:14px 0;
+
+    border-bottom:1px solid #edf0f2;
+}
+
+.transaction:last-child{
+    border-bottom:none;
+}
+
+.transaction-left{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.transaction-icon{
+    width:38px;
+    height:38px;
+
+    border-radius:9px;
+
+    background:#eef6fb;
+
+    color:var(--blue);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.transaction strong{
+    display:block;
+
+    color:#3c5a72;
+
+    font-size:13px;
+}
+
+.transaction small{
+    color:#8a98a4;
+
+    font-size:11px;
+}
+
+.transaction-amount{
+    color:#315873;
+
+    font-size:13px;
+
+    font-weight:bold;
+}
+
+
+/* =====================================
+   FOOTER
+===================================== */
+
+footer{
+    background:#073865;
+
+    color:white;
+
+    text-align:center;
+
+    padding:20px;
+
+    font-size:12px;
+}
+
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media(max-width:950px){
+
+    .header-links{
+        display:none;
+    }
+
+    .login-wrapper{
+        grid-template-columns:1fr;
+    }
+
+    .login-info{
+        padding:35px;
+    }
+
+    .cards-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .content-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .topbar-right{
+        display:none;
+    }
+
+    .main-header{
+        padding:0 20px;
+    }
+
+    .menu{
+        display:none;
+    }
+
+    .header-user span{
+        display:none;
+    }
+
+    .login-page{
+        padding:25px 15px;
+    }
+
+    .login-info{
+        display:none;
+    }
+
+    .login-form{
+        padding:35px 25px;
+    }
+
+    .dashboard-header{
+        padding:25px 20px;
+    }
+
+    .dashboard-header-inner{
+        align-items:flex-start;
+    }
+
+    .welcome h1{
+        font-size:23px;
+    }
+
+    .dashboard{
+        padding:0 15px 30px;
+    }
+
+    .main-line-card{
+        align-items:flex-start;
+        gap:15px;
+    }
+
+    .status{
+        white-space:nowrap;
+    }
+
+    .cards-grid{
+        grid-template-columns:1fr 1fr;
+        gap:12px;
+    }
+
+    .card{
+        padding:17px;
+    }
+
+    .card h3{
+        font-size:19px;
+    }
+
+    .actions-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================
+     HEADER
+===================================== -->
+
+<div class="topbar">
+
+    <div class="topbar-left">
+
+        <div class="top-tab active">
+            PERSONAS
+        </div>
+
+        <div class="top-tab">
+            EMPRESAS
+        </div>
+
+    </div>
+
+    <div class="topbar-right">
+
+        <a href="#">
+            <i class="fa-solid fa-store"></i>
+            Orbit Shop
+        </a>
+
+        <a href="#">
+            <i class="fa-solid fa-plane"></i>
+            Viaja con Orbit
+        </a>
+
+    </div>
+
+</div>
+
+
+
+<header class="main-header">
+
+    <a href="index.html" class="logo">
+        orbit
+    </a>
+
+    <div class="menu">
+        Menú
+        <i class="fa-solid fa-caret-down"></i>
+    </div>
+
+    <div class="header-spacer"></div>
+
+    <nav class="header-links">
+
+        <a href="planes.html">
+            <i class="fa-solid fa-bolt"></i>
+            Planes
+        </a>
+
+        <a href="recargas.html">
+            <i class="fa-solid fa-dollar-sign"></i>
+            Recargas
+        </a>
+
+        <a href="portabilidad.html">
+            <i class="fa-solid fa-mobile-screen"></i>
+            Portabilidad
+        </a>
+
+    </nav>
+
+    <div class="header-user">
+
+        <div class="user-circle">
+            <i class="fa-solid fa-user"></i>
+        </div>
+
+        <span>
+            Mi Orbit
+        </span>
+
+    </div>
+
+</header>
+
+
+
+<!-- =====================================
+     LOGIN
+===================================== -->
+
+<section
+    class="login-page"
+    id="loginPage"
+>
+
+    <div class="login-wrapper">
+
+
+        <!-- INFORMACIÓN -->
+
+        <div class="login-info">
+
+            <div class="info-content">
+
+                <div class="orbit-big">
+                    orbit
+                </div>
+
+                <h1>
+                    Todo tu servicio móvil
+                    en un solo lugar.
+                </h1>
+
+                <p>
+                    Administra tu línea Orbit Mobile,
+                    consulta tu consumo, realiza recargas,
+                    paga tu factura y mucho más.
+                </p>
+
+
+                <div class="benefits">
+
+                    <div class="benefit">
+
+                        <i class="fa-solid fa-chart-simple"></i>
+
+                        Consulta tu consumo
+
+                    </div>
+
+                    <div class="benefit">
+
+                        <i class="fa-solid fa-bolt"></i>
+
+                        Compra y administra tus paquetes
+
+                    </div>
+
+                    <div class="benefit">
+
+                        <i class="fa-solid fa-file-invoice-dollar"></i>
+
+                        Consulta tus facturas
+
+                    </div>
+
+                    <div class="benefit">
+
+                        <i class="fa-solid fa-sim-card"></i>
+
+                        Administra tu eSIM
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FORMULARIO -->
+
+        <div class="login-form">
+
+            <h2>
+                Inicia sesión
+            </h2>
+
+            <p class="login-subtitle">
+
+                Ingresa a tu cuenta de
+                <strong>Mi Orbit</strong>.
+
+            </p>
+
+
+            <form onsubmit="login(event)">
+
+
+                <div class="form-group">
+
+                    <label>
+                        Número Orbit Mobile
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-mobile-screen"></i>
+
+                        <input
+                            type="tel"
+                            id="loginNumber"
+                            maxlength="10"
+                            placeholder="10 dígitos"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label>
+                        Contraseña
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            placeholder="Ingresa tu contraseña"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            onclick="togglePassword()"
+                        >
+
+                            <i
+                                class="fa-solid fa-eye"
+                                id="eye"
+                            ></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="login-options">
+
+                    <label class="remember">
+
+                        <input
+                            type="checkbox"
+                        >
+
+                        Recordarme
+
+                    </label>
+
+
+                    <a
+                        href="#"
+                        class="forgot"
+                    >
+                        ¿Olvidaste tu contraseña?
+                    </a>
+
+                </div>
+
+
+
+                <button
+                    type="submit"
+                    class="login-button"
+                >
+
+                    <i class="fa-solid fa-right-to-bracket"></i>
+
+                    Iniciar sesión
+
+                </button>
+
+
+            </form>
+
+
+            <div
+                class="login-message"
+                id="loginMessage"
+            ></div>
+
+
+            <div class="register-link">
+
+                ¿Aún no tienes una cuenta?
+
+                <a href="registro.html">
+                    Regístrate
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     PORTAL DEL CLIENTE
+===================================== -->
+
+<section
+    id="portal"
+    class="portal-body"
+>
+
+
+    <!-- DASHBOARD HEADER -->
+
+    <div class="dashboard-header">
+
+        <div class="dashboard-header-inner">
+
+            <div class="welcome">
+
+                <h1>
+                    Hola, Alexis 👋
+                </h1>
+
+                <p>
+                    Bienvenido a tu cuenta Mi Orbit.
+                </p>
+
+            </div>
+
+
+            <button
+                class="logout"
+                onclick="logout()"
+            >
+
+                <i class="fa-solid fa-right-from-bracket"></i>
+
+                Cerrar sesión
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- DASHBOARD -->
+
+    <div class="dashboard">
+
+
+        <!-- LINEA -->
+
+        <div class="main-line-card">
+
+            <div class="line-info">
+
+                <div class="line-icon">
+
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+
+                </div>
+
+                <div>
+
+                    <small>
+                        Tu línea Orbit Mobile
+                    </small>
+
+                    <h2>
+                        +52 656 000 0000
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="status">
+                LÍNEA ACTIVA
+            </div>
+
+        </div>
+
+
+
+        <!-- CARDS -->
+
+        <div class="cards-grid">
+
+
+            <div class="card">
+
+                <div class="card-icon">
+
+                    <i class="fa-solid fa-database"></i>
+
+                </div>
+
+                <small>
+                    Datos disponibles
+                </small>
+
+                <h3>
+                    18.4 GB
+                </h3>
+
+                <p>
+                    de 25 GB incluidos
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">
+
+                    <i class="fa-solid fa-phone"></i>
+
+                </div>
+
+                <small>
+                    Llamadas
+                </small>
+
+                <h3>
+                    Ilimitadas
+                </h3>
+
+                <p>
+                    Dentro de México
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">
+
+                    <i class="fa-solid fa-message"></i>
+
+                </div>
+
+                <small>
+                    SMS
+                </small>
+
+                <h3>
+                    Ilimitados
+                </h3>
+
+                <p>
+                    Mensajes nacionales
+                </p>
+
+            </div>
+
+
+
+            <div class="card">
+
+                <div class="card-icon">
+
+                    <i class="fa-solid fa-calendar-days"></i>
+
+                </div>
+
+                <small>
+                    Próximo corte
+                </small>
+
+                <h3>
+                    24 días
+                </h3>
+
+                <p>
+                    28 de septiembre
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CONTENIDO -->
+
+        <div class="content-grid">
+
+
+            <!-- CONSUMO -->
+
+            <div class="panel">
+
+                <div class="panel-title">
+
+                    <h2>
+                        Mi consumo
+                    </h2>
+
+                    <a href="#">
+                        Ver detalle
+                    </a>
+
+                </div>
+
+
+
+                <div class="progress-item">
+
+                    <div class="progress-header">
+
+                        <strong>
+                            Datos móviles
+                        </strong>
+
+                        <span>
+                            6.6 GB usados de 25 GB
+                        </span>
+
+                    </div>
+
+                    <div class="progress">
+
+                        <div
+                            class="progress-bar"
+                            style="width:26%;"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="progress-item">
+
+                    <div class="progress-header">
+
+                        <strong>
+                            Redes sociales
+                        </strong>
+
+                        <span>
+                            Ilimitadas
+                        </span>
+
+                    </div>
+
+                    <div class="progress">
+
+                        <div
+                            class="progress-bar"
+                            style="width:100%;"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="progress-item">
+
+                    <div class="progress-header">
+
+                        <strong>
+                            Hotspot
+                        </strong>
+
+                        <span>
+                            3.2 GB de 10 GB
+                        </span>
+
+                    </div>
+
+                    <div class="progress">
+
+                        <div
+                            class="progress-bar"
+                            style="width:32%;"
+                        ></div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- ACCIONES -->
+
+            <div class="panel">
+
+                <div class="panel-title">
+
+                    <h2>
+                        Acciones rápidas
+                    </h2>
+
+                </div>
+
+
+                <div class="actions-grid">
+
+
+                    <div
+                        class="action"
+                        onclick="alert('Aquí podrás realizar una recarga.')"
+                    >
+
+                        <i class="fa-solid fa-circle-dollar-to-slot"></i>
+
+                        <strong>
+                            Recargar
+                        </strong>
+
+                        <span>
+                            Agrega saldo a tu línea
+                        </span>
+
+                    </div>
+
+
+
+                    <div
+                        class="action"
+                        onclick="alert('Aquí podrás consultar tus paquetes.')"
+                    >
+
+                        <i class="fa-solid fa-box"></i>
+
+                        <strong>
+                            Comprar paquete
+                        </strong>
+
+                        <span>
+                            Elige un nuevo paquete
+                        </span>
+
+                    </div>
+
+
+
+                    <div
+                        class="action"
+                        onclick="alert('Aquí podrás consultar tus facturas.')"
+                    >
+
+                        <i class="fa-solid fa-file-invoice"></i>
+
+                        <strong>
+                            Mis facturas
+                        </strong>
+
+                        <span>
+                            Consulta tus pagos
+                        </span>
+
+                    </div>
+
+
+
+                    <div
+                        class="action"
+                        onclick="alert('Aquí podrás administrar tu eSIM.')"
+                    >
+
+                        <i class="fa-solid fa-sim-card"></i>
+
+                        <strong>
+                            Mi eSIM
+                        </strong>
+
+                        <span>
+                            Administra tu línea digital
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- HISTORIAL -->
+
+        <div class="panel history">
+
+            <div class="panel-title">
+
+                <h2>
+                    Actividad reciente
+                </h2>
+
+                <a href="#">
+                    Ver historial
+                </a>
+
+            </div>
+
+
+            <div class="transaction">
+
+                <div class="transaction-left">
+
+                    <div class="transaction-icon">
+
+                        <i class="fa-solid fa-bolt"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Paquete Orbit 25 GB
+                        </strong>
+
+                        <small>
+                            28 de agosto de 2026
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="transaction-amount">
+                    $199.00
+                </div>
+
+            </div>
+
+
+
+            <div class="transaction">
+
+                <div class="transaction-left">
+
+                    <div class="transaction-icon">
+
+                        <i class="fa-solid fa-money-bill-wave"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Recarga de saldo
+                        </strong>
+
+                        <small>
+                            20 de agosto de 2026
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="transaction-amount">
+                    +$100.00
+                </div>
+
+            </div>
+
+
+
+            <div class="transaction">
+
+                <div class="transaction-left">
+
+                    <div class="transaction-icon">
+
+                        <i class="fa-solid fa-sim-card"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Activación eSIM
+                        </strong>
+
+                        <small>
+                            15 de agosto de 2026
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="transaction-amount">
+                    Completada
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <footer>
+
+        © 2026 Orbit Mobile.
+        Todos los derechos reservados.
+
+    </footer>
+
+</section>
+
+
+
+<script>
+
+/* =====================================
+   LOGIN DEMOSTRATIVO
+===================================== */
+
+function login(event){
+
+    event.preventDefault();
+
+
+    const number =
+        document.getElementById("loginNumber").value;
+
+    const password =
+        document.getElementById("loginPassword").value;
+
+    const message =
+        document.getElementById("loginMessage");
+
+
+    message.className =
+        "login-message";
+
+
+    if(!/^\d{10}$/.test(number)){
+
+        message.textContent =
+            "Ingresa un número Orbit Mobile válido de 10 dígitos.";
+
+        message.classList.add("error");
+
+        return;
+    }
+
+
+    if(password.length < 4){
+
+        message.textContent =
+            "La contraseña debe tener al menos 4 caracteres.";
+
+        message.classList.add("error");
+
+        return;
+    }
+
+
+    /*
+       DEMO:
+
+       Cualquier número válido y contraseña
+       de 4 caracteres permiten entrar.
+
+       En una versión real esto deberá
+       conectarse a una base de datos/API.
+    */
+
+
+    document.getElementById("loginPage").style.display =
+        "none";
+
+    document.getElementById("portal").style.display =
+        "block";
+
+
+    document.body.style.background =
+        "#f5f7f9";
+
+}
+
+
+/* =====================================
+   MOSTRAR CONTRASEÑA
+===================================== */
+
+function togglePassword(){
+
+    const password =
+        document.getElementById("loginPassword");
+
+    const eye =
+        document.getElementById("eye");
+
+
+    if(password.type === "password"){
+
+        password.type = "text";
+
+        eye.className =
+            "fa-solid fa-eye-slash";
+
+    }else{
+
+        password.type = "password";
+
+        eye.className =
+            "fa-solid fa-eye";
+
+    }
+
+}
+
+
+/* =====================================
+   SOLO NÚMEROS
+===================================== */
+
+document
+.getElementById("loginNumber")
+.addEventListener("input",function(){
+
+    this.value =
+        this.value.replace(/\D/g,"");
+
+});
+
+
+/* =====================================
+   CERRAR SESIÓN
+===================================== */
+
+function logout(){
+
+    document.getElementById("portal").style.display =
+        "none";
+
+    document.getElementById("loginPage").style.display =
+        "flex";
+
+    document.getElementById("loginNumber").value =
+        "";
+
+    document.getElementById("loginPassword").value =
+        "";
+
+}
+
+</script>
+
+
+</body>
+</html>
